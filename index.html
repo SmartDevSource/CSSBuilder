@@ -1,0 +1,133 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "css/style.css">
+    <title>CSS Builder V1.0</title>
+ </head>
+ <body>
+    <div class = "rightpanel">
+        <div class = "panel-container flexcol">
+            <label>Texte du bouton</label>
+            <input type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
+            <label>Nom de la classe</label>
+            <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/>
+
+            <label class = "mt10">Espacement intérieur</label>
+            <input type = "range" min = "0" max = "500" value = "5" id = "range_padding">
+            <label>Marge extérieur</label>
+            <input type = "range" min = "0" max = "200" value = "10" id = "range_margin">
+            
+            <label class = "linkbox" id = "link_text">Texte</label>
+            <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text">
+                <label class = "mt10">Taille du texte</label>
+                <input type = "range" min = "8" max = "200" value = "16" step = "2" id = "range_fontsize">
+                <label>Espacement</label>
+                <input type = "range" min = "0" max = "40" value = "0" id = "range_letters_spacing">
+                <label>Contour</label>
+                <input type = "range" min = "0" max = "3" value = "0" step = "0.1" id = "range_outline_text">
+                <input type = "color" value="#ffffff" id = "color_outline_text">
+                <span class = "mb10">
+                    <label>Gras</label><input class = "cursorpointer" type = "checkbox" id = "checkbox_bold">
+                    <label>Italique</label><input class = "cursorpointer" type = "checkbox" id = "checkbox_italic">
+                    <label>Souligné</label><input class = "cursorpointer" type = "checkbox" id = "checkbox_underlined">
+                </span>
+            </div>
+
+            <!--COLORS-->
+            <label class = "linkbox" id = "link_colors">Couleurs</label>
+            <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
+                <label class = "mt10">Couleur du texte</label>
+                <input type = "color" id = "color_text">
+                <label>Couleur du fond</label>
+                <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
+            </div>
+
+            <!--BORDER RADIUS-->
+            <label class = "linkbox" id = "link_radius">Arrondis</label>
+            <div class = "flexcol params-container mb10" style = "display: none;" id = "params_radius">
+                <label class = "mt10">Arrondi global</label>
+                <input class = "" type = "range" min = "0" max = "20" value = "0" id = "range_radius">
+                <label>Haut à gauche</label>
+                <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topleft">
+                <label>Haut à droite</label>
+                <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topright">
+                <label>Bas à gauche</label>
+                <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomleft">
+                <label>Bas à droite</label>
+                <input type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright">
+            </div>
+            <!--BORDERS OUTLINE-->
+            <label class = "linkbox" id = "link_borders">Contours</label>
+            <div class = "flexcol params-container mt10" style = "display: none;" id = "params_borders">
+                <label class = "mt10">Epaisseur des contours</label>
+                <input type = "range" min = "0" max = "50" value = "1" id = "range_borders">
+                <label class = "mt10">Couleur globale</label>
+                <input class = "mb10" type = "color" id = "color_borders">
+                <label class = "mt10">Contour gauche</label>
+                <input type = "range" min = "0" max = "50" value = "1" id = "range_border_left">
+                <label>Couleur</label>
+                <input class = "mb10" type = "color" id = "color_border_left">
+                <label class = "mt10">Contour haut</label>
+                <input type = "range" min = "0" max = "50" value = "1" id = "range_border_top">
+                <label>Couleur</label>
+                <input class = "mb10" type = "color" id = "color_border_top">
+                <label class = "mt10">Contour droite</label>
+                <input type = "range" min = "0" max = "50" value = "1" id = "range_border_right">
+                <label>Couleur</label>
+                <input class = "mb10" type = "color" id = "color_border_right">
+                <label class = "mt10">Contour bas</label>
+                <input type = "range" min = "0" max = "50" value = "1" id = "range_border_bottom">
+                <label>Couleur</label>
+                <input class = "mb10" type = "color" id = "color_border_bottom">
+            </div>
+            <label class = "linkbox" id = "link_shadow">Ombrage</label>
+            <div class = "flexcol params-container mt10" style = "display: none;" id = "params_shadow">
+                <label class = "linkbox" id = "link_remove_shadow">Supprimer l'ombrage</label>
+                <label>Couleur</label>
+                <input class = "mb10" type = "color" id = "color_shadow">
+                <label class = "mt10">Ombrage Horizontal</label>
+                <input type = "range" min = "-25" max = "25" value = "0" id = "range_shadow_x">
+                <label class = "mt10">Ombrage Vertical</label>
+                <input type = "range" min = "-25" max = "25" value = "0" id = "range_shadow_y">
+                <label class = "mt10">Niveau de flou</label>
+                <input type = "range" min = "0" max = "15" value = "5" id = "range_shadow_blur">
+                <label class = "mt10">Ombrage intérieur</label>
+                <input type = "checkbox" id = "checkbox_inset">
+            </div>
+            <!--BORDERS SHADOW-->
+        </div>
+    </div>
+
+    <div class = "leftpanel">
+        <div class = "panel-container flexcol">
+            <h3>Composants</h3>
+            <button class = "classic bradius hoverscale">Bouton</button>
+            <input type = "text" class = "classic hoverscale" placeholder="Input" disabled>
+            <input type = "range" class = "classic hoverscale" placeholder="Input" disabled>
+            <input type = "checkbox" class = "classic hoverscale" placeholder="Input" disabled>
+            <label class = "cursorpointer hoverscale">Lien hypertexte</label>
+        </div>
+    </div>
+
+    <div class = "widget-container centerscreen">
+        <button class = "button-cstm" id = "button_cstm">Bouton</button>
+    </div>
+
+    <div class = "flexrow codespace" id = "codespace">
+        <div class = "flexcol">
+            <h2>Code CSS</h2>
+            <button class = "copy-btn" id = "copy_css">Copier le CSS</button>
+            <textarea class = "code-area" id = "code_css" spellcheck="false" disabled></textarea>
+        </div>
+        <div class = "flexcol">
+            <h2>Code HTML</h2>
+            <button class = "copy-btn" id = "copy_html">Copier le HTML</button>
+            <textarea class = "code-area" id = "code_html" spellcheck="false" disabled></textarea>
+        </div>
+    </div>
+
+    <script type = "module" src = "js/index.js"></script>
+ </body>
+ </html>
