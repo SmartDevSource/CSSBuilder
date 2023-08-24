@@ -7,11 +7,22 @@
     <title>CSS Builder V1.0</title>
  </head>
  <body>
-    <div class = "rightpanel">
+
+    <!--NAVBAR-->
+    <div class = "flexrow justifycenter navbar">
+        <a class = "navlink" id = "navlink_parameters">Paramètres du composant</a>
+        <a class = "navlink" id = "navlink_animations">Animations du composant</a>
+    </div>
+
+    <!--RIGHT PARAMETERS PANEL-->
+    <div class = "rightpanel" id = "panel_parameters">
         <div class = "panel-container flexcol">
+            
+            <span class = "panel-header mb10">Paramètres du composant</span>
+            
             <!--MAIN PARAMETERS-->
-            <label>Texte du bouton</label>
-            <input type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
+            <label>Texte du composant</label>
+            <input class = "mb10" type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
             <label>Nom de la classe</label>
             <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/>
             <label class = "mt10">Espacement intérieur</label>
@@ -90,8 +101,8 @@
             </div>
 
             <!--BORDERS SHADOW-->
-            <label class = "linkbox" id = "link_shadow">Ombrage</label>
-            <div class = "flexcol params-container mt10" style = "display: none;" id = "params_shadow">
+            <label class = "linkbox mb10" id = "link_shadow">Ombrage</label>
+            <div class = "flexcol params-container mt10 mb10" style = "display: none;" id = "params_shadow">
                 <label class = "linkbox" id = "link_remove_shadow">Supprimer l'ombrage</label>
                 <label>Couleur</label>
                 <input class = "mb10" type = "color" id = "color_shadow">
@@ -104,17 +115,25 @@
                 <label class = "mt10">Ombrage intérieur</label>
                 <input type = "checkbox" id = "checkbox_inset">
             </div>
+
+        </div>
+    </div>
+
+    <!--RIGHT ANIMATIONS PANEL-->
+    <div class = "rightpanel" id = "panel_animations" style = "display: none;">
+        <div class = "panel-container flexcol">
+            <span class = "panel-header mb10">Animations du composant</span>
         </div>
     </div>
 
     <div class = "leftpanel">
         <div class = "panel-container flexcol">
-            <h3>Composants</h3>
-            <button class = "classic bradius hoverscale">Bouton</button>
-            <input type = "text" class = "classic hoverscale" placeholder="Input" disabled>
-            <input type = "range" class = "classic hoverscale" placeholder="Input" disabled>
-            <input type = "checkbox" class = "classic hoverscale" placeholder="Input" disabled>
-            <label class = "cursorpointer hoverscale">Lien hypertexte</label>
+            <span class = "panel-header mb10">Composants</span>
+            <button class = "classic bradius hovertranslate">Bouton</button>
+            <input type = "text" class = "classic hovertranslate" placeholder="Input" disabled>
+            <input type = "range" class = "classic hovertranslate" placeholder="Input" disabled>
+            <input type = "checkbox" class = "classic hovertranslate" placeholder="Input" disabled>
+            <label class = "cursorpointer hovertranslate mb10">Lien hypertexte</label>
         </div>
     </div>
 

@@ -11,16 +11,19 @@ const range_radius_topleft = document.getElementById("range_radius_topleft");
 const range_radius_topright = document.getElementById("range_radius_topright");
 const range_radius_bottomleft = document.getElementById("range_radius_bottomleft");
 const range_radius_bottomright = document.getElementById("range_radius_bottomright");
+
 /// RAGE BORDERS ///
 const range_borders = document.getElementById("range_borders");
 const range_border_left = document.getElementById("range_border_left");
 const range_border_top = document.getElementById("range_border_top");
 const range_border_right = document.getElementById("range_border_right");
 const range_border_bottom = document.getElementById("range_border_bottom");
+
 /// RANGE SHADOW ///
 const range_shadow_x = document.getElementById("range_shadow_x");
 const range_shadow_y = document.getElementById("range_shadow_y");
 const range_shadow_blur = document.getElementById("range_shadow_blur");
+
 /// RANGE TEXT ///
 const range_letters_spacing = document.getElementById("range_letters_spacing");
 const range_outline_text = document.getElementById("range_outline_text");
@@ -33,12 +36,20 @@ const link_shadow = document.getElementById("link_shadow");
 const link_remove_shadow = document.getElementById("link_remove_shadow");
 const link_text = document.getElementById("link_text");
 
+/// NAVLINKS ///
+const navlink_parameters = document.getElementById("navlink_parameters");
+const navlink_animations = document.getElementById("navlink_animations");
+
 /// PARAMS ///
 const params_radius = document.getElementById("params_radius");
 const params_borders = document.getElementById("params_borders");
 const params_colors = document.getElementById("params_colors");
 const params_shadow = document.getElementById("params_shadow");
 const params_text = document.getElementById("params_text");
+
+/// PANELS ///
+const panel_parameters = document.getElementById("panel_parameters");
+const panel_animations = document.getElementById("panel_animations");
 
 // CHECKBOXS ///
 const checkbox_inset = document.getElementById("checkbox_inset");
@@ -53,14 +64,17 @@ const classname_widget = document.getElementById("classname_widget");
 /// MAIN COLORS ///
 const color_text = document.getElementById("color_text");
 const color_background = document.getElementById("color_background");
+
 /// COLORS BORDERS ///
 const color_borders = document.getElementById("color_borders");
 const color_border_left = document.getElementById("color_border_left");
 const color_border_top = document.getElementById("color_border_top");
 const color_border_right = document.getElementById("color_border_right");
 const color_border_bottom = document.getElementById("color_border_bottom");
+
 /// COLORS SHADOW ///
 const color_shadow = document.getElementById("color_shadow");
+
 /// COLOR TEXT ///
 const color_outline_text = document.getElementById("color_outline_text");
 const color_gradient_first = document.getElementById("color_gradient_first");
@@ -83,6 +97,7 @@ const widgetsList = {"button": button_cstm};
 const ignoreList = "0px solid";
 let currentArrowLinearGradient = 0;
 const arrowsLinearGradient = {0: 180, 1: 270, 2: 0, 3: 90};
+
 ////////////////////////////////// FUNCTIONS //////////////////////////////////
 const refreshWidget = () =>{
     let cssTextArea = '';
@@ -155,6 +170,18 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
+
+//// NAVLINKS CLICKS ////
+
+navlink_parameters.addEventListener("click", ()=>{
+    panel_parameters.style.display = "block";
+    panel_animations.style.display = "none";
+})
+
+navlink_animations.addEventListener("click", ()=>{
+    panel_parameters.style.display = "none";
+    panel_animations.style.display = "block";
+})
 
 //// COPY EVENTS /////
 copy_css.addEventListener("click", ()=>{

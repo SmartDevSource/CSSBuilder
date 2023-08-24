@@ -1,6 +1,7 @@
 *{
     color:white;
     background-color: #1D2A35;
+    margin: 0;
 }
 
 body{
@@ -19,8 +20,41 @@ input:hover{
     background-color: rgb(192, 192, 192); 
 }
 
+.navbar{
+    background-color: #3b4d5e;
+    padding: 5px;
+    height: 30px;
+}
+
+.navlink{
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    user-select: none;
+    background: none;
+}
+
+.navlink:hover{
+    cursor: pointer;
+    border: 2px solid rgb(43, 43, 43);
+    border-radius: 5px;
+}
+
+.navlink:active{
+    border: 2px solid rgb(43, 43, 43);
+    border-radius: 5px;
+}
+
 .linkbox{
     margin: 5px;
+    transition: .3s;
+    user-select: none;
+    background: none;
+}
+
+.linkbox:hover{
+    cursor: pointer;
+    color:rgb(255, 115, 0);
     transition: .3s;
 }
 
@@ -39,12 +73,6 @@ input:hover{
     border: 150px solid transparent;
     border-top: 0;
     border-bottom: 300px solid red;
-}
-
-.linkbox:hover{
-    cursor: pointer;
-    color:rgb(255, 115, 0);
-    transition: .3s;
 }
 
 ::-webkit-scrollbar { width: 10px; }
@@ -91,7 +119,7 @@ input::selection{ background-color: rgb(110, 110, 110); }
     padding: 0;
     outline: none;
     border: 1px solid black;
-    width: 100%;
+    width: 80%;
     margin: 5px;
     cursor: pointer;
     background-color: white;
@@ -99,8 +127,21 @@ input::selection{ background-color: rgb(110, 110, 110); }
     text-align: center;
 }
 
-.hoverscale{ transform: scale(1); }
-.hoverscale:hover{ transform: scale(1.03); }
+.hovertranslate{transform-origin: center;}
+.hovertranslate:hover{ animation: hovertranslate 0.5s infinite; }
+
+@keyframes hovertranslate {
+    
+    0%{
+        transform: rotateZ(0);
+    }
+    50%{
+        transform: rotateZ(2deg);
+    }
+    100%{
+        transform: rotateZ(-2deg);
+    }
+}
 
 .flexrow{
     display: flex;
@@ -117,14 +158,17 @@ input::selection{ background-color: rgb(110, 110, 110); }
 }
 
 .leftpanel{
+    top: 50px;
     z-index: 10;
     position: fixed;
     left: 20px;
+    padding: 5px;
     max-height: 100vh;
     overflow-y: auto;
 }
 
 .rightpanel{
+    top: 50px;
     width: 230px;
     z-index: 10;
     position: fixed;
@@ -141,11 +185,19 @@ input::selection{ background-color: rgb(110, 110, 110); }
 }
 
 .panel-container{
-    padding: 5px;
-    margin: 5px;
     box-shadow: 1px 1px 2px rgb(41, 41, 41);
     border: 1px solid rgb(248, 165, 40);
     user-select: none;
+}
+
+.panel-header{
+    user-select: none;
+    text-align: center;
+    background-color: orange;
+    width: 100%;
+    padding: 0;
+    font-size: 20px;
+    color:black;
 }
 
 .widget-container{
