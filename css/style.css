@@ -177,7 +177,7 @@ input::selection{ background-color: rgb(110, 110, 110); }
 
 .code-area{
     margin: 10px;
-    width: 400px;
+    width: 500px;
     height: 250px;
     resize: none;
     overflow-y: scroll;
