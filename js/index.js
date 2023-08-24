@@ -45,9 +45,11 @@ const checkbox_inset = document.getElementById("checkbox_inset");
 const checkbox_bold = document.getElementById("checkbox_bold");
 const checkbox_italic = document.getElementById("checkbox_italic");
 const checkbox_underlined = document.getElementById("checkbox_underlined");
+const checkbox_linear_background = document.getElementById("checkbox_linear_background");
 
 const text_widget = document.getElementById("text_widget");
 const classname_widget = document.getElementById("classname_widget");
+
 /// MAIN COLORS ///
 const color_text = document.getElementById("color_text");
 const color_background = document.getElementById("color_background");
@@ -61,6 +63,9 @@ const color_border_bottom = document.getElementById("color_border_bottom");
 const color_shadow = document.getElementById("color_shadow");
 /// COLOR TEXT ///
 const color_outline_text = document.getElementById("color_outline_text");
+const color_gradient_first = document.getElementById("color_gradient_first");
+const color_gradient_second = document.getElementById("color_gradient_second");
+const span_arrow_linear_gradient = document.getElementById("span_arrow_linear_gradient");
 
 ////////////////////////////////// CODE //////////////////////////////////
 const code_css = document.getElementById("code_css");
@@ -75,7 +80,9 @@ const currentWidget = {name: "button", widgetCode: widgets.widget};
 const widgetsList = {"button": button_cstm};
 
 ////////////////////////////////// STRUCTS AND VARS ///////////////////////////
-const ignoreList = "0px solid"
+const ignoreList = "0px solid";
+let currentArrowLinearGradient = 0;
+const arrowsLinearGradient = {0: 180, 1: 270, 2: 0, 3: 90};
 ////////////////////////////////// FUNCTIONS //////////////////////////////////
 const refreshWidget = () =>{
     let cssTextArea = '';
@@ -102,6 +109,51 @@ const refreshWidget = () =>{
     code_html.textContent = htmlTextArea;
 }
 
+const updateShadow = () =>{
+    currentWidget.widgetCode.baseCode["box-shadow"] = `${range_shadow_x.value}px ${range_shadow_y.value}px ${range_shadow_blur.value}px ${color_shadow.value} ${checkbox_inset.checked ? "inset" : ""};`
+    widgetsList[currentWidget.name].style.boxShadow = currentWidget.widgetCode.baseCode["box-shadow"];
+    refreshWidget();
+}
+
+const removeShadow = () =>{
+    currentWidget.widgetCode.baseCode["box-shadow"] = '';
+    widgetsList[currentWidget.name].style.boxShadow = currentWidget.widgetCode.baseCode["box-shadow"];
+    refreshWidget();
+}
+
+const rotateLinearGradient = () =>{
+    let direction = '';
+
+    switch(currentArrowLinearGradient){
+        case 0:
+            direction = "to left,";
+        break;
+        case 1:
+            direction = "to top,";
+        break;
+        case 2:
+            direction = "to right,";
+        break;
+        case 3:
+            direction = "to bottom,";
+        break;
+    }
+
+    if (checkbox_linear_background.checked){
+        currentWidget.widgetCode.baseCode["background-color"] = ``;
+        widgetsList[currentWidget.name].style.backgroundColor = currentWidget.widgetCode.baseCode["background-color"];
+        currentWidget.widgetCode.baseCode["background"] = `linear-gradient(${direction} ${color_gradient_first.value}, ${color_gradient_second.value});`;
+        widgetsList[currentWidget.name].style.background = currentWidget.widgetCode.baseCode["background"];
+    } else {
+        currentWidget.widgetCode.baseCode["background"] = '';
+        widgetsList[currentWidget.name].style.background = '';
+        currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`;
+        widgetsList[currentWidget.name].style.backgroundColor = currentWidget.widgetCode.baseCode["background-color"];
+    }
+
+    refreshWidget();
+}
+
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
 //// COPY EVENTS /////
@@ -114,7 +166,6 @@ copy_html.addEventListener("click", ()=>{
     code_html.select();
     navigator.clipboard.writeText(code_html.textContent);
 })
-
 
 //// TEXT ////
 link_text.addEventListener("click", ()=>{
@@ -172,6 +223,20 @@ checkbox_underlined.addEventListener("click", ()=>{
         currentWidget.widgetCode.baseCode["text-decoration"] = '';
     }
     refreshWidget();
+})
+
+checkbox_linear_background.addEventListener("click", ()=>{
+    rotateLinearGradient();
+})
+
+span_arrow_linear_gradient.addEventListener("click", ()=>{
+    currentArrowLinearGradient++;
+    if (currentArrowLinearGradient>3){
+        currentArrowLinearGradient = 0;
+    }
+    span_arrow_linear_gradient.style.transform = `rotateZ(${arrowsLinearGradient[currentArrowLinearGradient]}deg)`;
+
+    rotateLinearGradient();
 })
 
 //// BORDER RADIUS ////
@@ -257,6 +322,15 @@ color_border_bottom.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+//// LINEAR COLORS ////
+color_gradient_first.addEventListener("input", ()=>{
+    rotateLinearGradient();
+})
+
+color_gradient_second.addEventListener("input", ()=>{
+    rotateLinearGradient();
+})
+
 //// SHADOWS ////
 link_shadow.addEventListener("click", ()=>{
     params_shadow.style.display == "flex" ? params_shadow.style.display = "none" : params_shadow.style.display = "flex";
@@ -275,18 +349,6 @@ checkbox_inset.addEventListener("click", ()=>{ updateShadow(); })
 range_shadow_x.addEventListener("input", ()=>{ updateShadow(); })
 range_shadow_y.addEventListener("input", ()=>{ updateShadow(); })
 range_shadow_blur.addEventListener("input", ()=>{ updateShadow(); })
-
-const updateShadow = () =>{
-    currentWidget.widgetCode.baseCode["box-shadow"] = `${range_shadow_x.value}px ${range_shadow_y.value}px ${range_shadow_blur.value}px ${color_shadow.value} ${checkbox_inset.checked ? "inset" : ""};`
-    widgetsList[currentWidget.name].style.boxShadow = currentWidget.widgetCode.baseCode["box-shadow"];
-    refreshWidget();
-}
-
-const removeShadow = () =>{
-    currentWidget.widgetCode.baseCode["box-shadow"] = '';
-    widgetsList[currentWidget.name].style.boxShadow = currentWidget.widgetCode.baseCode["box-shadow"];
-    refreshWidget();
-}
 
 //// BORDER OUTLINE ////
 link_borders.addEventListener("click", ()=>{

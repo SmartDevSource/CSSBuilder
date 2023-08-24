@@ -24,7 +24,8 @@ export class Widgets {
                 "-webkit-text-stroke":"",
                 "text-decoration": "",
                 "font-style":"",
-                "font-weight":""
+                "font-weight":"",
+                "background":""
             },
             textContent : "Bouton"
         };

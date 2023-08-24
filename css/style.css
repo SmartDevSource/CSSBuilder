@@ -24,6 +24,23 @@ input:hover{
     transition: .3s;
 }
 
+.item{
+    border-radius: 50%;
+    transform: rotateZ(180deg);
+    width: 30px;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    cursor:pointer;
+}
+
+.arrow{
+    width: 0;
+    height: 0;
+    border: 150px solid transparent;
+    border-top: 0;
+    border-bottom: 300px solid red;
+}
+
 .linkbox:hover{
     cursor: pointer;
     color:rgb(255, 115, 0);

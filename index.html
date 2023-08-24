@@ -9,16 +9,17 @@
  <body>
     <div class = "rightpanel">
         <div class = "panel-container flexcol">
+            <!--MAIN PARAMETERS-->
             <label>Texte du bouton</label>
             <input type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
             <label>Nom de la classe</label>
             <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/>
-
             <label class = "mt10">Espacement intérieur</label>
             <input type = "range" min = "0" max = "500" value = "5" id = "range_padding">
             <label>Marge extérieur</label>
             <input type = "range" min = "0" max = "200" value = "10" id = "range_margin">
-            
+
+            <!--TEXT-->
             <label class = "linkbox" id = "link_text">Texte</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text">
                 <label class = "mt10">Taille du texte</label>
@@ -39,9 +40,13 @@
             <label class = "linkbox" id = "link_colors">Couleurs</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
                 <label class = "mt10">Couleur du texte</label>
-                <input type = "color" id = "color_text">
+                <input class = "mb10" type = "color" id = "color_text">
                 <label>Couleur du fond</label>
                 <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
+                <label>Dégradé du fond<input type = "checkbox" id = "checkbox_linear_background"></label>
+                <span><input class = "mt10" type = "color" id = "color_gradient_first"><input type = "color" id = "color_gradient_second"></span>
+                <label class = "mt10">Direction du dégradé</label>
+                <img src = "assets/arrow.png" class = "item mb10" id = "span_arrow_linear_gradient"></img>
             </div>
 
             <!--BORDER RADIUS-->
@@ -58,6 +63,7 @@
                 <label>Bas à droite</label>
                 <input type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright">
             </div>
+
             <!--BORDERS OUTLINE-->
             <label class = "linkbox" id = "link_borders">Contours</label>
             <div class = "flexcol params-container mt10" style = "display: none;" id = "params_borders">
@@ -82,6 +88,8 @@
                 <label>Couleur</label>
                 <input class = "mb10" type = "color" id = "color_border_bottom">
             </div>
+
+            <!--BORDERS SHADOW-->
             <label class = "linkbox" id = "link_shadow">Ombrage</label>
             <div class = "flexcol params-container mt10" style = "display: none;" id = "params_shadow">
                 <label class = "linkbox" id = "link_remove_shadow">Supprimer l'ombrage</label>
@@ -96,7 +104,6 @@
                 <label class = "mt10">Ombrage intérieur</label>
                 <input type = "checkbox" id = "checkbox_inset">
             </div>
-            <!--BORDERS SHADOW-->
         </div>
     </div>
 
