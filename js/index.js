@@ -111,6 +111,8 @@ const widgetsList = {"button": button_cstm};
 ////////////////////////////////// STRUCTS AND VARS ///////////////////////////
 let currentArrowLinearGradient = 0;
 const arrowsLinearGradient = {0: 180, 1: 270, 2: 0, 3: 90};
+const tmpStyle = document.createElement("style");
+document.head.appendChild(tmpStyle);
 
 ////////////////////////////////// FUNCTIONS //////////////////////////////////
 const refreshWidget = () =>{
@@ -145,8 +147,8 @@ const refreshWidget = () =>{
 
     code_css.textContent =  cssTextArea;
 
-    widgetsList[currentWidget.name].style.cssText = cssTextCode;
-
+    tmpStyle.textContent = cssTextArea;
+    
     let htmlTextArea = currentWidget.widgetCode.html;
     code_html.textContent = htmlTextArea;
 }
