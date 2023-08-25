@@ -28,6 +28,9 @@ const range_shadow_blur = document.getElementById("range_shadow_blur");
 const range_letters_spacing = document.getElementById("range_letters_spacing");
 const range_outline_text = document.getElementById("range_outline_text");
 
+/// SHOW ///
+const show_hover_params = document.getElementById("show_hover_params");
+
 /// LINKS ///
 const link_radius = document.getElementById("link_radius");
 const link_borders = document.getElementById("link_borders");
@@ -35,6 +38,7 @@ const link_colors = document.getElementById("link_colors");
 const link_shadow = document.getElementById("link_shadow");
 const link_remove_shadow = document.getElementById("link_remove_shadow");
 const link_text = document.getElementById("link_text");
+const link_cursor = document.getElementById("link_cursor");
 
 /// NAVLINKS ///
 const navlink_parameters = document.getElementById("navlink_parameters");
@@ -46,6 +50,7 @@ const params_borders = document.getElementById("params_borders");
 const params_colors = document.getElementById("params_colors");
 const params_shadow = document.getElementById("params_shadow");
 const params_text = document.getElementById("params_text");
+const params_pointer = document.getElementById("params_pointer");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
@@ -57,6 +62,7 @@ const checkbox_bold = document.getElementById("checkbox_bold");
 const checkbox_italic = document.getElementById("checkbox_italic");
 const checkbox_underlined = document.getElementById("checkbox_underlined");
 const checkbox_linear_background = document.getElementById("checkbox_linear_background");
+const checkbox_activate_hover = document.getElementById("checkbox_activate_hover");
 
 const text_widget = document.getElementById("text_widget");
 const classname_widget = document.getElementById("classname_widget");
@@ -171,8 +177,16 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
-//// NAVLINKS CLICKS ////
+/// CURSOR POINTER & HOVERING ////
+link_cursor.addEventListener("click", ()=>{
+    params_pointer.style.display == "none" ? params_pointer.style.display = "flex" : params_pointer.style.display = "none";
+})
 
+checkbox_activate_hover.addEventListener("click", ()=>{
+    show_hover_params.style.display = checkbox_activate_hover.checked ? "block" : show_hover_params.style.display = "none";
+})
+
+//// NAVLINKS CLICKS ////
 navlink_parameters.addEventListener("click", ()=>{
     panel_parameters.style.display = "block";
     panel_animations.style.display = "none";

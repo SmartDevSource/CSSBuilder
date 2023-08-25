@@ -40,10 +40,10 @@
                 <label>Contour</label>
                 <input type = "range" min = "0" max = "3" value = "0" step = "0.1" id = "range_outline_text">
                 <input type = "color" value="#ffffff" id = "color_outline_text">
-                <span class = "mb10">
-                    <label>Gras</label><input class = "cursorpointer" type = "checkbox" id = "checkbox_bold">
-                    <label>Italique</label><input class = "cursorpointer" type = "checkbox" id = "checkbox_italic">
-                    <label>Souligné</label><input class = "cursorpointer" type = "checkbox" id = "checkbox_underlined">
+                <span class = "mb10 ml5 mr5">
+                    <label>Gras </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_bold">
+                    <label>Italique </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_italic">
+                    <label>Souligné </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_underlined">
                 </span>
             </div>
 
@@ -54,9 +54,9 @@
                 <input class = "mb10" type = "color" id = "color_text">
                 <label>Couleur du fond</label>
                 <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
-                <label>Dégradé du fond<input type = "checkbox" id = "checkbox_linear_background"></label>
+                <label>Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background"></label>
                 <span><input class = "mt10" type = "color" value = "#FFFFFF" id = "color_gradient_first"><input type = "color" id = "color_gradient_second"></span>
-                <label class = "mt10">Direction du dégradé</label>
+                <label class = "mt10 ml5 mr5">Direction du dégradé</label>
                 <img src = "assets/arrow.png" class = "item mb10" id = "span_arrow_linear_gradient"></img>
             </div>
 
@@ -64,7 +64,7 @@
             <label class = "linkbox" id = "link_radius">Arrondis</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_radius">
                 <label class = "mt10">Arrondi global</label>
-                <input class = "" type = "range" min = "0" max = "20" value = "0" id = "range_radius">
+                <input class = "ml5 mr5" type = "range" min = "0" max = "20" value = "0" id = "range_radius">
                 <label>Haut à gauche</label>
                 <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topleft">
                 <label>Haut à droite</label>
@@ -72,13 +72,13 @@
                 <label>Bas à gauche</label>
                 <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomleft">
                 <label>Bas à droite</label>
-                <input type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright">
+                <input class = "mb10" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright">
             </div>
 
             <!--BORDERS OUTLINE-->
             <label class = "linkbox" id = "link_borders">Contours</label>
             <div class = "flexcol params-container mt10" style = "display: none;" id = "params_borders">
-                <label class = "mt10">Epaisseur des contours</label>
+                <label class = "mt10 ml5 mr5">Epaisseur des contours</label>
                 <input type = "range" min = "0" max = "50" value = "1" id = "range_borders">
                 <label class = "mt10">Couleur globale</label>
                 <input class = "mb10" type = "color" id = "color_borders">
@@ -101,9 +101,9 @@
             </div>
 
             <!--BORDERS SHADOW-->
-            <label class = "linkbox mb10" id = "link_shadow">Ombrage</label>
+            <label class = "linkbox" id = "link_shadow">Ombrage</label>
             <div class = "flexcol params-container mt10 mb10" style = "display: none;" id = "params_shadow">
-                <label class = "linkbox" id = "link_remove_shadow">Supprimer l'ombrage</label>
+                <label class = "linkbox mb10" id = "link_remove_shadow">Supprimer l'ombrage</label>
                 <label>Couleur</label>
                 <input class = "mb10" type = "color" id = "color_shadow">
                 <label class = "mt10">Ombrage Horizontal</label>
@@ -113,9 +113,35 @@
                 <label class = "mt10">Niveau de flou</label>
                 <input type = "range" min = "0" max = "15" value = "5" id = "range_shadow_blur">
                 <label class = "mt10">Ombrage intérieur</label>
-                <input type = "checkbox" id = "checkbox_inset">
+                <input class = "mb10" type = "checkbox" id = "checkbox_inset">
             </div>
 
+            <span class = "panel-header mb10 mt10">Passage de la souris</span>
+
+            <label>Activer <input class = "mb10" type = "checkbox" id = "checkbox_activate_hover"/></label>
+
+            <!--CURSOR POINTER-->
+            <div id = "show_hover_params" style = "display: none;">
+                <label class = "linkbox" id = "link_cursor">Curseur</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_pointer">
+                    <div class = "cursors-container">
+                        <span class = "cursor span-none block m5 borderhover">Aucun</span>
+                        <span class = "cursor span-default block m5 borderhover">Défaut</span>
+                        <span class = "cursor span-pointer block m5 borderhover">Pointeur</span>
+                        <span class = "cursor span-wait block m5 borderhover">Attente</span>
+                        <span class = "cursor span-progress block m5 borderhover">Progression</span>
+                        <span class = "cursor span-text block m5 borderhover">Texte</span>
+                        <span class = "cursor span-help block m5 borderhover">Aide</span>
+                        <span class = "cursor span-move block m5 borderhover">Déplacer</span>
+                        <span class = "cursor span-crosshair block m5 borderhover">Croix</span>
+                        <span class = "cursor span-copy block m5 borderhover">Copier</span>
+                        <span class = "cursor span-grab block m5 borderhover">Défiler</span>
+                        <span class = "cursor span-nodrop block m5 borderhover">Interdit</span>
+                        <span class = "cursor span-zoomin block m5 borderhover">Zoomer</span>
+                        <span class = "cursor span-zoomout block m5 borderhover">Dézoomer</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
