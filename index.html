@@ -22,9 +22,9 @@
             
             <!--MAIN PARAMETERS-->
             <label>Texte du composant</label>
-            <input class = "mb10" type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
-            <label>Nom de la classe</label>
-            <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/>
+            <input class = "" type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
+            <!-- <label>Nom de la classe</label>
+            <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/> -->
             <label class = "mt10">Espacement intérieur</label>
             <input type = "range" min = "0" max = "500" value = "5" id = "range_padding">
             <label>Marge extérieur</label>
@@ -116,30 +116,116 @@
                 <input class = "mb10" type = "checkbox" id = "checkbox_inset">
             </div>
 
-            <span class = "panel-header mb10 mt10">Passage de la souris</span>
-
-            <label>Activer <input class = "mb10" type = "checkbox" id = "checkbox_activate_hover"/></label>
-
             <!--CURSOR POINTER-->
-            <div id = "show_hover_params" style = "display: none;">
-                <label class = "linkbox" id = "link_cursor">Curseur</label>
-                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_pointer">
-                    <div class = "cursors-container">
-                        <span class = "cursor span-none block m5 borderhover">Aucun</span>
-                        <span class = "cursor span-default block m5 borderhover">Défaut</span>
-                        <span class = "cursor span-pointer block m5 borderhover">Pointeur</span>
-                        <span class = "cursor span-wait block m5 borderhover">Attente</span>
-                        <span class = "cursor span-progress block m5 borderhover">Progression</span>
-                        <span class = "cursor span-text block m5 borderhover">Texte</span>
-                        <span class = "cursor span-help block m5 borderhover">Aide</span>
-                        <span class = "cursor span-move block m5 borderhover">Déplacer</span>
-                        <span class = "cursor span-crosshair block m5 borderhover">Croix</span>
-                        <span class = "cursor span-copy block m5 borderhover">Copier</span>
-                        <span class = "cursor span-grab block m5 borderhover">Défiler</span>
-                        <span class = "cursor span-nodrop block m5 borderhover">Interdit</span>
-                        <span class = "cursor span-zoomin block m5 borderhover">Zoomer</span>
-                        <span class = "cursor span-zoomout block m5 borderhover">Dézoomer</span>
-                    </div>
+            <label class = "linkbox" id = "link_cursor">Curseur</label>
+            <div class = "flexcol params-container mb10" style = "display: none;" id = "params_cursor">
+                <div class = "cursors-container">
+                    <span value = "none" class = "cursor span-none block m5 borderhover">Aucun</span>
+                    <span value = "default" class = "cursor span-default block m5 borderhover">Défaut</span>
+                    <span value = "pointer" class = "cursor span-pointer block m5 borderhover">Pointeur</span>
+                    <span value = "wait"  class = "cursor span-wait block m5 borderhover">Attente</span>
+                    <span value = "progress"  class = "cursor span-progress block m5 borderhover">Progression</span>
+                    <span value = "text"  class = "cursor span-text block m5 borderhover">Texte</span>
+                    <span value = "help"  class = "cursor span-help block m5 borderhover">Aide</span>
+                    <span value = "move"  class = "cursor span-move block m5 borderhover">Déplacer</span>
+                    <span value = "crosshair"  class = "cursor span-crosshair block m5 borderhover">Croix</span>
+                    <span value = "copy"  class = "cursor span-copy block m5 borderhover">Copier</span>
+                    <span value = "grab"  class = "cursor span-grab block m5 borderhover">Défiler</span>
+                    <span value = "no-drop"  class = "cursor span-nodrop block m5 borderhover">Interdit</span>
+                    <span value = "zoom-in"  class = "cursor span-zoomin block m5 borderhover">Zoomer</span>
+                    <span value = "zoom-out"  class = "cursor span-zoomout block m5 borderhover">Dézoomer</span>
+                </div>
+            </div>
+
+            <!------------------- HOVER PARAMETERS ------------------>
+            <span class = "panel-header mt10"><input class = "mr5" type = "checkbox" id = "checkbox_activate_hover"/>Passage de la souris</span>
+
+            <div id = "show_hover_params" style = "display:none;">
+
+                <!--TEXT-->
+                <label class = "linkbox" id = "link_text_hover">Texte</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text_hover">
+                    <label class = "mt10">Taille du texte</label>
+                    <input type = "range" min = "8" max = "200" value = "16" step = "2" id = "range_fontsize_hover">
+                    <label>Espacement</label>
+                    <input type = "range" min = "0" max = "40" value = "0" id = "range_letters_spacing_hover">
+                    <label>Contour</label>
+                    <input type = "range" min = "0" max = "3" value = "0" step = "0.1" id = "range_outline_text_hover">
+                    <input type = "color" value="#ffffff" id = "color_outline_text_hover">
+                    <span class = "mb10 ml5 mr5">
+                        <label>Gras </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_bold_hover">
+                        <label>Italique </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_italic_hover">
+                        <label>Souligné </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_underlined_hover">
+                    </span>
+                </div>
+    
+                <!--COLORS-->
+                <label class = "linkbox" id = "link_colors">Couleurs</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
+                    <label class = "mt10">Couleur du texte</label>
+                    <input class = "mb10" type = "color" id = "color_text">
+                    <label>Couleur du fond</label>
+                    <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
+                    <label>Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background"></label>
+                    <span><input class = "mt10" type = "color" value = "#FFFFFF" id = "color_gradient_first"><input type = "color" id = "color_gradient_second"></span>
+                    <label class = "mt10 ml5 mr5">Direction du dégradé</label>
+                    <img src = "assets/arrow.png" class = "item mb10" id = "span_arrow_linear_gradient"></img>
+                </div>
+    
+                <!--BORDER RADIUS-->
+                <label class = "linkbox" id = "link_radius">Arrondis</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_radius">
+                    <label class = "mt10">Arrondi global</label>
+                    <input class = "ml5 mr5" type = "range" min = "0" max = "20" value = "0" id = "range_radius">
+                    <label>Haut à gauche</label>
+                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topleft">
+                    <label>Haut à droite</label>
+                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topright">
+                    <label>Bas à gauche</label>
+                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomleft">
+                    <label>Bas à droite</label>
+                    <input class = "mb10" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright">
+                </div>
+    
+                <!--BORDERS OUTLINE-->
+                <label class = "linkbox" id = "link_borders">Contours</label>
+                <div class = "flexcol params-container mt10" style = "display: none;" id = "params_borders">
+                    <label class = "mt10 ml5 mr5">Epaisseur des contours</label>
+                    <input type = "range" min = "0" max = "50" value = "1" id = "range_borders">
+                    <label class = "mt10">Couleur globale</label>
+                    <input class = "mb10" type = "color" id = "color_borders">
+                    <label class = "mt10">Contour gauche</label>
+                    <input type = "range" min = "0" max = "50" value = "1" id = "range_border_left">
+                    <label>Couleur</label>
+                    <input class = "mb10" type = "color" id = "color_border_left">
+                    <label class = "mt10">Contour haut</label>
+                    <input type = "range" min = "0" max = "50" value = "1" id = "range_border_top">
+                    <label>Couleur</label>
+                    <input class = "mb10" type = "color" id = "color_border_top">
+                    <label class = "mt10">Contour droite</label>
+                    <input type = "range" min = "0" max = "50" value = "1" id = "range_border_right">
+                    <label>Couleur</label>
+                    <input class = "mb10" type = "color" id = "color_border_right">
+                    <label class = "mt10">Contour bas</label>
+                    <input type = "range" min = "0" max = "50" value = "1" id = "range_border_bottom">
+                    <label>Couleur</label>
+                    <input class = "mb10" type = "color" id = "color_border_bottom">
+                </div>
+    
+                <!--BORDERS SHADOW-->
+                <label class = "linkbox" id = "link_shadow">Ombrage</label>
+                <div class = "flexcol params-container mt10 mb10" style = "display: none;" id = "params_shadow">
+                    <label class = "linkbox mb10" id = "link_remove_shadow">Supprimer l'ombrage</label>
+                    <label>Couleur</label>
+                    <input class = "mb10" type = "color" id = "color_shadow">
+                    <label class = "mt10">Ombrage Horizontal</label>
+                    <input type = "range" min = "-25" max = "25" value = "0" id = "range_shadow_x">
+                    <label class = "mt10">Ombrage Vertical</label>
+                    <input type = "range" min = "-25" max = "25" value = "0" id = "range_shadow_y">
+                    <label class = "mt10">Niveau de flou</label>
+                    <input type = "range" min = "0" max = "15" value = "5" id = "range_shadow_blur">
+                    <label class = "mt10">Ombrage intérieur</label>
+                    <input class = "mb10" type = "checkbox" id = "checkbox_inset">
                 </div>
             </div>
         </div>

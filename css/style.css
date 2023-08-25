@@ -245,7 +245,6 @@ input:hover{
 }
 
 .widget-container{
-    border-radius: 5px;
     box-shadow: 1px 1px 2px rgb(41, 41, 41);
     border: 1px solid rgb(248, 165, 40);
     user-select: none;
@@ -255,12 +254,6 @@ input:hover{
     box-shadow: 1px 1px 2px rgb(41, 41, 41);
     border: 1px solid rgb(248, 165, 40);
     user-select: none;
-}
-
-.button-cstm{
-    margin: 10px;
-    padding: 0;
-    border: 1px solid black;
 }
 
 .codespace{
