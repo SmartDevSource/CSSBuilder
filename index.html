@@ -32,15 +32,18 @@
 
             <!--TEXT-->
             <label class = "linkbox" id = "link_text">Texte</label>
-            <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text">
+            <div class = "flexcol params-container" style = "display: none;" id = "params_text">
                 <label class = "mt10">Taille du texte</label>
                 <input type="text" value = "16" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" id = "range_fontsize"/>
+                <label class = "mt10">Couleur du texte</label>
+                <input class = "mb10" type = "color" id = "color_text">
                 <label>Espacement</label>
                 <input type = "range" min = "0" max = "40" value = "0" id = "range_letters_spacing">
                 <label>Contour du texte</label>
                 <input type = "range" min = "0" max = "3" value = "0" step = "0.1" id = "range_outline_text">
+                <label class = "mt10">Couleur du contour</label>
                 <input type = "color" value="#ffffff" id = "color_outline_text">
-                <span class = "mb10 ml5 mr5">
+                <span class = "mb10 mt10 ml5 mr5">
                     <label>Gras </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_bold">
                     <label>Italique </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_italic">
                     <label>Souligné </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_underlined">
@@ -64,8 +67,6 @@
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
                 <label class = "mt10">Niveau de flou</label>
                 <input class = "mb10" type = "range" min = "0" max = "50" step = "0.5" value = "0" id = "range_blur">
-                <label class = "mt10">Couleur du texte</label>
-                <input class = "mb10" type = "color" id = "color_text">
                 <label>Couleur du fond</label>
                 <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
                 <label>Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background"></label>
@@ -155,21 +156,43 @@
             <span class = "panel-header mt10"><input class = "mr5" type = "checkbox" id = "checkbox_activate_hover"/>Passage de la souris</span>
 
             <div id = "show_hover_params" style = "display:none;">
+
+                <!--TRANSITION-->
+                <label class = "mt10">Temps de transition de début</label>
+                <input type = "range" value = "0" min="0" max = "10" step = "0.1" id = "range_transition_hover_end"/>
+                <label>Temps de transition de fin</label>
+                <input type = "range" value = "0" min="0" max = "10" step = "0.1" id = "range_transition_hover_begin"/>
+
                 <!--TEXT-->
-                <label class = "linkbox" id = "link_text_hover">Texte</label>
+                <label class = "linkbox mt10" id = "link_text_hover">Texte</label>
                 <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text_hover">
                     <label class = "mt10">Taille du texte</label>
                     <input type="text" value = "16" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" id = "range_fontsize_hover"/>
+                    <label class = "mt10">Couleur du texte</label>
+                    <input class = "mb10" type = "color" id = "color_text_hover">
                     <label>Espacement</label>
                     <input type = "range" min = "0" max = "40" value = "0" id = "range_letters_spacing_hover">
                     <label>Contour du texte</label>
                     <input type = "range" min = "0" max = "3" value = "0" step = "0.1" id = "range_outline_text_hover">
-                    <input type = "color" value="#ffffff" id = "color_outline_text_hover">
+                    <label class = "mt10">Couleur du contour</label>
+                    <input class = "mb10" type = "color" value="#ffffff" id = "color_outline_text_hover">
                     <span class = "mb10 ml5 mr5">
                         <label>Gras </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_bold_hover">
                         <label>Italique </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_italic_hover">
                         <label>Souligné </label><input class = "cursorpointer" type = "checkbox" id = "checkbox_underlined_hover">
                     </span>
+                </div>
+
+                <!--SIZE DIMENSIONS-->
+                <label class = "linkbox" id = "link_dimensions_hover">Dimensions</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_dimensions_hover">
+                    <label class = "mt10 mr5 ml5 mb10">Ajustement automatique <input type = "checkbox" id = "checkbox_adjust_size_hover" checked></input></label>
+                    <div id = "show_adjust_size_hover" style = "display: none;">
+                        <label class = "mt10">Taille horizontale</label>
+                        <input type = "range" min = "0" max = "300" value = "71" id = "range_size_x_hover">
+                        <label>Taille verticale</label>
+                        <input class = "mb10" type = "range" min = "0" max = "300" value = "38" id =  "range_size_y_hover">
+                    </div>
                 </div>
     
                 <!--COLORS-->
@@ -177,8 +200,6 @@
                 <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
                     <label class = "mt10">Niveau de flou</label>
                     <input class = "mb10" type = "range" min = "0" max = "50" step = "0.5" value = "0" id = "range_blur_hover">
-                    <label class = "mt10">Couleur du texte</label>
-                    <input class = "mb10" type = "color" id = "color_text">
                     <label>Couleur du fond</label>
                     <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
                     <label>Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background"></label>

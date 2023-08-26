@@ -29,7 +29,8 @@ export class Widgets {
                 "font-style":"",
                 "font-weight":"",
                 "background":"",
-                "filter":""
+                "filter":"",
+                "transition":""
             },
             hoverCode : {
                 "width":"",
@@ -56,7 +57,8 @@ export class Widgets {
                 "font-style":"",
                 "font-weight":"",
                 "background":"",
-                "filter":""
+                "filter":"",
+                "transition":""
             },
             textContent : "Bouton"
         };

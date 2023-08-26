@@ -3,15 +3,25 @@ import { Widgets } from "./widgets.js";
 const widgets = new Widgets();
 
 ////////////////// PARAMETERS //////////////////
+
+/// RANGE FONTSIZE ///
 const range_fontsize = document.getElementById("range_fontsize");
 const range_fontsize_hover = document.getElementById("range_fontsize_hover");
+
+/// RANGE PADDING & MARGIN ///
 const range_padding = document.getElementById("range_padding");
 const range_margin = document.getElementById("range_margin");
+
+/// RANGE RADIUS ///
 const range_radius = document.getElementById("range_radius");
 const range_radius_topleft = document.getElementById("range_radius_topleft");
 const range_radius_topright = document.getElementById("range_radius_topright");
 const range_radius_bottomleft = document.getElementById("range_radius_bottomleft");
 const range_radius_bottomright = document.getElementById("range_radius_bottomright");
+
+/// RANGE TRANSITION ///
+const range_transition_hover_begin = document.getElementById("range_transition_hover_begin");
+const range_transition_hover_end = document.getElementById("range_transition_hover_end");
 
 /// RANGE BLUR ///
 const range_blur = document.getElementById("range_blur");
@@ -19,7 +29,9 @@ const range_blur_hover = document.getElementById("range_blur");
 
 /// RANGE DIMENSIONS ///
 const range_size_x = document.getElementById("range_size_x");
+const range_size_x_hover = document.getElementById("range_size_x_hover");
 const range_size_y = document.getElementById("range_size_y");
+const range_size_y_hover = document.getElementById("range_size_y_hover");
 
 /// RANGE BORDERS ///
 const range_borders = document.getElementById("range_borders");
@@ -42,9 +54,11 @@ const range_outline_text_hover = document.getElementById("range_outline_text_hov
 /// SHOWS ///
 const show_hover_params = document.getElementById("show_hover_params");
 const show_adjust_size = document.getElementById("show_adjust_size");
+const show_adjust_size_hover = document.getElementById("show_adjust_size_hover");
 
 /// LINKS ///
 const link_dimensions = document.getElementById("link_dimensions");
+const link_dimensions_hover = document.getElementById("link_dimensions_hover");
 const link_radius = document.getElementById("link_radius");
 const link_borders = document.getElementById("link_borders");
 const link_colors = document.getElementById("link_colors");
@@ -67,6 +81,7 @@ const params_text = document.getElementById("params_text");
 const params_text_hover = document.getElementById("params_text_hover");
 const params_cursor = document.getElementById("params_cursor");
 const params_dimensions = document.getElementById("params_dimensions");
+const params_dimensions_hover = document.getElementById("params_dimensions_hover");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
@@ -83,12 +98,14 @@ const checkbox_underlined_hover = document.getElementById("checkbox_underlined_h
 const checkbox_linear_background = document.getElementById("checkbox_linear_background");
 const checkbox_activate_hover = document.getElementById("checkbox_activate_hover");
 const checkbox_adjust_size = document.getElementById("checkbox_adjust_size");
+const checkbox_adjust_size_hover = document.getElementById("checkbox_adjust_size_hover");
 
 const text_widget = document.getElementById("text_widget");
 const classname_widget = document.getElementById("classname_widget");
 
 /// MAIN COLORS ///
 const color_text = document.getElementById("color_text");
+const color_text_hover = document.getElementById("color_text_hover");
 const color_background = document.getElementById("color_background");
 
 /// COLORS BORDERS ///
@@ -206,6 +223,24 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
+/// TRANSITION ///
+range_transition_hover_begin.addEventListener("input",()=>{
+    currentWidget.widgetCode.baseCode["transition"] = `${range_transition_hover_begin.value}s;`;
+    if (range_transition_hover_begin.value==0){
+        currentWidget.widgetCode.baseCode["transition"] = '';
+    }
+    refreshWidget();
+})
+
+range_transition_hover_end.addEventListener("input",()=>{
+    currentWidget.widgetCode.hoverCode["transition"] = `${range_transition_hover_end.value}s;`;
+    if (range_transition_hover_end.value==0){
+        currentWidget.widgetCode.hoverCode["transition"] = '';
+    }
+    refreshWidget();
+})
+
+
 /// BLUR ///
 range_blur.addEventListener("input",()=>{
     currentWidget.widgetCode.baseCode["filter"] = `blur(${range_blur.value}px);`;
@@ -228,6 +263,10 @@ link_dimensions.addEventListener("click", ()=>{
     params_dimensions.style.display = params_dimensions.style.display == "none" ? "flex" : "none";
 })
 
+link_dimensions_hover.addEventListener("click", ()=>{
+    params_dimensions_hover.style.display = params_dimensions_hover.style.display == "none" ? "flex" : "none";
+})
+
 checkbox_adjust_size.addEventListener("click", ()=>{
     if (checkbox_adjust_size.checked){
         show_adjust_size.style.display = "none";
@@ -241,6 +280,23 @@ checkbox_adjust_size.addEventListener("click", ()=>{
     refreshWidget();
 })
 
+checkbox_adjust_size_hover.addEventListener("click", ()=>{
+    if (checkbox_adjust_size_hover.checked){
+        show_adjust_size_hover.style.display = "none";
+        currentWidget.widgetCode.hoverCode["width"] = ''
+        currentWidget.widgetCode.hoverCode["height"] = '';
+        currentWidget.widgetCode.baseCode["width"] = '';
+        currentWidget.widgetCode.baseCode["height"] = '';
+    } else {
+        show_adjust_size_hover.style.display = "contents";
+        currentWidget.widgetCode.baseCode["width"] = `${widgetsList[currentWidget.name].offsetWidth}px;`;
+        currentWidget.widgetCode.baseCode["height"] = `${widgetsList[currentWidget.name].offsetHeight}px;`;
+        currentWidget.widgetCode.hoverCode["width"] = `${range_size_x_hover.value}px;`;
+        currentWidget.widgetCode.hoverCode["height"] = `${range_size_y_hover.value}px;`;
+    }
+    refreshWidget();
+})
+
 range_size_x.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["width"] = `${range_size_x.value}px;`;
     refreshWidget();
@@ -248,6 +304,16 @@ range_size_x.addEventListener("input", ()=>{
 
 range_size_y.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["height"] = `${range_size_y.value}px;`;
+    refreshWidget();
+})
+
+range_size_x_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["width"] = `${range_size_x_hover.value}px;`;
+    refreshWidget();
+})
+
+range_size_y_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["height"] = `${range_size_y_hover.value}px;`;
     refreshWidget();
 })
 
@@ -469,6 +535,11 @@ link_colors.addEventListener("click",()=>{
 
 color_text.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["color"] = `${color_text.value};`
+    refreshWidget();
+})
+
+color_text_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["color"] = `${color_text_hover.value};`
     refreshWidget();
 })
 
