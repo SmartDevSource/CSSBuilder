@@ -40,15 +40,23 @@ const range_size_y_hover = document.getElementById("range_size_y_hover");
 
 /// RANGE BORDERS ///
 const range_borders = document.getElementById("range_borders");
+const range_borders_hover = document.getElementById("range_borders_hover");
 const range_border_left = document.getElementById("range_border_left");
+const range_border_left_hover = document.getElementById("range_border_left_hover");
 const range_border_top = document.getElementById("range_border_top");
+const range_border_top_hover = document.getElementById("range_border_top_hover");
 const range_border_right = document.getElementById("range_border_right");
+const range_border_right_hover = document.getElementById("range_border_right_hover");
 const range_border_bottom = document.getElementById("range_border_bottom");
+const range_border_bottom_hover = document.getElementById("range_border_bottom_hover");
 
 /// RANGE SHADOW ///
 const range_shadow_x = document.getElementById("range_shadow_x");
 const range_shadow_y = document.getElementById("range_shadow_y");
 const range_shadow_blur = document.getElementById("range_shadow_blur");
+const range_shadow_x_hover = document.getElementById("range_shadow_x_hover");
+const range_shadow_y_hover  = document.getElementById("range_shadow_y_hover");
+const range_shadow_blur_hover  = document.getElementById("range_shadow_blur_hover");
 
 /// RANGE TEXT ///
 const range_letters_spacing = document.getElementById("range_letters_spacing");
@@ -67,6 +75,7 @@ const link_dimensions_hover = document.getElementById("link_dimensions_hover");
 const link_radius = document.getElementById("link_radius");
 const link_radius_hover = document.getElementById("link_radius_hover");
 const link_borders = document.getElementById("link_borders");
+const link_borders_hover = document.getElementById("link_borders_hover");
 const link_colors = document.getElementById("link_colors");
 const link_colors_hover = document.getElementById("link_colors_hover");
 const link_shadow = document.getElementById("link_shadow");
@@ -85,9 +94,11 @@ const navlink_animations = document.getElementById("navlink_animations");
 const params_radius = document.getElementById("params_radius");
 const params_radius_hover = document.getElementById("params_radius_hover");
 const params_borders = document.getElementById("params_borders");
+const params_borders_hover = document.getElementById("params_borders_hover");
 const params_colors = document.getElementById("params_colors");
 const params_colors_hover = document.getElementById("params_colors_hover");
 const params_shadow = document.getElementById("params_shadow");
+const params_shadow_hover = document.getElementById("params_shadow_hover");
 const params_text = document.getElementById("params_text");
 const params_text_hover = document.getElementById("params_text_hover");
 const params_cursor = document.getElementById("params_cursor");
@@ -100,6 +111,7 @@ const panel_animations = document.getElementById("panel_animations");
 
 /// CHECKBOXS ///
 const checkbox_inset = document.getElementById("checkbox_inset");
+const checkbox_inset_hover = document.getElementById("checkbox_inset_hover");
 const checkbox_bold = document.getElementById("checkbox_bold");
 const checkbox_bold_hover = document.getElementById("checkbox_bold_hover");
 const checkbox_italic = document.getElementById("checkbox_italic");
@@ -128,9 +140,15 @@ const color_border_left = document.getElementById("color_border_left");
 const color_border_top = document.getElementById("color_border_top");
 const color_border_right = document.getElementById("color_border_right");
 const color_border_bottom = document.getElementById("color_border_bottom");
+const color_borders_hover = document.getElementById("color_borders_hover");
+const color_border_left_hover = document.getElementById("color_border_left_hover");
+const color_border_top_hover = document.getElementById("color_border_top_hover");
+const color_border_right_hover = document.getElementById("color_border_right_hover");
+const color_border_bottom_hover = document.getElementById("color_border_bottom_hover");
 
 /// COLORS SHADOW ///
 const color_shadow = document.getElementById("color_shadow");
+const color_shadow_hover = document.getElementById("color_shadow_hover");
 
 /// COLOR TEXT ///
 const color_outline_text = document.getElementById("color_outline_text");
@@ -214,6 +232,11 @@ const updateShadow = () =>{
     refreshWidget();
 }
 
+const updateShadowHover = () =>{
+    currentWidget.widgetCode.hoverCode["box-shadow"] = `${range_shadow_x_hover.value}px ${range_shadow_y_hover.value}px ${range_shadow_blur_hover.value}px ${color_shadow_hover.value} ${checkbox_inset_hover.checked ? "inset" : ""};`
+    refreshWidget();
+}
+
 const rotateLinearGradient = () =>{
     let direction = '';
 
@@ -280,7 +303,6 @@ range_blur.addEventListener("input",()=>{
 })
 
 range_blur_hover.addEventListener("input",()=>{
-    console.log(range_blur_hover.value);
     currentWidget.widgetCode.hoverCode["filter"] = `blur(${range_blur_hover.value}px);`;
     if (range_blur_hover.value==0){
         currentWidget.widgetCode.hoverCode["filter"] = '';
@@ -559,7 +581,6 @@ link_radius.addEventListener("click", ()=>{
 })
 
 link_radius_hover.addEventListener("click", ()=>{
-    console.log("mdr");
     params_radius_hover.style.display == "flex" ? params_radius_hover.style.display = "none" : params_radius_hover.style.display = "flex";
 })
 
@@ -708,6 +729,32 @@ color_border_bottom.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+color_borders_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["border"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+    refreshWidget();
+})
+
+color_border_left_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["border-left"] = `${range_border_left_hover.value}px solid ${color_border_left_hover.value};`
+    refreshWidget();
+})
+
+color_border_top_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["border-top"] = `${range_border_top_hover.value}px solid ${color_border_top_hover.value};`
+    refreshWidget();
+})
+
+color_border_right_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["border-right"] = `${range_border_right_hover.value}px solid ${color_border_right_hover.value};`
+    refreshWidget();
+})
+
+color_border_bottom_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["border-bottom"] = `${range_border_bottom_hover.value}px solid ${color_border_bottom_hover.value};`
+    refreshWidget();
+})
+
+
 //// LINEAR COLORS ////
 color_gradient_first.addEventListener("input", ()=>{
     rotateLinearGradient();
@@ -728,6 +775,10 @@ color_gradient_second_hover.addEventListener("input", ()=>{
 //// SHADOWS ////
 link_shadow.addEventListener("click", ()=>{
     params_shadow.style.display == "flex" ? params_shadow.style.display = "none" : params_shadow.style.display = "flex";
+})
+
+link_shadow_hover.addEventListener("click", ()=>{
+    params_shadow_hover.style.display == "flex" ? params_shadow_hover.style.display = "none" : params_shadow_hover.style.display = "flex";
 })
 
 link_remove_shadow.addEventListener("click", ()=>{
@@ -754,9 +805,19 @@ range_shadow_x.addEventListener("input", ()=>{ updateShadow(); })
 range_shadow_y.addEventListener("input", ()=>{ updateShadow(); })
 range_shadow_blur.addEventListener("input", ()=>{ updateShadow(); })
 
+color_shadow_hover.addEventListener("input", ()=>{ updateShadowHover(); })
+checkbox_inset_hover.addEventListener("click", ()=>{ updateShadowHover(); })
+range_shadow_x_hover.addEventListener("input", ()=>{ updateShadowHover(); })
+range_shadow_y_hover.addEventListener("input", ()=>{ updateShadowHover(); })
+range_shadow_blur_hover.addEventListener("input", ()=>{ updateShadowHover(); })
+
 //// BORDER OUTLINE ////
 link_borders.addEventListener("click", ()=>{
     params_borders.style.display == "flex" ? params_borders.style.display = "none" : params_borders.style.display = "flex";
+})
+
+link_borders_hover.addEventListener("click", ()=>{
+    params_borders_hover.style.display == "flex" ? params_borders_hover.style.display = "none" : params_borders_hover.style.display = "flex";
 })
 
 range_borders.addEventListener("input", ()=>{
@@ -764,6 +825,15 @@ range_borders.addEventListener("input", ()=>{
         currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
     } else {
         currentWidget.widgetCode.baseCode["border"] = '';
+    }
+    refreshWidget();
+})
+
+range_borders_hover.addEventListener("input", ()=>{
+    if (range_borders_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+    } else {
+        currentWidget.widgetCode.hoverCode["border"] = '';
     }
     refreshWidget();
 })
@@ -777,11 +847,29 @@ range_border_left.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+range_border_left_hover.addEventListener("input", ()=>{
+    if (range_border_left_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-left"] = `${range_border_left_hover.value}px solid ${color_border_left_hover.value};`
+    } else {
+        currentWidget.widgetCode.hoverCode["border-left"] = '';
+    }
+    refreshWidget();
+})
+
 range_border_top.addEventListener("input", ()=>{
     if (range_border_top.value>0){
         currentWidget.widgetCode.baseCode["border-top"] = `${range_border_top.value}px solid ${color_border_top.value};`
     } else {
         currentWidget.widgetCode.baseCode["border-top"] = '';
+    }
+    refreshWidget();
+})
+
+range_border_top_hover.addEventListener("input", ()=>{
+    if (range_border_top_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-top"] = `${range_border_top_hover.value}px solid ${color_border_top_hover.value};`
+    } else {
+        currentWidget.widgetCode.hoverCode["border-top"] = '';
     }
     refreshWidget();
 })
@@ -795,11 +883,29 @@ range_border_right.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+range_border_right_hover.addEventListener("input", ()=>{
+    if (range_border_right_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-right"] = `${range_border_right_hover.value}px solid ${color_border_right_hover.value};`
+    } else {
+        currentWidget.widgetCode.hoverCode["border-right"] = '';
+    }
+    refreshWidget();
+})
+
 range_border_bottom.addEventListener("input", ()=>{
     if (range_border_bottom.value>0){
         currentWidget.widgetCode.baseCode["border-bottom"] = `${range_border_bottom.value}px solid ${color_border_bottom.value};`
     } else {
         currentWidget.widgetCode.baseCode["border-bottom"] = '';
+    }
+    refreshWidget();
+})
+
+range_border_bottom_hover.addEventListener("input", ()=>{
+    if (range_border_bottom_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-bottom"] = `${range_border_bottom_hover.value}px solid ${color_border_bottom_hover.value};`
+    } else {
+        currentWidget.widgetCode.hoverCode["border-bottom"] = '';
     }
     refreshWidget();
 })
@@ -810,8 +916,8 @@ range_border_bottom.addEventListener("input", ()=>{
 //     refreshWidget();
 // })
 
+/// FONTSIZE PADDING & MARGIN ///
 range_fontsize.addEventListener("input", ()=>{
-    console.log(range_fontsize.value);
     if (range_fontsize.value != '' && range_fontsize.value >0){
         currentWidget.widgetCode.baseCode["font-size"] = `${range_fontsize.value}px;`;
     } else {
