@@ -14,10 +14,15 @@ const range_margin = document.getElementById("range_margin");
 
 /// RANGE RADIUS ///
 const range_radius = document.getElementById("range_radius");
+const range_radius_hover = document.getElementById("range_radius_hover");
 const range_radius_topleft = document.getElementById("range_radius_topleft");
+const range_radius_topleft_hover = document.getElementById("range_radius_topleft_hover");
 const range_radius_topright = document.getElementById("range_radius_topright");
+const range_radius_topright_hover = document.getElementById("range_radius_topright_hover");
 const range_radius_bottomleft = document.getElementById("range_radius_bottomleft");
+const range_radius_bottomleft_hover = document.getElementById("range_radius_bottomleft_hover");
 const range_radius_bottomright = document.getElementById("range_radius_bottomright");
+const range_radius_bottomright_hover = document.getElementById("range_radius_bottomright_hover");
 
 /// RANGE TRANSITION ///
 const range_transition_hover_begin = document.getElementById("range_transition_hover_begin");
@@ -25,7 +30,7 @@ const range_transition_hover_end = document.getElementById("range_transition_hov
 
 /// RANGE BLUR ///
 const range_blur = document.getElementById("range_blur");
-const range_blur_hover = document.getElementById("range_blur");
+const range_blur_hover = document.getElementById("range_blur_hover");
 
 /// RANGE DIMENSIONS ///
 const range_size_x = document.getElementById("range_size_x");
@@ -60,10 +65,14 @@ const show_adjust_size_hover = document.getElementById("show_adjust_size_hover")
 const link_dimensions = document.getElementById("link_dimensions");
 const link_dimensions_hover = document.getElementById("link_dimensions_hover");
 const link_radius = document.getElementById("link_radius");
+const link_radius_hover = document.getElementById("link_radius_hover");
 const link_borders = document.getElementById("link_borders");
 const link_colors = document.getElementById("link_colors");
+const link_colors_hover = document.getElementById("link_colors_hover");
 const link_shadow = document.getElementById("link_shadow");
+const link_shadow_hover = document.getElementById("link_shadow_hover");
 const link_remove_shadow = document.getElementById("link_remove_shadow");
+const link_remove_shadow_hover = document.getElementById("link_remove_shadow_hover");
 const link_text = document.getElementById("link_text");
 const link_text_hover = document.getElementById("link_text_hover");
 const link_cursor = document.getElementById("link_cursor");
@@ -74,8 +83,10 @@ const navlink_animations = document.getElementById("navlink_animations");
 
 /// PARAMS ///
 const params_radius = document.getElementById("params_radius");
+const params_radius_hover = document.getElementById("params_radius_hover");
 const params_borders = document.getElementById("params_borders");
 const params_colors = document.getElementById("params_colors");
+const params_colors_hover = document.getElementById("params_colors_hover");
 const params_shadow = document.getElementById("params_shadow");
 const params_text = document.getElementById("params_text");
 const params_text_hover = document.getElementById("params_text_hover");
@@ -96,6 +107,7 @@ const checkbox_italic_hover = document.getElementById("checkbox_italic_hover");
 const checkbox_underlined = document.getElementById("checkbox_underlined");
 const checkbox_underlined_hover = document.getElementById("checkbox_underlined_hover");
 const checkbox_linear_background = document.getElementById("checkbox_linear_background");
+const checkbox_linear_background_hover = document.getElementById("checkbox_linear_background_hover");
 const checkbox_activate_hover = document.getElementById("checkbox_activate_hover");
 const checkbox_adjust_size = document.getElementById("checkbox_adjust_size");
 const checkbox_adjust_size_hover = document.getElementById("checkbox_adjust_size_hover");
@@ -108,6 +120,7 @@ const classname_widget = document.getElementById("classname_widget");
 const color_text = document.getElementById("color_text");
 const color_text_hover = document.getElementById("color_text_hover");
 const color_background = document.getElementById("color_background");
+const color_background_hover = document.getElementById("color_background_hover");
 
 /// COLORS BORDERS ///
 const color_borders = document.getElementById("color_borders");
@@ -123,8 +136,11 @@ const color_shadow = document.getElementById("color_shadow");
 const color_outline_text = document.getElementById("color_outline_text");
 const color_outline_text_hover = document.getElementById("color_outline_text_hover");
 const color_gradient_first = document.getElementById("color_gradient_first");
+const color_gradient_first_hover = document.getElementById("color_gradient_first_hover");
 const color_gradient_second = document.getElementById("color_gradient_second");
+const color_gradient_second_hover = document.getElementById("color_gradient_second_hover");
 const span_arrow_linear_gradient = document.getElementById("span_arrow_linear_gradient");
+const span_arrow_linear_gradient_hover = document.getElementById("span_arrow_linear_gradient_hover");
 
 ////////////////////////////////// CODE //////////////////////////////////
 const code_css = document.getElementById("code_css");
@@ -198,11 +214,6 @@ const updateShadow = () =>{
     refreshWidget();
 }
 
-const removeShadow = () =>{
-    currentWidget.widgetCode.baseCode["box-shadow"] = '';
-    refreshWidget();
-}
-
 const rotateLinearGradient = () =>{
     let direction = '';
 
@@ -229,6 +240,14 @@ const rotateLinearGradient = () =>{
         currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`;
     }
 
+    if (checkbox_linear_background_hover.checked){
+        currentWidget.widgetCode.hoverCode["background-color"] = ``;
+        currentWidget.widgetCode.hoverCode["background"] = `linear-gradient(${direction} ${color_gradient_first_hover.value}, ${color_gradient_second_hover.value});`;
+    } else {
+        currentWidget.widgetCode.hoverCode["background"] = '';
+        currentWidget.widgetCode.hoverCode["background-color"] = '';
+    }
+
     refreshWidget();
 }
 
@@ -251,7 +270,6 @@ range_transition_hover_end.addEventListener("input",()=>{
     refreshWidget();
 })
 
-
 /// BLUR ///
 range_blur.addEventListener("input",()=>{
     currentWidget.widgetCode.baseCode["filter"] = `blur(${range_blur.value}px);`;
@@ -262,8 +280,9 @@ range_blur.addEventListener("input",()=>{
 })
 
 range_blur_hover.addEventListener("input",()=>{
+    console.log(range_blur_hover.value);
     currentWidget.widgetCode.hoverCode["filter"] = `blur(${range_blur_hover.value}px);`;
-    if (range_blur.value==0){
+    if (range_blur_hover.value==0){
         currentWidget.widgetCode.hoverCode["filter"] = '';
     }
     refreshWidget();
@@ -334,7 +353,16 @@ link_cursor.addEventListener("click", ()=>{
 })
 
 checkbox_activate_hover.addEventListener("click", ()=>{
-    show_hover_params.style.display = checkbox_activate_hover.checked ? "contents" : show_hover_params.style.display = "none";
+    if (checkbox_activate_hover.checked){
+        show_hover_params.style.display = "contents";
+        if (text_widget_hover.value != ''){
+            changeTextOnHover = true;
+        }
+    } else {
+        changeTextOnHover = false;
+        show_hover_params.style.display = "none";
+    }
+    widgets.updateHtml(changeTextOnHover);
     refreshWidget();
 })
 
@@ -501,6 +529,10 @@ checkbox_linear_background.addEventListener("click", ()=>{
     rotateLinearGradient();
 })
 
+checkbox_linear_background_hover.addEventListener("click", ()=>{
+    rotateLinearGradient();
+})
+
 span_arrow_linear_gradient.addEventListener("click", ()=>{
     currentArrowLinearGradient++;
     if (currentArrowLinearGradient>3){
@@ -511,9 +543,24 @@ span_arrow_linear_gradient.addEventListener("click", ()=>{
     rotateLinearGradient();
 })
 
+span_arrow_linear_gradient_hover.addEventListener("click", ()=>{
+    currentArrowLinearGradient++;
+    if (currentArrowLinearGradient>3){
+        currentArrowLinearGradient = 0;
+    }
+    span_arrow_linear_gradient_hover.style.transform = `rotateZ(${arrowsLinearGradient[currentArrowLinearGradient]}deg)`;
+
+    rotateLinearGradient();
+})
+
 //// BORDER RADIUS ////
 link_radius.addEventListener("click", ()=>{
     params_radius.style.display == "flex" ? params_radius.style.display = "none" : params_radius.style.display = "flex";
+})
+
+link_radius_hover.addEventListener("click", ()=>{
+    console.log("mdr");
+    params_radius_hover.style.display == "flex" ? params_radius_hover.style.display = "none" : params_radius_hover.style.display = "flex";
 })
 
 range_radius.addEventListener("input", ()=>{
@@ -521,6 +568,15 @@ range_radius.addEventListener("input", ()=>{
         currentWidget.widgetCode.baseCode["border-radius"] = `${range_radius.value}px;`;
     } else {
         currentWidget.widgetCode.baseCode["border-radius"] = '';
+    }
+    refreshWidget();
+})
+
+range_radius_hover.addEventListener("input", ()=>{
+    if (range_radius_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-radius"] = `${range_radius_hover.value}px;`;
+    } else {
+        currentWidget.widgetCode.hoverCode["border-radius"] = '';
     }
     refreshWidget();
 })
@@ -534,11 +590,29 @@ range_radius_bottomleft.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+range_radius_bottomleft_hover.addEventListener("input", ()=>{
+    if (range_radius_bottomleft_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-bottom-left-radius"] = `${range_radius_bottomleft_hover.value}px;`;
+    } else {
+        currentWidget.widgetCode.hoverCode["border-bottom-left-radius"] = '';
+    }
+    refreshWidget();
+})
+
 range_radius_bottomright.addEventListener("input", ()=>{
     if (range_radius_bottomright.value>0){
         currentWidget.widgetCode.baseCode["border-bottom-right-radius"] = `${range_radius_bottomright.value}px;`;
     } else {
         currentWidget.widgetCode.baseCode["border-bottom-right-radius"] = '';
+    }
+    refreshWidget();
+})
+
+range_radius_bottomright_hover.addEventListener("input", ()=>{
+    if (range_radius_bottomright_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-bottom-right-radius"] = `${range_radius_bottomright_hover.value}px;`;
+    } else {
+        currentWidget.widgetCode.hoverCode["border-bottom-right-radius"] = '';
     }
     refreshWidget();
 })
@@ -552,6 +626,15 @@ range_radius_topleft.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+range_radius_topleft_hover.addEventListener("input", ()=>{
+    if (range_radius_topleft_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-top-left-radius"] = `${range_radius_topleft_hover.value}px;`;
+    } else {
+        currentWidget.widgetCode.hoverCode["border-top-left-radius"] = '';
+    }
+    refreshWidget();
+})
+
 range_radius_topright.addEventListener("input", ()=>{
     if (range_radius_topright.value>0){
         currentWidget.widgetCode.baseCode["border-top-right-radius"] = `${range_radius_topright.value}px;`;
@@ -561,9 +644,22 @@ range_radius_topright.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+range_radius_topright_hover.addEventListener("input", ()=>{
+    if (range_radius_topright_hover.value>0){
+        currentWidget.widgetCode.hoverCode["border-top-right-radius"] = `${range_radius_topright_hover.value}px;`;
+    } else {
+        currentWidget.widgetCode.hoverCode["border-top-right-radius"] = '';
+    }
+    refreshWidget();
+})
+
 //// COLORS ////
 link_colors.addEventListener("click",()=>{
     params_colors.style.display == "flex" ? params_colors.style.display = "none" : params_colors.style.display = "flex";
+})
+
+link_colors_hover.addEventListener("click",()=>{
+    params_colors_hover.style.display == "flex" ? params_colors_hover.style.display = "none" : params_colors_hover.style.display = "flex";
 })
 
 color_text.addEventListener("input", ()=>{
@@ -578,6 +674,11 @@ color_text_hover.addEventListener("input", ()=>{
 
 color_background.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`
+    refreshWidget();
+})
+
+color_background_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["background-color"] = `${color_background_hover.value};`
     refreshWidget();
 })
 
@@ -616,17 +717,35 @@ color_gradient_second.addEventListener("input", ()=>{
     rotateLinearGradient();
 })
 
+color_gradient_first_hover.addEventListener("input", ()=>{
+    rotateLinearGradient();
+})
+
+color_gradient_second_hover.addEventListener("input", ()=>{
+    rotateLinearGradient();
+})
+
 //// SHADOWS ////
 link_shadow.addEventListener("click", ()=>{
     params_shadow.style.display == "flex" ? params_shadow.style.display = "none" : params_shadow.style.display = "flex";
 })
 
 link_remove_shadow.addEventListener("click", ()=>{
-    removeShadow();
+    currentWidget.widgetCode.baseCode["box-shadow"] = '';
+    refreshWidget();
     range_shadow_x.value = 0;
     range_shadow_y.value = 0;
     range_shadow_blur.value = 5;
     checkbox_inset.checked = false;
+})
+
+link_remove_shadow_hover.addEventListener("click", ()=>{
+    currentWidget.widgetCode.hoverCode["box-shadow"] = '';
+    refreshWidget();
+    range_shadow_x_hover.value = 0;
+    range_shadow_y_hover.value = 0;
+    range_shadow_blur_hover.value = 5;
+    checkbox_inset_hover.checked = false;
 })
 
 color_shadow.addEventListener("input", ()=>{ updateShadow(); })

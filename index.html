@@ -80,7 +80,7 @@
             <label class = "linkbox" id = "link_radius">Arrondis</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_radius">
                 <label class = "mt10">Arrondi global</label>
-                <input class = "ml5 mr5" type = "range" min = "0" max = "20" value = "0" id = "range_radius">
+                <input class = "ml5 mr5" type = "range" min = "0" max = "50" value = "0" id = "range_radius">
                 <label>Haut à gauche</label>
                 <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topleft">
                 <label>Haut à droite</label>
@@ -199,31 +199,31 @@
                 </div>
     
                 <!--COLORS-->
-                <label class = "linkbox" id = "link_colors">Couleurs</label>
-                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
+                <label class = "linkbox" id = "link_colors_hover">Couleurs</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors_hover">
                     <label class = "mt10">Niveau de flou</label>
                     <input class = "mb10" type = "range" min = "0" max = "50" step = "0.5" value = "0" id = "range_blur_hover">
                     <label>Couleur du fond</label>
-                    <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
-                    <label>Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background"></label>
-                    <span><input class = "mt10" type = "color" value = "#FFFFFF" id = "color_gradient_first"><input type = "color" id = "color_gradient_second"></span>
+                    <input class = "mb10" type = "color" value="#ffffff" id = "color_background_hover">
+                    <label>Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background_hover"></label>
+                    <span><input class = "mt10" type = "color" value = "#FFFFFF" id = "color_gradient_first_hover"><input type = "color" id = "color_gradient_second_hover"></span>
                     <label class = "mt10 ml5 mr5">Direction du dégradé</label>
-                    <img src = "assets/arrow.png" class = "item mb10" id = "span_arrow_linear_gradient"></img>
+                    <img src = "assets/arrow.png" class = "item mb10" id = "span_arrow_linear_gradient_hover"></img>
                 </div>
     
                 <!--BORDER RADIUS-->
-                <label class = "linkbox" id = "link_radius">Arrondis</label>
-                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_radius">
+                <label class = "linkbox" id = "link_radius_hover">Arrondis</label>
+                <div class = "flexcol params-container mb10" style = "display: none;" id = "params_radius_hover">
                     <label class = "mt10">Arrondi global</label>
-                    <input class = "ml5 mr5" type = "range" min = "0" max = "20" value = "0" id = "range_radius">
+                    <input class = "ml5 mr5" type = "range" min = "0" max = "50" value = "0" id = "range_radius_hover">
                     <label>Haut à gauche</label>
-                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topleft">
+                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topleft_hover">
                     <label>Haut à droite</label>
-                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topright">
+                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_topright_hover">
                     <label>Bas à gauche</label>
-                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomleft">
+                    <input class = "" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomleft_hover">
                     <label>Bas à droite</label>
-                    <input class = "mb10" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright">
+                    <input class = "mb10" type = "range" min = "0" max = "50" value = "0" id = "range_radius_bottomright_hover">
                 </div>
     
                 <!--BORDERS OUTLINE-->
@@ -254,7 +254,7 @@
                 <!--BORDERS SHADOW-->
                 <label class = "linkbox" id = "link_shadow">Ombrage</label>
                 <div class = "flexcol params-container mt10 mb10" style = "display: none;" id = "params_shadow">
-                    <label class = "linkbox mb10" id = "link_remove_shadow">Supprimer l'ombrage</label>
+                    <label class = "linkbox mb10" id = "link_remove_shadow_hover">Supprimer l'ombrage</label>
                     <label>Couleur</label>
                     <input class = "mb10" type = "color" id = "color_shadow">
                     <label class = "mt10">Ombrage Horizontal</label>
