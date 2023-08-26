@@ -13,7 +13,15 @@ const range_radius_topright = document.getElementById("range_radius_topright");
 const range_radius_bottomleft = document.getElementById("range_radius_bottomleft");
 const range_radius_bottomright = document.getElementById("range_radius_bottomright");
 
-/// RAGE BORDERS ///
+/// RANGE BLUR ///
+const range_blur = document.getElementById("range_blur");
+const range_blur_hover = document.getElementById("range_blur");
+
+/// RANGE DIMENSIONS ///
+const range_size_x = document.getElementById("range_size_x");
+const range_size_y = document.getElementById("range_size_y");
+
+/// RANGE BORDERS ///
 const range_borders = document.getElementById("range_borders");
 const range_border_left = document.getElementById("range_border_left");
 const range_border_top = document.getElementById("range_border_top");
@@ -31,10 +39,12 @@ const range_letters_spacing_hover = document.getElementById("range_letters_spaci
 const range_outline_text = document.getElementById("range_outline_text");
 const range_outline_text_hover = document.getElementById("range_outline_text_hover");
 
-/// SHOW ///
+/// SHOWS ///
 const show_hover_params = document.getElementById("show_hover_params");
+const show_adjust_size = document.getElementById("show_adjust_size");
 
 /// LINKS ///
+const link_dimensions = document.getElementById("link_dimensions");
 const link_radius = document.getElementById("link_radius");
 const link_borders = document.getElementById("link_borders");
 const link_colors = document.getElementById("link_colors");
@@ -56,12 +66,13 @@ const params_shadow = document.getElementById("params_shadow");
 const params_text = document.getElementById("params_text");
 const params_text_hover = document.getElementById("params_text_hover");
 const params_cursor = document.getElementById("params_cursor");
+const params_dimensions = document.getElementById("params_dimensions");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
 const panel_animations = document.getElementById("panel_animations");
 
-// CHECKBOXS ///
+/// CHECKBOXS ///
 const checkbox_inset = document.getElementById("checkbox_inset");
 const checkbox_bold = document.getElementById("checkbox_bold");
 const checkbox_bold_hover = document.getElementById("checkbox_bold_hover");
@@ -71,6 +82,7 @@ const checkbox_underlined = document.getElementById("checkbox_underlined");
 const checkbox_underlined_hover = document.getElementById("checkbox_underlined_hover");
 const checkbox_linear_background = document.getElementById("checkbox_linear_background");
 const checkbox_activate_hover = document.getElementById("checkbox_activate_hover");
+const checkbox_adjust_size = document.getElementById("checkbox_adjust_size");
 
 const text_widget = document.getElementById("text_widget");
 const classname_widget = document.getElementById("classname_widget");
@@ -194,6 +206,51 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
+/// BLUR ///
+range_blur.addEventListener("input",()=>{
+    currentWidget.widgetCode.baseCode["filter"] = `blur(${range_blur.value}px);`;
+    if (range_blur.value==0){
+        currentWidget.widgetCode.baseCode["filter"] = '';
+    }
+    refreshWidget();
+})
+
+range_blur_hover.addEventListener("input",()=>{
+    currentWidget.widgetCode.hoverCode["filter"] = `blur(${range_blur_hover.value}px);`;
+    if (range_blur.value==0){
+        currentWidget.widgetCode.hoverCode["filter"] = '';
+    }
+    refreshWidget();
+})
+
+/// DIMENSIONS ///
+link_dimensions.addEventListener("click", ()=>{
+    params_dimensions.style.display = params_dimensions.style.display == "none" ? "flex" : "none";
+})
+
+checkbox_adjust_size.addEventListener("click", ()=>{
+    if (checkbox_adjust_size.checked){
+        show_adjust_size.style.display = "none";
+        currentWidget.widgetCode.baseCode["width"] = ''
+        currentWidget.widgetCode.baseCode["height"] = '';
+    } else {
+        show_adjust_size.style.display = "contents";
+        currentWidget.widgetCode.baseCode["width"] = `${range_size_x.value}px;`;
+        currentWidget.widgetCode.baseCode["height"] = `${range_size_y.value}px;`;
+    }
+    refreshWidget();
+})
+
+range_size_x.addEventListener("input", ()=>{
+    currentWidget.widgetCode.baseCode["width"] = `${range_size_x.value}px;`;
+    refreshWidget();
+})
+
+range_size_y.addEventListener("input", ()=>{
+    currentWidget.widgetCode.baseCode["height"] = `${range_size_y.value}px;`;
+    refreshWidget();
+})
+
 /// CURSOR POINTER & HOVERING ////
 link_cursor.addEventListener("click", ()=>{
     params_cursor.style.display == "none" ? params_cursor.style.display = "flex" : params_cursor.style.display = "none";
@@ -246,7 +303,20 @@ link_text_hover.addEventListener("click", ()=>{
 
 
 range_letters_spacing.addEventListener("input", ()=>{
-    currentWidget.widgetCode.baseCode["letter-spacing"] = `${range_letters_spacing.value}px;`;
+    if (range_letters_spacing.value>0){
+        currentWidget.widgetCode.baseCode["letter-spacing"] = `${range_letters_spacing.value}px;`;
+    } else {
+        currentWidget.widgetCode.baseCode["letter-spacing"] = '';
+    }
+    refreshWidget();
+})
+
+range_letters_spacing_hover.addEventListener("input", ()=>{
+    if (range_letters_spacing_hover.value>0){
+        currentWidget.widgetCode.hoverCode["letter-spacing"] = `${range_letters_spacing_hover.value}px;`;
+    } else {
+        currentWidget.widgetCode.hoverCode["letter-spacing"] = '';
+    }
     refreshWidget();
 })
 
@@ -266,11 +336,28 @@ range_outline_text.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+range_outline_text_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["-webkit-text-stroke"] = `${range_outline_text_hover.value}px ${color_outline_text_hover.value};`
+    if (range_outline_text_hover.value == 0){
+        currentWidget.widgetCode.hoverCode["-webkit-text-stroke"] = '';
+    }
+    refreshWidget();
+})
+
 checkbox_bold.addEventListener("click", ()=>{
     if (checkbox_bold.checked){
         currentWidget.widgetCode.baseCode["font-weight"] = 'bold;';
     } else {
         currentWidget.widgetCode.baseCode["font-weight"] = '';
+    }
+    refreshWidget();
+})
+
+checkbox_bold_hover.addEventListener("click", ()=>{
+    if (checkbox_bold_hover.checked){
+        currentWidget.widgetCode.hoverCode["font-weight"] = 'bold;';
+    } else {
+        currentWidget.widgetCode.hoverCode["font-weight"] = '';
     }
     refreshWidget();
 })
@@ -284,11 +371,29 @@ checkbox_italic.addEventListener("click", ()=>{
     refreshWidget();
 })
 
+checkbox_italic_hover.addEventListener("click", ()=>{
+    if (checkbox_italic_hover.checked){
+        currentWidget.widgetCode.hoverCode["font-style"] = 'italic;';
+    } else {
+        currentWidget.widgetCode.hoverCode["font-style"] = '';
+    }
+    refreshWidget();
+})
+
 checkbox_underlined.addEventListener("click", ()=>{
     if (checkbox_underlined.checked){
         currentWidget.widgetCode.baseCode["text-decoration"] = 'underline;';
     } else {
         currentWidget.widgetCode.baseCode["text-decoration"] = '';
+    }
+    refreshWidget();
+})
+
+checkbox_underlined_hover.addEventListener("click", ()=>{
+    if (checkbox_underlined_hover.checked){
+        currentWidget.widgetCode.hoverCode["text-decoration"] = 'underline;';
+    } else {
+        currentWidget.widgetCode.hoverCode["text-decoration"] = '';
     }
     refreshWidget();
 })
@@ -483,12 +588,17 @@ range_border_bottom.addEventListener("input", ()=>{
 // })
 
 range_fontsize.addEventListener("input", ()=>{
-    currentWidget.widgetCode.baseCode["font-size"] = `${range_fontsize.value}px;`;
+    console.log(range_fontsize.value);
+    if (range_fontsize.value != '' && range_fontsize.value >0){
+        currentWidget.widgetCode.baseCode["font-size"] = `${range_fontsize.value}px;`;
+    } else {
+        currentWidget.widgetCode.baseCode["font-size"] = '';
+    }
     refreshWidget();
 })
 
 range_fontsize_hover.addEventListener("input", ()=>{
-    if (range_fontsize_hover.value!=range_fontsize.value){
+    if ((range_fontsize_hover.value!=range_fontsize.value) && (range_fontsize.value != '' && range_fontsize.value >0)){
         currentWidget.widgetCode.hoverCode["font-size"] = `${range_fontsize_hover.value}px;`;
     } else {
         currentWidget.widgetCode.hoverCode["font-size"] = '';

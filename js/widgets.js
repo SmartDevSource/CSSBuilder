@@ -4,6 +4,8 @@ export class Widgets {
         this.widget = {
             classname : "button",
             baseCode : {
+                "width":"",
+                "height":"",
                 "cursor": "",
                 "color" : "black;",
                 "background-color":"white;",
@@ -26,9 +28,12 @@ export class Widgets {
                 "text-decoration": "",
                 "font-style":"",
                 "font-weight":"",
-                "background":""
+                "background":"",
+                "filter":""
             },
             hoverCode : {
+                "width":"",
+                "height":"",
                 "color" : "",
                 "background-color":"",
                 "font-size": "",
@@ -50,7 +55,8 @@ export class Widgets {
                 "text-decoration": "",
                 "font-style":"",
                 "font-weight":"",
-                "background":""
+                "background":"",
+                "filter":""
             },
             textContent : "Bouton"
         };
