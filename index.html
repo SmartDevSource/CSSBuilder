@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "css/style.css">
+    <link rel = "stylesheet" href = "css/components.css">
     <title>CSS Builder V1.0</title>
  </head>
  <body>
@@ -166,6 +167,8 @@
                 <!--TEXT-->
                 <label class = "linkbox mt10" id = "link_text_hover">Texte</label>
                 <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text_hover">
+                    <label class = "mt10">Nouveau texte</label>
+                    <input class = "" type = "text" value = "" id = "text_widget_hover" style = "text-align: center;"/>
                     <label class = "mt10">Taille du texte</label>
                     <input type="text" value = "16" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" id = "range_fontsize_hover"/>
                     <label class = "mt10">Couleur du texte</label>

@@ -30,7 +30,8 @@ export class Widgets {
                 "font-weight":"",
                 "background":"",
                 "filter":"",
-                "transition":""
+                "transition":"",
+                "content": ""
             },
             hoverCode : {
                 "width":"",
@@ -58,7 +59,8 @@ export class Widgets {
                 "font-weight":"",
                 "background":"",
                 "filter":"",
-                "transition":""
+                "transition":"",
+                "content": ""
             },
             textContent : "Bouton"
         };
@@ -74,9 +76,12 @@ export class Widgets {
         }
     }
 
-    updateHtml = () =>{
+    updateHtml = (textHover = false) =>{
         let originalClassname = this.widget.classname.split('.{').join('');
         let simplifiedClassname = originalClassname.replace(/[.{]/g, '');
-        this.widget.html = `<button class = "${simplifiedClassname}">${this.widget.textContent}</button>`;
+
+        (!textHover) ? this.widget.html = `<button class = "${simplifiedClassname}">${this.widget.textContent}</button>` :
+                       this.widget.html = `<button class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></button>`;
+
     }
 }

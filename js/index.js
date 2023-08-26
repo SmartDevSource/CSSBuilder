@@ -101,6 +101,7 @@ const checkbox_adjust_size = document.getElementById("checkbox_adjust_size");
 const checkbox_adjust_size_hover = document.getElementById("checkbox_adjust_size_hover");
 
 const text_widget = document.getElementById("text_widget");
+const text_widget_hover = document.getElementById("text_widget_hover");
 const classname_widget = document.getElementById("classname_widget");
 
 /// MAIN COLORS ///
@@ -138,6 +139,7 @@ const currentWidget = {name: "button", widgetCode: widgets.widget};
 const widgetsList = {"button": button_cstm};
 
 ////////////////////////////////// STRUCTS AND VARS ///////////////////////////
+let changeTextOnHover = false;
 let currentArrowLinearGradient = 0;
 const arrowsLinearGradient = {0: 180, 1: 270, 2: 0, 3: 90};
 const tmpStyle = document.createElement("style");
@@ -172,10 +174,19 @@ const refreshWidget = () =>{
             cssTextArea+= `  ${property} : ${currentWidget.widgetCode.hoverCode[property]}\n`;
         }
         cssTextArea += '}';
+
+        if (changeTextOnHover){
+            cssTextArea += '\n\n.'+currentWidget.widgetCode.classname+':hover span{\n';
+            cssTextArea += '  display:none;';
+            cssTextArea += '\n}';
+
+            cssTextArea += '\n\n.'+currentWidget.widgetCode.classname+':hover::after{\n';
+            cssTextArea += `  content: "${text_widget_hover.value}";`;
+            cssTextArea += '\n}';
+        }
     }
 
-    code_css.textContent =  cssTextArea;
-
+    code_css.textContent = cssTextArea;
     tmpStyle.textContent = cssTextArea;
     
     let htmlTextArea = currentWidget.widgetCode.html;
@@ -367,7 +378,6 @@ link_text_hover.addEventListener("click", ()=>{
     params_text_hover.style.display == "flex" ? params_text_hover.style.display = "none" : params_text_hover.style.display = "flex";
 })
 
-
 range_letters_spacing.addEventListener("input", ()=>{
     if (range_letters_spacing.value>0){
         currentWidget.widgetCode.baseCode["letter-spacing"] = `${range_letters_spacing.value}px;`;
@@ -392,6 +402,29 @@ text_widget.addEventListener("input", ()=>{
     widgets.updateTextContent(currentWidget.name, text_widget.value);
     widgets.updateHtml();
     refreshWidget();
+})
+
+text_widget_hover.addEventListener("input", ()=>{
+    if (text_widget_hover.value!= ''){
+        changeTextOnHover = true;
+    } else {
+        changeTextOnHover = false;
+    }
+    widgets.updateHtml(changeTextOnHover);
+    refreshWidget();
+})
+
+widgetsList[currentWidget.name].addEventListener("mouseenter", ()=>{
+    if (changeTextOnHover){
+        console.log(text_widget_hover.value)
+        widgetsList[currentWidget.name].textContent = text_widget_hover.textContent;
+    }
+})
+
+widgetsList[currentWidget.name].addEventListener("mouseleave", ()=>{
+    if (changeTextOnHover){
+        widgetsList[currentWidget.name].textContent = text_widget.value;
+    }
 })
 
 range_outline_text.addEventListener("input", ()=>{
