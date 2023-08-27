@@ -170,11 +170,56 @@ const code_html = document.getElementById("code_html");
 const copy_css = document.getElementById("copy_css");
 const copy_html = document.getElementById("copy_html");
 
-////////////////////////////////// COMPOSANTS //////////////////////////////////
+////////////////////////////////// COMPONENTS //////////////////////////////////
 const button_cstm = document.getElementById("button_cstm");
+const input_cstm = document.getElementById("input_cstm");
+const range_cstm = document.getElementById("range_cstm");
+const checkbox_cstm = document.getElementById("checkbox_cstm");
+const link_cstm = document.getElementById("link_cstm");
+
+
+const widgetsList = {"button": button_cstm,
+                     "input": input_cstm,
+                     "range": range_cstm,
+                     "checkbox": checkbox_cstm,
+                     "link": link_cstm};
 
 const currentWidget = {name: "button", widgetCode: widgets.widget};
-const widgetsList = {"button": button_cstm};
+
+////////// UPDATE COMPONENT SELECTION //////////
+const components = document.querySelectorAll('.component');
+components.forEach(component=>{
+    component.addEventListener("click", (e)=>{
+        e.preventDefault();
+        component.blur();
+        widgetsList[currentWidget.name].style.display = "none";
+        currentWidget.name = component.getAttribute("name");
+        currentWidget.widgetCode.classname = currentWidget.name;
+
+        switch(currentWidget.name){
+            case "button":
+                currentWidget.widgetCode.textContent = "Bouton";
+                widgetsList[currentWidget.name].textContent = "Bouton";
+                text_widget.value = "Bouton";
+            break;
+            case "link":
+                currentWidget.widgetCode.textContent = "Ceci est un lien";
+                widgetsList[currentWidget.name].textContent = "Ceci est un lien";
+                text_widget.value = "Ceci est un lien";
+            break;
+        }
+        currentWidget.widgetCode.baseCode = {...widgets.defaultBaseCode};
+        currentWidget.widgetCode.hoverCode = {...widgets.defaultHoverCode};
+        checkbox_activate_hover.checked = false;
+        changeTextOnHover = false;
+        show_hover_params.style.display = "none";
+        widgetsList[currentWidget.name].style.display = "block";
+        widgets.updateHtml(currentWidget.name);
+        refreshWidget();
+    })
+})
+
+widgets.updateHtml(currentWidget.name);
 
 ////////////////////////////////// STRUCTS AND VARS ///////////////////////////
 let changeTextOnHover = false;
@@ -279,9 +324,6 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
-
-/// OPACITY ///
-
 
 // RANGE OPACITY //
 range_opacity.addEventListener("input", ()=>{
@@ -405,7 +447,7 @@ checkbox_activate_hover.addEventListener("click", ()=>{
         changeTextOnHover = false;
         show_hover_params.style.display = "none";
     }
-    widgets.updateHtml(changeTextOnHover);
+    widgets.updateHtml(currentWidget.name, changeTextOnHover);
     refreshWidget();
 })
 
@@ -471,7 +513,7 @@ text_widget.addEventListener("input", ()=>{
     widgetsList[currentWidget.name].textContent = text_widget.value;
     currentWidget.widgetCode.textContent = text_widget.value;
     widgets.updateTextContent(currentWidget.name, text_widget.value);
-    widgets.updateHtml();
+    widgets.updateHtml(currentWidget.name);
     refreshWidget();
 })
 
@@ -481,13 +523,12 @@ text_widget_hover.addEventListener("input", ()=>{
     } else {
         changeTextOnHover = false;
     }
-    widgets.updateHtml(changeTextOnHover);
+    widgets.updateHtml(currentWidget.name, changeTextOnHover);
     refreshWidget();
 })
 
 widgetsList[currentWidget.name].addEventListener("mouseenter", ()=>{
     if (changeTextOnHover){
-        console.log(text_widget_hover.value)
         widgetsList[currentWidget.name].textContent = text_widget_hover.textContent;
     }
 })
@@ -941,14 +982,14 @@ range_border_bottom_hover.addEventListener("input", ()=>{
 range_fontsize.addEventListener("input", ()=>{
     if (range_fontsize.value != '' && range_fontsize.value >0){
         currentWidget.widgetCode.baseCode["font-size"] = `${range_fontsize.value}px;`;
-    } else {
-        currentWidget.widgetCode.baseCode["font-size"] = '';
+    } else if (range_fontsize.value == ''){
+        currentWidget.widgetCode.baseCode["font-size"] = '16px;';
     }
     refreshWidget();
 })
 
 range_fontsize_hover.addEventListener("input", ()=>{
-    if ((range_fontsize_hover.value!=range_fontsize.value) && (range_fontsize.value != '' && range_fontsize.value >0)){
+    if ((range_fontsize_hover.value!=range_fontsize.value) && (range_fontsize_hover.value != '' && range_fontsize_hover.value >0)){
         currentWidget.widgetCode.hoverCode["font-size"] = `${range_fontsize_hover.value}px;`;
     } else {
         currentWidget.widgetCode.hoverCode["font-size"] = '';

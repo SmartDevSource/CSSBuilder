@@ -1,3 +1,5 @@
+import {DefaultCodes} from "./defaultcodes.js"
+
 export class Widgets {
 
     constructor(){
@@ -63,9 +65,14 @@ export class Widgets {
                 "content": "",
                 "opacity": "1"
             },
-            textContent : "Bouton"
+            textContent : "Bouton",
+            placeHolder : "Votre placeholder ici"
         };
         this.updateHtml();
+
+        const defaultCodes = DefaultCodes();
+        this.defaultBaseCode = defaultCodes.base;
+        this.defaultHoverCode = defaultCodes.hover;
     }
 
     updateTextContent = (type, textContent) =>{
@@ -73,16 +80,34 @@ export class Widgets {
             case "button":{
                 this.widget.textContent = textContent;
             }
+            case "input":{
+                this.widget.placeHolder = textContent;
+            }
             break;
         }
     }
 
-    updateHtml = (textHover = false) =>{
+    updateHtml = (type, textHover = false) =>{
         let originalClassname = this.widget.classname.split('.{').join('');
         let simplifiedClassname = originalClassname.replace(/[.{]/g, '');
-
-        (!textHover) ? this.widget.html = `<button class = "${simplifiedClassname}">${this.widget.textContent}</button>` :
-                       this.widget.html = `<button class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></button>`;
-
+        
+        switch(type){
+            case "button":
+                (!textHover) ? this.widget.html = `<button class = "${simplifiedClassname}">${this.widget.textContent}</button>` :
+                this.widget.html = `<button class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></button>`;
+            break;
+            case "input":
+                this.widget.html = `<input type = "text" class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"></input>`;
+            break;
+            case "range":
+                this.widget.html = `<input type = "range" class = "${simplifiedClassname}"></input>`;
+            break;
+            case "checkbox":
+                this.widget.html = `<input type = "checkbox" class = "${simplifiedClassname}"></input>`;
+            break;
+            case "link":
+                this.widget.html = `<a href = "" class = "${simplifiedClassname}">${this.widget.textContent}</a>`;
+            break;
+        }
     }
 }

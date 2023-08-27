@@ -11,6 +11,19 @@
 
 input::selection{ background-color: rgb(110, 110, 110); }
 
+.select-component{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: 1px solid black;
+    width: 80%;
+    margin: 5px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
 /*MARGIN TOP*/
 .mt5{ margin-top: 5px !important; }
 .mt10{ margin-top: 10px !important; } .mt20{ margin-top: 20px !important; } .mt30{ margin-top: 30px !important; } .mt40{ margin-top: 40px !important; }
@@ -157,19 +170,6 @@ input:hover{
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-
-.classic{
-    margin: 0;
-    padding: 0;
-    outline: none;
-    border: 1px solid black;
-    width: 80%;
-    margin: 5px;
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    text-align: center;
 }
 
 .hovertranslate{transform-origin: center;}
