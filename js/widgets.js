@@ -60,7 +60,8 @@ export class Widgets {
                 "background":"",
                 "filter":"",
                 "transition":"",
-                "content": ""
+                "content": "",
+                "opacity": "1"
             },
             textContent : "Bouton"
         };

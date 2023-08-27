@@ -4,6 +4,10 @@ const widgets = new Widgets();
 
 ////////////////// PARAMETERS //////////////////
 
+// RANGE OPACITY //
+const range_opacity = document.getElementById("range_opacity");
+const range_opacity_hover = document.getElementById("range_opacity_hover");
+
 /// RANGE FONTSIZE ///
 const range_fontsize = document.getElementById("range_fontsize");
 const range_fontsize_hover = document.getElementById("range_fontsize_hover");
@@ -275,6 +279,23 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
+
+/// OPACITY ///
+
+
+// RANGE OPACITY //
+range_opacity.addEventListener("input", ()=>{
+    currentWidget.widgetCode.baseCode["opacity"] = `${range_opacity.value};`;
+    if (range_opacity.value==1){
+        currentWidget.widgetCode.baseCode["opacity"] = '';
+    }
+    refreshWidget();
+})
+
+range_opacity_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["opacity"] = `${range_opacity_hover.value};`;
+    refreshWidget();
+})
 
 /// TRANSITION ///
 range_transition_hover_begin.addEventListener("input",()=>{
