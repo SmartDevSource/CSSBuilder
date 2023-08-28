@@ -89,6 +89,7 @@ const link_remove_shadow_hover = document.getElementById("link_remove_shadow_hov
 const link_text = document.getElementById("link_text");
 const link_text_hover = document.getElementById("link_text_hover");
 const link_cursor = document.getElementById("link_cursor");
+const link_input_text_parameters = document.getElementById("link_input_text_parameters");
 
 /// NAVLINKS ///
 const navlink_parameters = document.getElementById("navlink_parameters");
@@ -108,10 +109,15 @@ const params_text_hover = document.getElementById("params_text_hover");
 const params_cursor = document.getElementById("params_cursor");
 const params_dimensions = document.getElementById("params_dimensions");
 const params_dimensions_hover = document.getElementById("params_dimensions_hover");
+const params_input_text = document.getElementById("params_input_text");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
 const panel_animations = document.getElementById("panel_animations");
+
+/// INPUT ///
+const input_type_text = document.getElementById("input_type_text");
+const input_type_password = document.getElementById("input_type_password");
 
 /// CHECKBOXS ///
 const checkbox_inset = document.getElementById("checkbox_inset");
@@ -214,6 +220,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "Texte du bouton";
             document.getElementById("label_text_hover").style.display = "block";
             document.getElementById("label_color_placeholder").style.display = "none";
+            link_input_text_parameters.style.display = "none";
             color_placeholder.style.display = "none";
             text_widget_hover.style.display = "block";
             currentWidget.widgetCode.textContent = "Bouton";
@@ -226,6 +233,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "PlaceHolder de l'input";
             document.getElementById("label_text_hover").style.display = "none";
             document.getElementById("label_color_placeholder").style.display = "block";
+            link_input_text_parameters.style.display = "block";
             color_placeholder.style.display = "block";
             text_widget_hover.style.display = "none";
             currentWidget.widgetCode.textContent = "";
@@ -237,6 +245,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "Texte du lien";
             document.getElementById("label_text_hover").style.display = "block";
             document.getElementById("label_color_placeholder").style.display = "none";
+            link_input_text_parameters.style.display = "none";
             currentWidget.widgetCode.baseCode["color"] = "white";
             currentWidget.widgetCode.baseCode["border"] = "";
             currentWidget.widgetCode.baseCode["background-color"] = "";
@@ -359,6 +368,25 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
+
+// INPUT PARAMETERS //
+link_input_text_parameters.addEventListener("click", ()=>{
+    params_input_text.style.display = params_input_text.style.display == "none" ? "block" : "none";
+})
+
+input_type_text.addEventListener("click", ()=>{
+    currentWidget.widgetCode.inputType = "text";
+    widgetsList[currentWidget.name].setAttribute("type", "text");
+    widgets.updateHtml(currentWidget.name);
+    refreshWidget();
+})
+
+input_type_password.addEventListener("click", ()=>{
+    currentWidget.widgetCode.inputType = "password";
+    widgetsList[currentWidget.name].setAttribute("type", "password");
+    widgets.updateHtml(currentWidget.name);
+    refreshWidget();
+})
 
 // RANGE OPACITY //
 range_opacity.addEventListener("input", ()=>{

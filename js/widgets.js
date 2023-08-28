@@ -65,7 +65,8 @@ export class Widgets {
                 "content": ""
             },
             textContent : "Bouton",
-            placeHolder : "Saisissez votre texte ici..."
+            placeHolder : "Saisissez votre texte ici...",
+            inputType : "text"
         };
 
         this.updateHtml();
@@ -97,7 +98,7 @@ export class Widgets {
                                this.widget.html = `<button class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></button>`;
             break;
             case "input":
-                this.widget.html = `<input type = "text" class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"></input>`;
+                this.widget.html = `<input type = "${this.widget.inputType}" class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"></input>`;
             break;
             case "range":
                 this.widget.html = `<input type = "range" class = "${simplifiedClassname}"></input>`;

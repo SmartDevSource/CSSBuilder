@@ -43,7 +43,7 @@ input::selection{ background-color: rgb(110, 110, 110); }
 .mb40{ margin-bottom: 40px !important; } .mb50{ margin-bottom: 50px !important; } .mb60{ margin-bottom: 60px !important; }
 
 /* MARGIN TOP & BOTTOM */
-.m5 { margin: 10px !important;}
+.m10 { margin: 10px !important;}
 
 .hidden{ display: none !important; }
 .bradius{ border-radius: 7px !important; }
@@ -60,14 +60,25 @@ body{
     overflow-y: auto;
 }
 
+.list-container{
+    height: auto;
+    overflow-y: auto;
+}
+
+.list-container span:hover{
+    cursor: pointer;
+}
+
 #show_hover_params{
     text-align: center;
 }
 
+.textcenter{
+    text-align: center !important;
+}
+
 .borderhover:hover{
-    transform: translateY(-1px);
-    margin-bottom: -2px !important;
-    border: 1px solid white;
+    box-shadow: 0 0 0 2px rgb(255, 153, 0);
 }
 
 .block { display: block; }
@@ -170,6 +181,7 @@ input:hover{
     display: flex;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .hovertranslate{transform-origin: center;}
@@ -200,6 +212,12 @@ input:hover{
 
 .spacebetween{
     justify-content: space-between;
+}
+
+.header{
+    display: block;
+    color:#1D2A35 !important;
+    background-color: orange !important;
 }
 
 .leftpanel{
