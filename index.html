@@ -21,7 +21,7 @@
             <span class = "panel-header mb10">Paramètres du composant</span>
             
             <!--MAIN PARAMETERS-->
-            <label>Texte du composant</label>
+            <label id = "label_text_component">Texte du bouton</label>
             <input class = "" type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
             <!-- <label>Nom de la classe</label>
             <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/> -->
@@ -58,15 +58,17 @@
                 <label class = "mt10 mr5 ml5 mb10">Ajustement automatique <input type = "checkbox" id = "checkbox_adjust_size" checked></input></label>
                 <div id = "show_adjust_size" style = "display: none;">
                     <label class = "mt10">Taille horizontale</label>
-                    <input type = "range" min = "0" max = "300" value = "71" id = "range_size_x">
+                    <input type = "range" min = "0" max = "400" value = "71" id = "range_size_x">
                     <label>Taille verticale</label>
-                    <input class = "mb10" type = "range" min = "0" max = "300" value = "38" id =  "range_size_y">
+                    <input class = "mb10" type = "range" min = "0" max = "400" value = "38" id =  "range_size_y">
                 </div>
             </div>
 
             <!--COLORS-->
             <label class = "linkbox" id = "link_colors">Couleurs</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
+                <label class = "mr5 ml5 mt10" id = "label_color_placeholder" style = "display: none;">Couleur du placeholder</label>
+                <input type = "color"  value = "#595959" id = "color_placeholder" style = "display: none;">
                 <label class = "mt10">Niveau de flou</label>
                 <input class = "mb10" type = "range" min = "0" max = "50" step = "0.5" value = "0" id = "range_blur">
                 <label>Couleur du fond</label>
@@ -161,15 +163,15 @@
 
                 <!--TRANSITION-->
                 <label class = "mt10">Temps de transition de début</label>
-                <input type = "range" value = "0" min="0" max = "10" step = "0.1" id = "range_transition_hover_end"/>
+                <input type = "range" value = "0" min="0" max = "5" step = "0.1" id = "range_transition_hover_end"/>
                 <label>Temps de transition de fin</label>
-                <input type = "range" value = "0" min="0" max = "10" step = "0.1" id = "range_transition_hover_begin"/>
+                <input type = "range" value = "0" min="0" max = "5" step = "0.1" id = "range_transition_hover_begin"/>
                 <label class = "mt5">Opacité</label>
                 <input type = "range" min = "0" max = "1" value = "1" step = "0.05" id = "range_opacity_hover">
                 <!--TEXT-->
                 <label class = "linkbox mt10" id = "link_text_hover">Texte</label>
                 <div class = "flexcol params-container mb10" style = "display: none;" id = "params_text_hover">
-                    <label class = "mt10">Nouveau texte</label>
+                    <label class = "mt10" id = "label_text_hover">Nouveau texte</label>
                     <input class = "" type = "text" value = "" id = "text_widget_hover" style = "text-align: center;"/>
                     <label class = "mt10">Taille du texte</label>
                     <input type="text" value = "16" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" id = "range_fontsize_hover"/>
@@ -194,9 +196,9 @@
                     <label class = "mt10 mr5 ml5 mb10">Ajustement automatique <input type = "checkbox" id = "checkbox_adjust_size_hover" checked></input></label>
                     <div id = "show_adjust_size_hover" style = "display: none;">
                         <label class = "mt10">Taille horizontale</label>
-                        <input type = "range" min = "0" max = "300" value = "71" id = "range_size_x_hover">
+                        <input type = "range" min = "0" max = "400" value = "71" id = "range_size_x_hover">
                         <label>Taille verticale</label>
-                        <input class = "mb10" type = "range" min = "0" max = "300" value = "38" id =  "range_size_y_hover">
+                        <input class = "mb10" type = "range" min = "0" max = "400" value = "38" id =  "range_size_y_hover">
                     </div>
                 </div>
     
@@ -293,7 +295,7 @@
     <!--LEFT PANEL COMPONENTS-->
     <div class = "widget-container centerscreen">
         <button class = "button" id = "button_cstm">Bouton</button>
-        <input class = "input" type = "input" id = "input_cstm" style = "background-color: white !important; color : black; display: none;"></input>
+        <input class = "input" type = "input" id = "input_cstm" placeholder = "" style = "display: none;"></input>
         <input class = "range" type = "range" id = "range_cstm" style = "display: none;"></input>
         <input class = "checkbox" type = "checkbox" id = "checkbox_cstm" style = "display: none;"></input>
         <a class = "link" href = "javascript:void(0)" id = "link_cstm" style = "display: none;">Ceci est un lien.</a>

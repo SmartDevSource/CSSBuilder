@@ -62,12 +62,12 @@ export class Widgets {
                 "background":"",
                 "filter":"",
                 "transition":"",
-                "content": "",
-                "opacity": "1"
+                "content": ""
             },
             textContent : "Bouton",
-            placeHolder : "Votre placeholder ici"
+            placeHolder : "Saisissez votre texte ici..."
         };
+
         this.updateHtml();
 
         const defaultCodes = DefaultCodes();
@@ -94,7 +94,7 @@ export class Widgets {
         switch(type){
             case "button":
                 (!textHover) ? this.widget.html = `<button class = "${simplifiedClassname}">${this.widget.textContent}</button>` :
-                this.widget.html = `<button class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></button>`;
+                               this.widget.html = `<button class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></button>`;
             break;
             case "input":
                 this.widget.html = `<input type = "text" class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"></input>`;
@@ -106,7 +106,8 @@ export class Widgets {
                 this.widget.html = `<input type = "checkbox" class = "${simplifiedClassname}"></input>`;
             break;
             case "link":
-                this.widget.html = `<a href = "" class = "${simplifiedClassname}">${this.widget.textContent}</a>`;
+                (!textHover) ? this.widget.html = `<a href = "" class = "${simplifiedClassname}">${this.widget.textContent}</a>` :
+                               this.widget.html = `<a href = "" class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></a>`;
             break;
         }
     }

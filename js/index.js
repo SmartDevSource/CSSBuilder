@@ -157,6 +157,7 @@ const color_shadow_hover = document.getElementById("color_shadow_hover");
 /// COLOR TEXT ///
 const color_outline_text = document.getElementById("color_outline_text");
 const color_outline_text_hover = document.getElementById("color_outline_text_hover");
+const color_placeholder = document.getElementById("color_placeholder");
 const color_gradient_first = document.getElementById("color_gradient_first");
 const color_gradient_first_hover = document.getElementById("color_gradient_first_hover");
 const color_gradient_second = document.getElementById("color_gradient_second");
@@ -177,7 +178,6 @@ const range_cstm = document.getElementById("range_cstm");
 const checkbox_cstm = document.getElementById("checkbox_cstm");
 const link_cstm = document.getElementById("link_cstm");
 
-
 const widgetsList = {"button": button_cstm,
                      "input": input_cstm,
                      "range": range_cstm,
@@ -195,21 +195,7 @@ components.forEach(component=>{
         widgetsList[currentWidget.name].style.display = "none";
         currentWidget.name = component.getAttribute("name");
         currentWidget.widgetCode.classname = currentWidget.name;
-
-        switch(currentWidget.name){
-            case "button":
-                currentWidget.widgetCode.textContent = "Bouton";
-                widgetsList[currentWidget.name].textContent = "Bouton";
-                text_widget.value = "Bouton";
-            break;
-            case "link":
-                currentWidget.widgetCode.textContent = "Ceci est un lien";
-                widgetsList[currentWidget.name].textContent = "Ceci est un lien";
-                text_widget.value = "Ceci est un lien";
-            break;
-        }
-        currentWidget.widgetCode.baseCode = {...widgets.defaultBaseCode};
-        currentWidget.widgetCode.hoverCode = {...widgets.defaultHoverCode};
+        prepareParameters(currentWidget.name);
         checkbox_activate_hover.checked = false;
         changeTextOnHover = false;
         show_hover_params.style.display = "none";
@@ -218,6 +204,52 @@ components.forEach(component=>{
         refreshWidget();
     })
 })
+
+const prepareParameters = (type)=>{
+    currentWidget.widgetCode.baseCode = {...widgets.defaultBaseCode};
+    currentWidget.widgetCode.hoverCode = {...widgets.defaultHoverCode};
+
+    switch(type){
+        case "button":
+            document.getElementById("label_text_component").textContent = "Texte du bouton";
+            document.getElementById("label_text_hover").style.display = "block";
+            document.getElementById("label_color_placeholder").style.display = "none";
+            color_placeholder.style.display = "none";
+            text_widget_hover.style.display = "block";
+            currentWidget.widgetCode.textContent = "Bouton";
+            widgetsList[currentWidget.name].textContent = "Bouton";
+            text_widget.value = "Bouton";
+            text_widget_hover.value = "";
+            text_widget.style.display = "block";
+        break;
+        case "input":
+            document.getElementById("label_text_component").textContent = "PlaceHolder de l'input";
+            document.getElementById("label_text_hover").style.display = "none";
+            document.getElementById("label_color_placeholder").style.display = "block";
+            color_placeholder.style.display = "block";
+            text_widget_hover.style.display = "none";
+            currentWidget.widgetCode.textContent = "";
+            widgetsList[currentWidget.name].textContent = "";
+            text_widget.value = "Saisissez votre texte ici...";
+            widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
+        break;
+        case "link":
+            document.getElementById("label_text_component").textContent = "Texte du lien";
+            document.getElementById("label_text_hover").style.display = "block";
+            document.getElementById("label_color_placeholder").style.display = "none";
+            currentWidget.widgetCode.baseCode["color"] = "white";
+            currentWidget.widgetCode.baseCode["border"] = "";
+            currentWidget.widgetCode.baseCode["background-color"] = "";
+            color_placeholder.style.display = "none";
+            text_widget_hover.style.display = "block";
+            currentWidget.widgetCode.textContent = "Ceci est un lien";
+            widgetsList[currentWidget.name].textContent = "Ceci est un lien";
+            text_widget.value = "Ceci est un lien";
+            text_widget_hover.value = "";
+            text_widget.style.display = "block";
+        break;
+    }
+}
 
 widgets.updateHtml(currentWidget.name);
 
@@ -231,7 +263,6 @@ document.head.appendChild(tmpStyle);
 ////////////////////////////////// FUNCTIONS //////////////////////////////////
 const refreshWidget = () =>{
     let cssTextArea = '';
-    let cssTextCode = '';
 
     cssTextArea = '.'+ currentWidget.widgetCode.classname + '{\n';
 
@@ -240,10 +271,14 @@ const refreshWidget = () =>{
             continue;
         }
         cssTextArea+= `  ${property} : ${currentWidget.widgetCode.baseCode[property]}\n`;
-        cssTextCode+= `${property} : ${currentWidget.widgetCode.baseCode[property]}`;
     }
-    cssTextCode += '}'
     cssTextArea += '}\n\n';
+
+    if (currentWidget.name == "input"){
+        cssTextArea += '.input::placeholder{\n'
+        cssTextArea += `  color: ${color_placeholder.value};\n`
+        cssTextArea += '}\n'
+    }
 
     if (checkbox_activate_hover.checked){
 
@@ -256,7 +291,7 @@ const refreshWidget = () =>{
 
             cssTextArea+= `  ${property} : ${currentWidget.widgetCode.hoverCode[property]}\n`;
         }
-        cssTextArea += '}';
+        cssTextArea += '}\n';
 
         if (changeTextOnHover){
             cssTextArea += '\n\n.'+currentWidget.widgetCode.classname+':hover span{\n';
@@ -510,7 +545,11 @@ range_letters_spacing_hover.addEventListener("input", ()=>{
 })
 
 text_widget.addEventListener("input", ()=>{
-    widgetsList[currentWidget.name].textContent = text_widget.value;
+    if (currentWidget.name == "input"){
+        widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
+    } else {
+        widgetsList[currentWidget.name].textContent = text_widget.value;
+    }
     currentWidget.widgetCode.textContent = text_widget.value;
     widgets.updateTextContent(currentWidget.name, text_widget.value);
     widgets.updateHtml(currentWidget.name);
@@ -534,6 +573,18 @@ widgetsList[currentWidget.name].addEventListener("mouseenter", ()=>{
 })
 
 widgetsList[currentWidget.name].addEventListener("mouseleave", ()=>{
+    if (changeTextOnHover){
+        widgetsList[currentWidget.name].textContent = text_widget.value;
+    }
+})
+
+link_cstm.addEventListener("mouseenter", ()=>{
+    if (changeTextOnHover){
+        link_cstm.textContent = text_widget_hover.textContent;
+    }
+})
+
+link_cstm.addEventListener("mouseleave", ()=>{
     if (changeTextOnHover){
         widgetsList[currentWidget.name].textContent = text_widget.value;
     }
@@ -752,6 +803,10 @@ color_text.addEventListener("input", ()=>{
 
 color_text_hover.addEventListener("input", ()=>{
     currentWidget.widgetCode.hoverCode["color"] = `${color_text_hover.value};`
+    refreshWidget();
+})
+
+color_placeholder.addEventListener("input", ()=>{
     refreshWidget();
 })
 
