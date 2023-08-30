@@ -220,7 +220,11 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "Texte du bouton";
             document.getElementById("label_text_hover").style.display = "block";
             document.getElementById("label_color_placeholder").style.display = "none";
+            params_input_text.style.display = "none";
+            link_text.style.display = "block";
+            link_text_hover.style.display = "block";
             link_input_text_parameters.style.display = "none";
+            color_placeholder.value = "#595959";
             color_placeholder.style.display = "none";
             text_widget_hover.style.display = "block";
             currentWidget.widgetCode.textContent = "Bouton";
@@ -228,6 +232,21 @@ const prepareParameters = (type)=>{
             text_widget.value = "Bouton";
             text_widget_hover.value = "";
             text_widget.style.display = "block";
+            //ENABLE GRADIENT//
+            checkbox_linear_background.style.display = "inline-block";
+            document.getElementById("label_text_gradient").style.display = "block";
+            document.getElementById("label_direction_gradient").style.display = "block";
+            span_arrow_linear_gradient.style.display = "block";
+            color_gradient_first.style.display = "inline-block";
+            color_gradient_second.style.display = "inline-block";
+            
+            checkbox_linear_background_hover.style.display = "inline-block";
+            document.getElementById("label_text_gradient_hover").style.display = "block";
+            document.getElementById("label_direction_gradient_hover").style.display = "block";
+            span_arrow_linear_gradient_hover.style.display = "block";
+            color_gradient_first_hover.style.display = "inline-block";
+            color_gradient_second_hover.style.display = "inline-block";
+            ///////////
         break;
         case "input":
             document.getElementById("label_text_component").textContent = "PlaceHolder de l'input";
@@ -239,23 +258,117 @@ const prepareParameters = (type)=>{
             currentWidget.widgetCode.textContent = "";
             widgetsList[currentWidget.name].textContent = "";
             text_widget.value = "Saisissez votre texte ici...";
+            //ENABLE GRADIENT//
+            checkbox_linear_background.style.display = "inline-block";
+            document.getElementById("label_text_gradient").style.display = "block";
+            document.getElementById("label_direction_gradient").style.display = "block";
+            span_arrow_linear_gradient.style.display = "block";
+            color_gradient_first.style.display = "inline-block";
+            color_gradient_second.style.display = "inline-block";
+            
+            checkbox_linear_background_hover.style.display = "inline-block";
+            document.getElementById("label_text_gradient_hover").style.display = "block";
+            document.getElementById("label_direction_gradient_hover").style.display = "block";
+            span_arrow_linear_gradient_hover.style.display = "block";
+            color_gradient_first_hover.style.display = "inline-block";
+            color_gradient_second_hover.style.display = "inline-block";
+            ///////////
             widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
+        break;
+        case "range":
+            document.getElementById("label_text_component").textContent = "";
+            document.getElementById("label_text_hover").style.display = "none";
+            document.getElementById("label_color_placeholder").style.display = "none";
+            params_input_text.style.display = "none";
+            link_input_text_parameters.style.display = "none";
+            color_placeholder.style.display = "none";
+            color_placeholder.value = "#595959";
+            text_widget_hover.style.display = "none";
+            currentWidget.widgetCode.textContent = "";
+            widgetsList[currentWidget.name].textContent = "";
+            text_widget.style.display = "none";
+            link_text.style.display = "none";
+            link_text_hover.style.display = "none";
+            //DISABLE GRADIENT//
+            checkbox_linear_background.style.display = "none";
+            document.getElementById("label_text_gradient").style.display = "none";
+            document.getElementById("label_direction_gradient").style.display = "none";
+            span_arrow_linear_gradient.style.display = "none";
+            color_gradient_first.style.display = "none";
+            color_gradient_second.style.display = "none";
+
+            checkbox_linear_background_hover.style.display = "none";
+            document.getElementById("label_text_gradient_hover").style.display = "none";
+            document.getElementById("label_direction_gradient_hover").style.display = "none";
+            span_arrow_linear_gradient_hover.style.display = "none";
+            color_gradient_first_hover.style.display = "none";
+            color_gradient_second_hover.style.display = "none";
+            ///////////
+        break;
+        case "checkbox":
+            document.getElementById("label_text_component").textContent = "";
+            document.getElementById("label_text_hover").style.display = "none";
+            document.getElementById("label_color_placeholder").style.display = "none";
+            params_input_text.style.display = "none";
+            link_input_text_parameters.style.display = "none";
+            color_placeholder.style.display = "none";
+            color_placeholder.value = "#595959";
+            text_widget_hover.style.display = "none";
+            currentWidget.widgetCode.textContent = "";
+            widgetsList[currentWidget.name].textContent = "";
+            text_widget.style.display = "none";
+            link_text.style.display = "none";
+            link_text_hover.style.display = "none";
+            //DISABLE GRADIENT//
+            checkbox_linear_background.style.display = "none";
+            document.getElementById("label_text_gradient").style.display = "none";
+            document.getElementById("label_direction_gradient").style.display = "none";
+            span_arrow_linear_gradient.style.display = "none";
+            color_gradient_first.style.display = "none";
+            color_gradient_second.style.display = "none";
+
+            checkbox_linear_background_hover.style.display = "none";
+            document.getElementById("label_text_gradient_hover").style.display = "none";
+            document.getElementById("label_direction_gradient_hover").style.display = "none";
+            span_arrow_linear_gradient_hover.style.display = "none";
+            color_gradient_first_hover.style.display = "none";
+            color_gradient_second_hover.style.display = "none";
+            ///////////
         break;
         case "link":
             document.getElementById("label_text_component").textContent = "Texte du lien";
             document.getElementById("label_text_hover").style.display = "block";
             document.getElementById("label_color_placeholder").style.display = "none";
+            params_input_text.style.display = "none";
+            link_text.style.display = "block";
+            link_text_hover.style.display = "block";
             link_input_text_parameters.style.display = "none";
             currentWidget.widgetCode.baseCode["color"] = "white";
             currentWidget.widgetCode.baseCode["border"] = "";
             currentWidget.widgetCode.baseCode["background-color"] = "";
             color_placeholder.style.display = "none";
+            color_placeholder.value = "#595959";
             text_widget_hover.style.display = "block";
             currentWidget.widgetCode.textContent = "Ceci est un lien";
             widgetsList[currentWidget.name].textContent = "Ceci est un lien";
             text_widget.value = "Ceci est un lien";
             text_widget_hover.value = "";
             text_widget.style.display = "block";
+            //ENABLE GRADIENT//
+            checkbox_linear_background.style.display = "inline-block";
+            document.getElementById("label_text_gradient").style.display = "block";
+            document.getElementById("label_direction_gradient").style.display = "block";
+            span_arrow_linear_gradient.style.display = "block";
+            color_gradient_first.style.display = "inline-block";
+            color_gradient_second.style.display = "inline-block";
+
+            checkbox_linear_background_hover.style.display = "inline-block";
+            document.getElementById("label_text_gradient_hover").style.display = "block";
+            document.getElementById("label_direction_gradient_hover").style.display = "block";
+            span_arrow_linear_gradient_hover.style.display = "block";
+            color_gradient_first_hover.style.display = "inline-block";
+            color_gradient_second_hover.style.display = "inline-block";
+            ///////////
         break;
     }
 }
@@ -508,6 +621,10 @@ checkbox_activate_hover.addEventListener("click", ()=>{
         }
     } else {
         changeTextOnHover = false;
+        currentWidget.widgetCode.baseCode["transition"] = '';
+        currentWidget.widgetCode.hoverCode["transition"] = '';
+        range_transition_hover_begin.value = 0;
+        range_transition_hover_end.value = 0;
         show_hover_params.style.display = "none";
     }
     widgets.updateHtml(currentWidget.name, changeTextOnHover);
@@ -1082,11 +1199,17 @@ range_fontsize_hover.addEventListener("input", ()=>{
 
 range_padding.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["padding"] = `${range_padding.value}px;`;
+    if (range_padding.value == 0){
+        currentWidget.widgetCode.baseCode["padding"] = '';
+    }
     refreshWidget();
 })
 
 range_margin.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["margin"] = `${range_margin.value}px;`;
+    if (range_margin.value == 0){
+        currentWidget.widgetCode.baseCode["margin"] = '';
+    }
     refreshWidget();
 })
 

@@ -33,7 +33,8 @@ export class Widgets {
                 "background":"",
                 "filter":"",
                 "transition":"",
-                "content": ""
+                "content": "",
+                "outline":""
             },
             hoverCode : {
                 "width":"",
@@ -62,7 +63,8 @@ export class Widgets {
                 "background":"",
                 "filter":"",
                 "transition":"",
-                "content": ""
+                "content": "",
+                "outline":""
             },
             textContent : "Bouton",
             placeHolder : "Saisissez votre texte ici...",
