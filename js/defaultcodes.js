@@ -29,7 +29,8 @@ export const DefaultCodes = () =>{
             "filter":"",
             "transition":"",
             "content": "",
-            "outline":""
+            "outline":"",
+            "accent-color":""
         },
         hover : {
             "width":"",
@@ -59,7 +60,8 @@ export const DefaultCodes = () =>{
             "filter":"",
             "transition":"",
             "content": "",
-            "outline":""
+            "outline":"",
+            "accent-color":""
         }
     }
 }

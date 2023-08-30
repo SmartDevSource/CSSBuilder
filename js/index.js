@@ -171,6 +171,10 @@ const color_gradient_second_hover = document.getElementById("color_gradient_seco
 const span_arrow_linear_gradient = document.getElementById("span_arrow_linear_gradient");
 const span_arrow_linear_gradient_hover = document.getElementById("span_arrow_linear_gradient_hover");
 
+/// BORDERS DIVS ///
+const borders_corners = document.getElementById("borders_corners");
+const borders_corners_hover = document.getElementById("borders_corners_hover");
+
 ////////////////////////////////// CODE //////////////////////////////////
 const code_css = document.getElementById("code_css");
 const code_html = document.getElementById("code_html");
@@ -247,6 +251,8 @@ const prepareParameters = (type)=>{
             color_gradient_first_hover.style.display = "inline-block";
             color_gradient_second_hover.style.display = "inline-block";
             ///////////
+            borders_corners.style.display = "flex";
+            borders_corners_hover.style.display = "flex";
         break;
         case "input":
             document.getElementById("label_text_component").textContent = "PlaceHolder de l'input";
@@ -274,6 +280,8 @@ const prepareParameters = (type)=>{
             color_gradient_second_hover.style.display = "inline-block";
             ///////////
             widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
+            borders_corners.style.display = "flex";
+            borders_corners_hover.style.display = "flex";
         break;
         case "range":
             document.getElementById("label_text_component").textContent = "";
@@ -304,6 +312,8 @@ const prepareParameters = (type)=>{
             color_gradient_first_hover.style.display = "none";
             color_gradient_second_hover.style.display = "none";
             ///////////
+            borders_corners.style.display = "flex";
+            borders_corners_hover.style.display = "flex";
         break;
         case "checkbox":
             document.getElementById("label_text_component").textContent = "";
@@ -334,6 +344,8 @@ const prepareParameters = (type)=>{
             color_gradient_first_hover.style.display = "none";
             color_gradient_second_hover.style.display = "none";
             ///////////
+            borders_corners.style.display = "none";
+            borders_corners_hover.style.display = "none";
         break;
         case "link":
             document.getElementById("label_text_component").textContent = "Texte du lien";
@@ -369,6 +381,8 @@ const prepareParameters = (type)=>{
             color_gradient_first_hover.style.display = "inline-block";
             color_gradient_second_hover.style.display = "inline-block";
             ///////////
+            borders_corners.style.display = "flex";
+            borders_corners_hover.style.display = "flex";
         break;
     }
 }
@@ -956,18 +970,39 @@ color_placeholder.addEventListener("input", ()=>{
 })
 
 color_background.addEventListener("input", ()=>{
-    currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`
+    if (currentWidget.name != "checkbox"){
+        currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`
+    } else {
+        currentWidget.widgetCode.baseCode["accent-color"] = `${color_background.value};`
+    }
     refreshWidget();
 })
 
 color_background_hover.addEventListener("input", ()=>{
-    currentWidget.widgetCode.hoverCode["background-color"] = `${color_background_hover.value};`
+    if (currentWidget.name != "checkbox"){
+        currentWidget.widgetCode.hoverCode["background-color"] = `${color_background_hover.value};`
+    } else {
+        currentWidget.widgetCode.hoverCode["accent-color"] = `${color_background_hover.value};`
+    }
     refreshWidget();
 })
 
 //// COLOR BORDERS ////
 color_borders.addEventListener("input", ()=>{
-    currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
+    if (currentWidget.name != "checkbox"){
+        currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
+    } else {
+        currentWidget.widgetCode.baseCode["outline"] = `${range_borders.value}px solid ${color_borders.value};`;
+    }
+    refreshWidget();
+})
+
+color_borders_hover.addEventListener("input", ()=>{
+    if (currentWidget.name != "checkbox"){
+        currentWidget.widgetCode.hoverCode["border"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+    } else {
+        currentWidget.widgetCode.hoverCode["outline"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+    }
     refreshWidget();
 })
 
@@ -988,11 +1023,6 @@ color_border_right.addEventListener("input", ()=>{
 
 color_border_bottom.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["border-bottom"] = `${range_border_bottom.value}px solid ${color_border_bottom.value};`
-    refreshWidget();
-})
-
-color_borders_hover.addEventListener("input", ()=>{
-    currentWidget.widgetCode.hoverCode["border"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
     refreshWidget();
 })
 
@@ -1083,19 +1113,35 @@ link_borders_hover.addEventListener("click", ()=>{
 })
 
 range_borders.addEventListener("input", ()=>{
-    if (range_borders.value>0){
-        currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
+    if (currentWidget.name != "checkbox"){
+        if (range_borders.value>0){
+            currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
+        } else {
+            currentWidget.widgetCode.baseCode["border"] = '';
+        }
     } else {
-        currentWidget.widgetCode.baseCode["border"] = '';
+        if (range_borders.value>0){
+            currentWidget.widgetCode.baseCode["outline"] = `${range_borders.value}px solid ${color_borders.value};`;
+        } else {
+            currentWidget.widgetCode.baseCode["outline"] = '';
+        }
     }
     refreshWidget();
 })
 
 range_borders_hover.addEventListener("input", ()=>{
-    if (range_borders_hover.value>0){
-        currentWidget.widgetCode.hoverCode["border"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+    if (currentWidget.name != "checkbox"){
+        if (range_borders_hover.value>0){
+            currentWidget.widgetCode.hoverCode["border"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+        } else {
+            currentWidget.widgetCode.hoverCode["border"] = '';
+        }
     } else {
-        currentWidget.widgetCode.hoverCode["border"] = '';
+        if (range_borders_hover.value>0){
+            currentWidget.widgetCode.hoverCode["outline"] = `${range_borders_hover.value}px solid ${color_borders_hover.value};`;
+        } else {
+            currentWidget.widgetCode.hoverCode["outline"] = '';
+        }
     }
     refreshWidget();
 })

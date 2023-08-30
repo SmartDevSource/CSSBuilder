@@ -34,7 +34,8 @@ export class Widgets {
                 "filter":"",
                 "transition":"",
                 "content": "",
-                "outline":""
+                "outline":"",
+                "accent-color":""
             },
             hoverCode : {
                 "width":"",
@@ -64,7 +65,8 @@ export class Widgets {
                 "filter":"",
                 "transition":"",
                 "content": "",
-                "outline":""
+                "outline":"",
+                "accent-color":""
             },
             textContent : "Bouton",
             placeHolder : "Saisissez votre texte ici...",
