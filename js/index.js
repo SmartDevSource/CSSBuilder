@@ -72,6 +72,7 @@ const range_outline_text_hover = document.getElementById("range_outline_text_hov
 const show_hover_params = document.getElementById("show_hover_params");
 const show_adjust_size = document.getElementById("show_adjust_size");
 const show_adjust_size_hover = document.getElementById("show_adjust_size_hover");
+const show_checkbox_checked = document.getElementById("show_checkbox_checked");
 
 /// LINKS ///
 const link_dimensions = document.getElementById("link_dimensions");
@@ -90,6 +91,7 @@ const link_text = document.getElementById("link_text");
 const link_text_hover = document.getElementById("link_text_hover");
 const link_cursor = document.getElementById("link_cursor");
 const link_input_text_parameters = document.getElementById("link_input_text_parameters");
+const link_rangebar_parameters = document.getElementById("link_rangebar_parameters");
 
 /// NAVLINKS ///
 const navlink_parameters = document.getElementById("navlink_parameters");
@@ -110,6 +112,7 @@ const params_cursor = document.getElementById("params_cursor");
 const params_dimensions = document.getElementById("params_dimensions");
 const params_dimensions_hover = document.getElementById("params_dimensions_hover");
 const params_input_text = document.getElementById("params_input_text");
+const params_rangebar = document.getElementById("params_rangebar");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
@@ -133,6 +136,7 @@ const checkbox_linear_background_hover = document.getElementById("checkbox_linea
 const checkbox_activate_hover = document.getElementById("checkbox_activate_hover");
 const checkbox_adjust_size = document.getElementById("checkbox_adjust_size");
 const checkbox_adjust_size_hover = document.getElementById("checkbox_adjust_size_hover");
+const checkbox_checked = document.getElementById("checkbox_checked");
 
 const text_widget = document.getElementById("text_widget");
 const text_widget_hover = document.getElementById("text_widget_hover");
@@ -156,6 +160,10 @@ const color_border_top_hover = document.getElementById("color_border_top_hover")
 const color_border_right_hover = document.getElementById("color_border_right_hover");
 const color_border_bottom_hover = document.getElementById("color_border_bottom_hover");
 
+/// COLOR CURSOR RANGE ///
+const color_range_cursor = document.getElementById("color_range_cursor");
+const color_range_cursor_hover = document.getElementById("color_range_cursor_hover");
+
 /// COLORS SHADOW ///
 const color_shadow = document.getElementById("color_shadow");
 const color_shadow_hover = document.getElementById("color_shadow_hover");
@@ -174,6 +182,12 @@ const span_arrow_linear_gradient_hover = document.getElementById("span_arrow_lin
 /// BORDERS DIVS ///
 const borders_corners = document.getElementById("borders_corners");
 const borders_corners_hover = document.getElementById("borders_corners_hover");
+
+/// RANGEBAR VALUES ///
+const rangebar_defaultvalue = document.getElementById("rangebar_defaultvalue");
+const rangebar_step = document.getElementById("rangebar_step");
+const rangebar_minvalue = document.getElementById("rangebar_minvalue");
+const rangebar_maxvalue = document.getElementById("rangebar_maxvalue");
 
 ////////////////////////////////// CODE //////////////////////////////////
 const code_css = document.getElementById("code_css");
@@ -224,6 +238,13 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "Texte du bouton";
             document.getElementById("label_text_hover").style.display = "block";
             document.getElementById("label_color_placeholder").style.display = "none";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            show_checkbox_checked.style.display = "none";
             params_input_text.style.display = "none";
             link_text.style.display = "block";
             link_text_hover.style.display = "block";
@@ -258,6 +279,14 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "PlaceHolder de l'input";
             document.getElementById("label_text_hover").style.display = "none";
             document.getElementById("label_color_placeholder").style.display = "block";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            text_widget.style.display = "block";
+            show_checkbox_checked.style.display = "none";
             link_input_text_parameters.style.display = "block";
             color_placeholder.style.display = "block";
             text_widget_hover.style.display = "none";
@@ -287,6 +316,14 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "";
             document.getElementById("label_text_hover").style.display = "none";
             document.getElementById("label_color_placeholder").style.display = "none";
+            document.getElementById("label_range_padding").style.display = "none";
+            document.getElementById("label_range_cursorcolor").style.display = "block";
+            color_range_cursor.style.display = "block";
+            color_range_cursor_hover.style.display = "block";
+            currentWidget.widgetCode.baseCode["padding"] = '';
+            range_padding.style.display = "none";
+            link_rangebar_parameters.style.display = "block";
+            show_checkbox_checked.style.display = "none";
             params_input_text.style.display = "none";
             link_input_text_parameters.style.display = "none";
             color_placeholder.style.display = "none";
@@ -297,20 +334,20 @@ const prepareParameters = (type)=>{
             text_widget.style.display = "none";
             link_text.style.display = "none";
             link_text_hover.style.display = "none";
-            //DISABLE GRADIENT//
-            checkbox_linear_background.style.display = "none";
-            document.getElementById("label_text_gradient").style.display = "none";
-            document.getElementById("label_direction_gradient").style.display = "none";
-            span_arrow_linear_gradient.style.display = "none";
-            color_gradient_first.style.display = "none";
-            color_gradient_second.style.display = "none";
-
-            checkbox_linear_background_hover.style.display = "none";
-            document.getElementById("label_text_gradient_hover").style.display = "none";
-            document.getElementById("label_direction_gradient_hover").style.display = "none";
-            span_arrow_linear_gradient_hover.style.display = "none";
-            color_gradient_first_hover.style.display = "none";
-            color_gradient_second_hover.style.display = "none";
+            //ENABLE GRADIENT//
+            checkbox_linear_background.style.display = "inline-block";
+            document.getElementById("label_text_gradient").style.display = "block";
+            document.getElementById("label_direction_gradient").style.display = "block";
+            span_arrow_linear_gradient.style.display = "block";
+            color_gradient_first.style.display = "inline-block";
+            color_gradient_second.style.display = "inline-block";
+            
+            checkbox_linear_background_hover.style.display = "inline-block";
+            document.getElementById("label_text_gradient_hover").style.display = "block";
+            document.getElementById("label_direction_gradient_hover").style.display = "block";
+            span_arrow_linear_gradient_hover.style.display = "block";
+            color_gradient_first_hover.style.display = "inline-block";
+            color_gradient_second_hover.style.display = "inline-block";
             ///////////
             borders_corners.style.display = "flex";
             borders_corners_hover.style.display = "flex";
@@ -319,6 +356,13 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "";
             document.getElementById("label_text_hover").style.display = "none";
             document.getElementById("label_color_placeholder").style.display = "none";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            show_checkbox_checked.style.display = "contents";
             params_input_text.style.display = "none";
             link_input_text_parameters.style.display = "none";
             color_placeholder.style.display = "none";
@@ -351,6 +395,13 @@ const prepareParameters = (type)=>{
             document.getElementById("label_text_component").textContent = "Texte du lien";
             document.getElementById("label_text_hover").style.display = "block";
             document.getElementById("label_color_placeholder").style.display = "none";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            show_checkbox_checked.style.display = "none";
             params_input_text.style.display = "none";
             link_text.style.display = "block";
             link_text_hover.style.display = "block";
@@ -402,12 +453,18 @@ const refreshWidget = () =>{
 
     cssTextArea = '.'+ currentWidget.widgetCode.classname + '{\n';
 
+    if (currentWidget.name == "range"){
+        cssTextArea += '  -webkit-appearance: none;\n';
+        cssTextArea += '  background-color: transparent;\n';
+    }
+
     for(const property in currentWidget.widgetCode.baseCode){
         if (currentWidget.widgetCode.baseCode[property] == ''){
             continue;
         }
         cssTextArea+= `  ${property} : ${currentWidget.widgetCode.baseCode[property]}\n`;
     }
+
     cssTextArea += '}\n\n';
 
     if (currentWidget.name == "input"){
@@ -496,7 +553,46 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
-// INPUT PARAMETERS //
+/// RANGEBAR PARAMETERS ///
+link_rangebar_parameters.addEventListener("click", ()=>{
+    params_rangebar.style.display = params_rangebar.style.display == "none" ? "block" : "none";
+})
+
+color_range_cursor.addEventListener("input", ()=>{
+    currentWidget.widgetCode.baseCode["color"] = '';
+    currentWidget.widgetCode.baseCode["accent-color"] = `${color_range_cursor.value};`;
+    refreshWidget();
+})
+
+color_range_cursor_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["color"] = '';
+    currentWidget.widgetCode.hoverCode["accent-color"] = `${color_range_cursor_hover.value};`;
+    refreshWidget();
+})
+
+rangebar_defaultvalue.addEventListener("input", ()=>{
+    
+})
+
+rangebar_step.addEventListener("input", ()=>{
+
+})
+
+rangebar_minvalue.addEventListener("input", ()=>{
+
+})
+
+rangebar_maxvalue.addEventListener("input", ()=>{
+
+})
+
+/// CHECKBOX PARAMETERS ///
+checkbox_checked.addEventListener("click", ()=>{
+    widgets.updateHtml(currentWidget.name, false, checkbox_checked.checked);
+    refreshWidget();
+})
+
+/// INPUT PARAMETERS ///
 link_input_text_parameters.addEventListener("click", ()=>{
     params_input_text.style.display = params_input_text.style.display == "none" ? "block" : "none";
 })

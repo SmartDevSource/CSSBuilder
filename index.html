@@ -25,7 +25,10 @@
             <input class = "" type = "text" value = "Bouton" id = "text_widget" style = "text-align: center;"/>
             <!-- <label>Nom de la classe</label>
             <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/> -->
-            <label class = "mt10">Espacement intérieur</label>
+            <div id = "show_checkbox_checked" style = "display: none;">
+                <label class = "mt10">Checkbox cochée par défaut <input type = "checkbox" id = "checkbox_checked"/></label>
+            </div>
+            <label class = "mt10" id = "label_range_padding">Espacement intérieur</label>
             <input type = "range" min = "0" max = "500" value = "5" id = "range_padding">
             <label>Marge extérieur</label>
             <input type = "range" min = "0" max = "200" value = "10" id = "range_margin">
@@ -40,6 +43,23 @@
                     <span class = "m10 block borderhover" id = "input_type_text">Texte</span>
                     <span class = "m10 block borderhover" id = "input_type_password">Mot de passe</span>
                 </div>
+            </div>
+
+            <!--PARAMETRES DE LA RANGEBAR-->
+            <label class = "linkbox mt10" id = "link_rangebar_parameters" style="display: none;">Paramètres de la rangebar</label>
+            <div class = "flexcol params-container" style = "display: none;" id = "params_rangebar">
+                <label class = "m5 block">Valeur par défaut
+                    <input id = "rangebar_defaultvalue" value = "5" style = "width: 30px" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="0" maxlength="4"/>
+                </label>
+                <label class = "m5 block">Valeur d'intervalle
+                    <input id = "rangebar_step" value = "1" style = "width: 30px" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="0" maxlength="4"/>
+                </label>
+                <label class = "m5 block">Valeur minimale
+                    <input id="rangebar_minvalue" value = "0" style="width: 30px" type="text" oninput="this.value = this.value.replace(/[^0-9.\-]|([^-]*\-[^-]*)/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="0" maxlength="4"/>
+                </label>
+                <label class = "m5 block">Valeur maximale
+                    <input id="rangebar_maxvalue" value = "10" style="width: 30px" type="text" oninput="this.value = this.value.replace(/[^0-9.\-]|([^-]*\-[^-]*)/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="0" maxlength="4"/>    
+                </label>
             </div>
 
             <!--TEXT-->
@@ -81,6 +101,8 @@
                 <input type = "color"  value = "#595959" id = "color_placeholder" style = "display: none;">
                 <label class = "mt10">Niveau de flou</label>
                 <input class = "mb10" type = "range" min = "0" max = "50" step = "0.5" value = "0" id = "range_blur">
+                <label id = "label_range_cursorcolor">Couleur du curseur</label>
+                <input class = "mb10" type = "color" value="#ffffff" id = "color_range_cursor">
                 <label>Couleur du fond</label>
                 <input class = "mb10" type = "color" value="#ffffff" id = "color_background">
                 <label id = "label_text_gradient">Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background"></label>
@@ -219,6 +241,8 @@
                 <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors_hover">
                     <label class = "mt10">Niveau de flou</label>
                     <input class = "mb10" type = "range" min = "0" max = "50" step = "0.5" value = "0" id = "range_blur_hover">
+                    <label id = "label_range_cursorcolor_hover">Couleur du curseur</label>
+                    <input class = "mb10" type = "color" value="#ffffff" id = "color_range_cursor_hover">
                     <label>Couleur du fond</label>
                     <input class = "mb10" type = "color" value="#ffffff" id = "color_background_hover">
                     <label id = "label_text_gradient_hover">Dégradé du fond <input type = "checkbox" id = "checkbox_linear_background_hover"></label>
@@ -311,7 +335,7 @@
     <div class = "widget-container centerscreen">
         <button class = "button" id = "button_cstm">Bouton</button>
         <input class = "input" type = "text" id = "input_cstm" placeholder = "" style = "display: none;"></input>
-        <input class = "range" type = "range" id = "range_cstm" style = "display: none;"></input>
+        <input class = "range" type = "range" min = "0" max = "10" value = "5" step = "1" id = "range_cstm" style = "display: none;"></input>
         <input class = "checkbox" type = "checkbox" id = "checkbox_cstm" style = "display: none;"></input>
         <a class = "link" href = "javascript:void(0)" id = "link_cstm" style = "display: none;">Ceci est un lien.</a>
     </div>

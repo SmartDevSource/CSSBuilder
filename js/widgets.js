@@ -92,7 +92,7 @@ export class Widgets {
         }
     }
 
-    updateHtml = (type, textHover = false) =>{
+    updateHtml = (type, textHover = false, isChecked = false) =>{
         let originalClassname = this.widget.classname.split('.{').join('');
         let simplifiedClassname = originalClassname.replace(/[.{]/g, '');
         
@@ -108,7 +108,7 @@ export class Widgets {
                 this.widget.html = `<input type = "range" class = "${simplifiedClassname}"></input>`;
             break;
             case "checkbox":
-                this.widget.html = `<input type = "checkbox" class = "${simplifiedClassname}"></input>`;
+                this.widget.html = `<input type = "checkbox" class = "${simplifiedClassname}"${isChecked ? " checked":""}></input>`;
             break;
             case "link":
                 (!textHover) ? this.widget.html = `<a href = "" class = "${simplifiedClassname}">${this.widget.textContent}</a>` :
