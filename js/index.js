@@ -243,6 +243,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -286,6 +287,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "block";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -326,6 +328,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "none";
             document.getElementById("label_range_cursorcolor").style.display = "block";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "block";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "block";
@@ -367,6 +370,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -409,6 +413,7 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
