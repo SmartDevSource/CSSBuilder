@@ -571,19 +571,31 @@ color_range_cursor_hover.addEventListener("input", ()=>{
 })
 
 rangebar_defaultvalue.addEventListener("input", ()=>{
-    
+    widgets.widget.value = rangebar_defaultvalue.value;
+    range_cstm.setAttribute("value", rangebar_defaultvalue.value);
+    widgets.updateHtml(currentWidget.name);
+    refreshWidget();
 })
 
 rangebar_step.addEventListener("input", ()=>{
-
+    widgets.widget.step = rangebar_step.value;
+    range_cstm.setAttribute("step", rangebar_step.value);
+    widgets.updateHtml(currentWidget.name);
+    refreshWidget();
 })
 
 rangebar_minvalue.addEventListener("input", ()=>{
-
+    widgets.widget.min = rangebar_minvalue.value;
+    range_cstm.setAttribute("min", rangebar_minvalue.value);
+    widgets.updateHtml(currentWidget.name);
+    refreshWidget();
 })
 
 rangebar_maxvalue.addEventListener("input", ()=>{
-
+    widgets.widget.max = rangebar_maxvalue.value;
+    range_cstm.setAttribute("max", rangebar_maxvalue.value);
+    widgets.updateHtml(currentWidget.name);
+    refreshWidget();
 })
 
 /// CHECKBOX PARAMETERS ///

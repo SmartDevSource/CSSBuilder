@@ -70,7 +70,11 @@ export class Widgets {
             },
             textContent : "Bouton",
             placeHolder : "Saisissez votre texte ici...",
-            inputType : "text"
+            inputType : "text",
+            step : 1,
+            min : 0,
+            max : 10,
+            value : 5
         };
 
         this.updateHtml();
@@ -105,7 +109,7 @@ export class Widgets {
                 this.widget.html = `<input type = "${this.widget.inputType}" class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"></input>`;
             break;
             case "range":
-                this.widget.html = `<input type = "range" class = "${simplifiedClassname}"></input>`;
+                this.widget.html = `<input type = "range" class = "${simplifiedClassname}" value = "${this.widget.value}" min = "${this.widget.min}" max = "${this.widget.max}" step = "${this.widget.step}"></input>`;
             break;
             case "checkbox":
                 this.widget.html = `<input type = "checkbox" class = "${simplifiedClassname}"${isChecked ? " checked":""}></input>`;
