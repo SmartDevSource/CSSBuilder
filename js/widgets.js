@@ -114,9 +114,16 @@ export class Widgets {
             case "checkbox":
                 this.widget.html = `<input type = "checkbox" class = "${simplifiedClassname}"${isChecked ? " checked":""}></input>`;
             break;
+            case "radio":
+                this.widget.html = `<input type = "radio" class = "${simplifiedClassname}"${isChecked ? " checked":""}></input>`;
+            break;
             case "link":
                 (!textHover) ? this.widget.html = `<a href = "" class = "${simplifiedClassname}">${this.widget.textContent}</a>` :
                                this.widget.html = `<a href = "" class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></a>`;
+            break;
+            case "label":
+                (!textHover) ? this.widget.html = `<label class = "${simplifiedClassname}">${this.widget.textContent}</a>` :
+                               this.widget.html = `<label class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></label>`;
             break;
         }
     }

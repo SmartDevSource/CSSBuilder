@@ -26,7 +26,7 @@
             <!-- <label>Nom de la classe</label>
             <input type = "text" value = "myButton" id = "classname_widget" style = "text-align: center;"/> -->
             <div id = "show_checkbox_checked" style = "display: none;">
-                <label class = "mt10">Checkbox cochée par défaut <input type = "checkbox" id = "checkbox_checked"/></label>
+                <label class = "mt10">Coché par défaut <input type = "checkbox" id = "checkbox_checked"/></label>
             </div>
             <label class = "mt10" id = "label_range_padding">Espacement intérieur</label>
             <input type = "range" min = "0" max = "500" value = "5" id = "range_padding">
@@ -97,6 +97,8 @@
             <!--COLORS-->
             <label class = "linkbox" id = "link_colors">Couleurs</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
+                <label class = "mr5 ml5 mt10" id = "label_color_focus">Couleur après un clique <input type = "checkbox" id = "checkbox_focus_color"/></label>
+                <input type = "color"  value = "#595959" id = "color_focus">
                 <label class = "mr5 ml5 mt10" id = "label_color_placeholder" style = "display: none;">Couleur du placeholder</label>
                 <input type = "color"  value = "#595959" id = "color_placeholder" style = "display: none;">
                 <label class = "mt10">Niveau de flou</label>
@@ -324,10 +326,12 @@
         <div class = "panel-container flexcol">
             <span class = "panel-header mb10">Composants</span>
             <button class = "select-component bradius hovertranslate component" name = "button">Bouton</button>
-            <input type = "text" class = "select-component hovertranslate component" placeholder="Input" name = "input" maxlength = "0">
-            <input type = "range" class = "select-component hovertranslate component" name = "range" min = "1" max = "1" value = "1">
-            <input type = "checkbox" class = "select-component hovertranslate component" name = "checkbox" checked>
+            <input type = "text" class = "select-component hovertranslate component" placeholder="Input" name = "input" maxlength = "0"/>
+            <input type = "range" class = "select-component hovertranslate component" name = "range" min = "1" max = "1" value = "1"/>
+            <input type = "checkbox" class = "select-component hovertranslate component" name = "checkbox" checked/>
+            <input type = "radio" class = "select-component hovertranslate component" name = "radio" checked/>
             <a href = "javascript:void(0)" class = "cursorpointer hovertranslate mb10 component" name = "link">Lien hypertexte</a>
+            <label class = "select-component hovertranslate component" name = "label" style = "font-weight: bold;">Texte Label</label>
         </div>
     </div>
 
@@ -337,7 +341,9 @@
         <input class = "input" type = "text" id = "input_cstm" placeholder = "" style = "display: none;"></input>
         <input class = "range" type = "range" min = "0" max = "10" value = "5" step = "1" id = "range_cstm" style = "display: none;"></input>
         <input class = "checkbox" type = "checkbox" id = "checkbox_cstm" style = "display: none;"></input>
+        <input class = "radio" type = "radio" id = "radio_cstm" style = "display: none;"></input>
         <a class = "link" href = "javascript:void(0)" id = "link_cstm" style = "display: none;">Ceci est un lien.</a>
+        <label class = "label" id = "label_cstm" style = "display: none;">Ceci est un label.</label>
     </div>
 
     <div class = "flexrow codespace" id = "codespace">

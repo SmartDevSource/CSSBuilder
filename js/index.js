@@ -139,6 +139,7 @@ const checkbox_adjust_size_hover = document.getElementById("checkbox_adjust_size
 const checkbox_checked = document.getElementById("checkbox_checked");
 const checkbox_background_color = document.getElementById("checkbox_background_color");
 const checkbox_background_color_hover = document.getElementById("checkbox_background_color_hover");
+const checkbox_focus_color = document.getElementById("checkbox_focus_color");
 
 const text_widget = document.getElementById("text_widget");
 const text_widget_hover = document.getElementById("text_widget_hover");
@@ -180,6 +181,7 @@ const color_gradient_second = document.getElementById("color_gradient_second");
 const color_gradient_second_hover = document.getElementById("color_gradient_second_hover");
 const span_arrow_linear_gradient = document.getElementById("span_arrow_linear_gradient");
 const span_arrow_linear_gradient_hover = document.getElementById("span_arrow_linear_gradient_hover");
+const color_focus = document.getElementById("color_focus");
 
 /// BORDERS DIVS ///
 const borders_corners = document.getElementById("borders_corners");
@@ -202,13 +204,17 @@ const button_cstm = document.getElementById("button_cstm");
 const input_cstm = document.getElementById("input_cstm");
 const range_cstm = document.getElementById("range_cstm");
 const checkbox_cstm = document.getElementById("checkbox_cstm");
+const radio_cstm = document.getElementById("radio_cstm");
 const link_cstm = document.getElementById("link_cstm");
+const label_cstm = document.getElementById("label_cstm");
 
 const widgetsList = {"button": button_cstm,
                      "input": input_cstm,
                      "range": range_cstm,
                      "checkbox": checkbox_cstm,
-                     "link": link_cstm};
+                     "radio": radio_cstm,
+                     "link": link_cstm,
+                     "label": label_cstm};
 
 const currentWidget = {name: "button", widgetCode: widgets.widget};
 
@@ -244,6 +250,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "block";
+            color_focus.style.display = "block";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -288,6 +296,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "none";
+            color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -329,6 +339,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_padding").style.display = "none";
             document.getElementById("label_range_cursorcolor").style.display = "block";
             document.getElementById("label_range_cursorcolor_hover").style.display = "block";
+            document.getElementById("label_color_focus").style.display = "none";
+            color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "block";
@@ -371,6 +383,52 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "none";
+            color_focus.style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            show_checkbox_checked.style.display = "contents";
+            params_input_text.style.display = "none";
+            link_input_text_parameters.style.display = "none";
+            color_placeholder.style.display = "none";
+            color_placeholder.value = "#595959";
+            text_widget.style.display = "none";
+            text_widget_hover.style.display = "none";
+            currentWidget.widgetCode.textContent = "";
+            widgetsList[currentWidget.name].textContent = "";
+            link_text.style.display = "none";
+            link_text_hover.style.display = "none";
+            //DISABLE GRADIENT//
+            checkbox_linear_background.style.display = "none";
+            document.getElementById("label_text_gradient").style.display = "none";
+            document.getElementById("label_direction_gradient").style.display = "none";
+            span_arrow_linear_gradient.style.display = "none";
+            color_gradient_first.style.display = "none";
+            color_gradient_second.style.display = "none";
+
+            checkbox_linear_background_hover.style.display = "none";
+            document.getElementById("label_text_gradient_hover").style.display = "none";
+            document.getElementById("label_direction_gradient_hover").style.display = "none";
+            span_arrow_linear_gradient_hover.style.display = "none";
+            color_gradient_first_hover.style.display = "none";
+            color_gradient_second_hover.style.display = "none";
+            ///////////
+            borders_corners.style.display = "none";
+            borders_corners_hover.style.display = "none";
+        break;
+        case "radio":
+            document.getElementById("label_text_component").textContent = "";
+            document.getElementById("label_text_hover").style.display = "none";
+            document.getElementById("label_color_placeholder").style.display = "none";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "none";
+            color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -414,6 +472,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "block";
+            color_focus.style.display = "block";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
@@ -454,6 +514,56 @@ const prepareParameters = (type)=>{
             borders_corners.style.display = "flex";
             borders_corners_hover.style.display = "flex";
         break;
+        case "label":
+            currentWidget.widgetCode.baseCode["padding"] = '';
+            document.getElementById("label_text_component").textContent = "Texte du label";
+            document.getElementById("label_text_hover").style.display = "block";
+            document.getElementById("label_color_placeholder").style.display = "none";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "none";
+            color_focus.style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            show_checkbox_checked.style.display = "none";
+            params_input_text.style.display = "none";
+            link_text.style.display = "block";
+            link_text_hover.style.display = "block";
+            link_input_text_parameters.style.display = "none";
+            currentWidget.widgetCode.baseCode["color"] = "white;";
+            currentWidget.widgetCode.baseCode["border"] = "";
+            currentWidget.widgetCode.baseCode["background-color"] = "";
+            color_placeholder.style.display = "none";
+            color_placeholder.value = "#595959";
+            text_widget_hover.style.display = "block";
+            currentWidget.widgetCode.textContent = "Ceci est un label";
+            widgetsList[currentWidget.name].textContent = "Ceci est un label";
+            text_widget.value = "Ceci est un label";
+            text_widget_hover.value = "";
+            text_widget.style.display = "block";
+            //ENABLE GRADIENT//
+            checkbox_linear_background.style.display = "inline-block";
+            document.getElementById("label_text_gradient").style.display = "block";
+            document.getElementById("label_direction_gradient").style.display = "block";
+            span_arrow_linear_gradient.style.display = "block";
+            color_gradient_first.style.display = "inline-block";
+            color_gradient_second.style.display = "inline-block";
+
+            checkbox_linear_background_hover.style.display = "inline-block";
+            document.getElementById("label_text_gradient_hover").style.display = "block";
+            document.getElementById("label_direction_gradient_hover").style.display = "block";
+            span_arrow_linear_gradient_hover.style.display = "block";
+            color_gradient_first_hover.style.display = "inline-block";
+            color_gradient_second_hover.style.display = "inline-block";
+            ///////////
+            borders_corners.style.display = "flex";
+            borders_corners_hover.style.display = "flex";
+        break;
     }
 }
 
@@ -461,6 +571,7 @@ widgets.updateHtml(currentWidget.name);
 
 ////////////////////////////////// STRUCTS AND VARS ///////////////////////////
 let changeTextOnHover = false;
+let changeColorWhenClicked = false;
 let currentArrowLinearGradient = 0;
 const arrowsLinearGradient = {0: 180, 1: 270, 2: 0, 3: 90};
 const tmpStyle = document.createElement("style");
@@ -485,6 +596,12 @@ const refreshWidget = () =>{
     }
 
     cssTextArea += '}\n\n';
+
+    if (changeColorWhenClicked){
+        cssTextArea += '.'+ currentWidget.widgetCode.classname + ':focus{\n';
+        cssTextArea += `  color:${color_focus.value};\n`;
+        cssTextArea += '}\n';
+    }
 
     if (currentWidget.name == "input"){
         cssTextArea += '.input::placeholder{\n'
@@ -524,12 +641,12 @@ const refreshWidget = () =>{
 }
 
 const updateShadow = () =>{
-    currentWidget.widgetCode.baseCode["box-shadow"] = `${range_shadow_x.value}px ${range_shadow_y.value}px ${range_shadow_blur.value}px ${color_shadow.value} ${checkbox_inset.checked ? "inset" : ""};`
+    currentWidget.widgetCode.baseCode["box-shadow"] = `${range_shadow_x.value}px ${range_shadow_y.value}px ${range_shadow_blur.value}px ${color_shadow.value}${checkbox_inset.checked ? " inset" : ""};`
     refreshWidget();
 }
 
 const updateShadowHover = () =>{
-    currentWidget.widgetCode.hoverCode["box-shadow"] = `${range_shadow_x_hover.value}px ${range_shadow_y_hover.value}px ${range_shadow_blur_hover.value}px ${color_shadow_hover.value} ${checkbox_inset_hover.checked ? "inset" : ""};`
+    currentWidget.widgetCode.hoverCode["box-shadow"] = `${range_shadow_x_hover.value}px ${range_shadow_y_hover.value}px ${range_shadow_blur_hover.value}px${color_shadow_hover.value} ${checkbox_inset_hover.checked ? " inset" : ""};`
     refreshWidget();
 }
 
@@ -571,6 +688,19 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
+
+/// FOCUS COLOR ///
+
+color_focus.addEventListener("input", ()=>{
+    if (changeColorWhenClicked){
+        refreshWidget();
+    }
+})
+
+checkbox_focus_color.addEventListener("click", ()=>{
+    changeColorWhenClicked = checkbox_focus_color.checked;
+    refreshWidget();
+});
 
 /// BACKGROUND COLOR DRAWING ///
 checkbox_background_color.addEventListener("click" ,()=>{
@@ -877,6 +1007,7 @@ text_widget_hover.addEventListener("input", ()=>{
     refreshWidget();
 })
 
+//////////////// MOUSE ENTER AND LEAVE HOVERING ////////////////
 widgetsList[currentWidget.name].addEventListener("mouseenter", ()=>{
     if (changeTextOnHover){
         widgetsList[currentWidget.name].textContent = text_widget_hover.textContent;
@@ -900,6 +1031,20 @@ link_cstm.addEventListener("mouseleave", ()=>{
         widgetsList[currentWidget.name].textContent = text_widget.value;
     }
 })
+
+label_cstm.addEventListener("mouseenter", ()=>{
+    if (changeTextOnHover){
+        label_cstm.textContent = text_widget_hover.textContent;
+    }
+})
+
+label_cstm.addEventListener("mouseleave", ()=>{
+    if (changeTextOnHover){
+        widgetsList[currentWidget.name].textContent = text_widget.value;
+    }
+})
+
+//////////////////////////////////////////////////////////////// 
 
 range_outline_text.addEventListener("input", ()=>{
     currentWidget.widgetCode.baseCode["-webkit-text-stroke"] = `${range_outline_text.value}px ${color_outline_text.value};`
@@ -1123,7 +1268,7 @@ color_placeholder.addEventListener("input", ()=>{
 
 color_background.addEventListener("input", ()=>{
     if (checkbox_background_color.checked){
-        if (currentWidget.name != "checkbox"){
+        if (currentWidget.name != "checkbox" && currentWidget.name != "radio"){
             currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`
         } else {
             currentWidget.widgetCode.baseCode["accent-color"] = `${color_background.value};`
@@ -1134,7 +1279,7 @@ color_background.addEventListener("input", ()=>{
 
 color_background_hover.addEventListener("input", ()=>{
     if (checkbox_background_color_hover.checked){
-        if (currentWidget.name != "checkbox"){
+        if (currentWidget.name != "checkbox" && currentWidget.name != "radio"){
             currentWidget.widgetCode.hoverCode["background-color"] = `${color_background_hover.value};`
         } else {
             currentWidget.widgetCode.hoverCode["accent-color"] = `${color_background_hover.value};`
@@ -1145,7 +1290,7 @@ color_background_hover.addEventListener("input", ()=>{
 
 //// COLOR BORDERS ////
 color_borders.addEventListener("input", ()=>{
-    if (currentWidget.name != "checkbox"){
+    if (currentWidget.name != "checkbox" && currentWidget.name != "radio"){
         currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
     } else {
         currentWidget.widgetCode.baseCode["outline"] = `${range_borders.value}px solid ${color_borders.value};`;
@@ -1269,7 +1414,7 @@ link_borders_hover.addEventListener("click", ()=>{
 })
 
 range_borders.addEventListener("input", ()=>{
-    if (currentWidget.name != "checkbox"){
+    if (currentWidget.name != "checkbox" && currentWidget.name != "radio"){
         if (range_borders.value>0){
             currentWidget.widgetCode.baseCode["border"] = `${range_borders.value}px solid ${color_borders.value};`;
         } else {
