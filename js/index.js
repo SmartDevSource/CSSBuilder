@@ -223,6 +223,7 @@ components.forEach(component=>{
         currentWidget.widgetCode.classname = currentWidget.name;
         prepareParameters(currentWidget.name);
         checkbox_activate_hover.checked = false;
+        text_widget_hover.value = '';
         changeTextOnHover = false;
         show_hover_params.style.display = "none";
         widgetsList[currentWidget.name].style.display = "block";
@@ -242,6 +243,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
             color_range_cursor_hover.style.display = "none";
             range_padding.style.display = "block";
@@ -283,6 +286,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "block";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
             color_range_cursor_hover.style.display = "none";
             range_padding.style.display = "block";
@@ -321,6 +326,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "none";
             document.getElementById("label_range_cursorcolor").style.display = "block";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
             color_range_cursor.style.display = "block";
             color_range_cursor_hover.style.display = "block";
             range_padding.style.display = "none";
@@ -360,6 +367,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
             color_range_cursor_hover.style.display = "none";
             range_padding.style.display = "block";
@@ -369,10 +378,10 @@ const prepareParameters = (type)=>{
             link_input_text_parameters.style.display = "none";
             color_placeholder.style.display = "none";
             color_placeholder.value = "#595959";
+            text_widget.style.display = "none";
             text_widget_hover.style.display = "none";
             currentWidget.widgetCode.textContent = "";
             widgetsList[currentWidget.name].textContent = "";
-            text_widget.style.display = "none";
             link_text.style.display = "none";
             link_text_hover.style.display = "none";
             //DISABLE GRADIENT//
@@ -400,6 +409,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_placeholder").style.display = "none";
             document.getElementById("label_range_padding").style.display = "block";
             document.getElementById("label_range_cursorcolor").style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
             color_range_cursor.style.display = "none";
             color_range_cursor_hover.style.display = "none";
             range_padding.style.display = "block";
