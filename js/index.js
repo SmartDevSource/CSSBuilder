@@ -92,6 +92,7 @@ const link_text_hover = document.getElementById("link_text_hover");
 const link_cursor = document.getElementById("link_cursor");
 const link_input_text_parameters = document.getElementById("link_input_text_parameters");
 const link_rangebar_parameters = document.getElementById("link_rangebar_parameters");
+const link_textarea_parameters = document.getElementById("link_textarea_parameters");
 
 /// NAVLINKS ///
 const navlink_parameters = document.getElementById("navlink_parameters");
@@ -113,6 +114,7 @@ const params_dimensions = document.getElementById("params_dimensions");
 const params_dimensions_hover = document.getElementById("params_dimensions_hover");
 const params_input_text = document.getElementById("params_input_text");
 const params_rangebar = document.getElementById("params_rangebar");
+const params_textarea = document.getElementById("params_textarea");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
@@ -140,7 +142,11 @@ const checkbox_checked = document.getElementById("checkbox_checked");
 const checkbox_background_color = document.getElementById("checkbox_background_color");
 const checkbox_background_color_hover = document.getElementById("checkbox_background_color_hover");
 const checkbox_focus_color = document.getElementById("checkbox_focus_color");
+const checkbox_textarea_allow_resize = document.getElementById("checkbox_textarea_allow_resize");
+const checkbox_textarea_allow_spellcheck = document.getElementById("checkbox_textarea_allow_spellcheck");
+const checkbox_textarea_allow_writing = document.getElementById("checkbox_textarea_allow_writing");
 
+/// TEXT ///
 const text_widget = document.getElementById("text_widget");
 const text_widget_hover = document.getElementById("text_widget_hover");
 const classname_widget = document.getElementById("classname_widget");
@@ -202,6 +208,7 @@ const copy_html = document.getElementById("copy_html");
 ////////////////////////////////// COMPONENTS //////////////////////////////////
 const button_cstm = document.getElementById("button_cstm");
 const input_cstm = document.getElementById("input_cstm");
+const textarea_cstm = document.getElementById("textarea_cstm");
 const range_cstm = document.getElementById("range_cstm");
 const checkbox_cstm = document.getElementById("checkbox_cstm");
 const radio_cstm = document.getElementById("radio_cstm");
@@ -210,6 +217,7 @@ const label_cstm = document.getElementById("label_cstm");
 
 const widgetsList = {"button": button_cstm,
                      "input": input_cstm,
+                     "textarea":textarea_cstm,
                      "range": range_cstm,
                      "checkbox": checkbox_cstm,
                      "radio": radio_cstm,
@@ -251,6 +259,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "block";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "block";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -297,6 +308,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -311,6 +325,64 @@ const prepareParameters = (type)=>{
             text_widget_hover.style.display = "none";
             currentWidget.widgetCode.textContent = "";
             widgetsList[currentWidget.name].textContent = "";
+            currentWidget.widgetCode.placeHolder = "Saisissez votre texte ici...";
+            text_widget.value = "Saisissez votre texte ici...";
+            //ENABLE GRADIENT//
+            checkbox_linear_background.style.display = "inline-block";
+            document.getElementById("label_text_gradient").style.display = "block";
+            document.getElementById("label_direction_gradient").style.display = "block";
+            span_arrow_linear_gradient.style.display = "block";
+            color_gradient_first.style.display = "inline-block";
+            color_gradient_second.style.display = "inline-block";
+            
+            checkbox_linear_background_hover.style.display = "inline-block";
+            document.getElementById("label_text_gradient_hover").style.display = "block";
+            document.getElementById("label_direction_gradient_hover").style.display = "block";
+            span_arrow_linear_gradient_hover.style.display = "block";
+            color_gradient_first_hover.style.display = "inline-block";
+            color_gradient_second_hover.style.display = "inline-block";
+            ///////////
+            widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
+            borders_corners.style.display = "flex";
+            borders_corners_hover.style.display = "flex";
+        break;
+        case "textarea":
+            currentWidget.widgetCode.baseCode["width"] = '300px;';
+            currentWidget.widgetCode.baseCode["height"] = '120px;';
+            textarea_cstm.removeAttribute("spellcheck");
+            textarea_cstm.removeAttribute("disabled");
+            textarea_cstm.textContent = "";
+            textarea_cstm.value = "";
+            textarea_cstm.style.width = "300px";
+            textarea_cstm.style.height = "120px";
+            checkbox_textarea_allow_resize.checked = true;
+            checkbox_textarea_allow_spellcheck.checked = true;
+            checkbox_textarea_allow_writing.checked = true;
+            document.getElementById("label_text_component").textContent = "PlaceHolder du textarea";
+            document.getElementById("label_text_hover").style.display = "none";
+            document.getElementById("label_color_placeholder").style.display = "block";
+            document.getElementById("label_range_padding").style.display = "block";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_range_cursorcolor_hover").style.display = "none";
+            document.getElementById("label_color_focus").style.display = "none";
+            link_textarea_parameters.style.display = "block";
+            params_dimensions.style.display = "none";
+            link_dimensions.style.display = "none";
+            color_focus.style.display = "none";
+            params_text.style.display = "none";
+            params_text_hover.style.display = "none";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            range_padding.style.display = "block";
+            link_rangebar_parameters.style.display = "none";
+            text_widget.style.display = "block";
+            show_checkbox_checked.style.display = "none";
+            link_input_text_parameters.style.display = "none";
+            color_placeholder.style.display = "block";
+            text_widget_hover.style.display = "none";
+            currentWidget.widgetCode.textContent = "";
+            widgetsList[currentWidget.name].textContent = "";
+            currentWidget.widgetCode.placeHolder = "Saisissez votre texte ici...";
             text_widget.value = "Saisissez votre texte ici...";
             //ENABLE GRADIENT//
             checkbox_linear_background.style.display = "inline-block";
@@ -340,6 +412,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "block";
             document.getElementById("label_range_cursorcolor_hover").style.display = "block";
             document.getElementById("label_color_focus").style.display = "none";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -384,6 +459,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -428,6 +506,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -473,6 +554,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "block";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "block";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -523,6 +607,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            link_textarea_parameters.style.display = "none";
+            params_textarea.style.display = "none";
+            link_dimensions.style.display = "block";
             color_focus.style.display = "none";
             params_text.style.display = "none";
             params_text_hover.style.display = "none";
@@ -603,7 +690,7 @@ const refreshWidget = () =>{
         cssTextArea += '}\n';
     }
 
-    if (currentWidget.name == "input"){
+    if (currentWidget.name == "input" || currentWidget.name == "textarea" ){
         cssTextArea += '.input::placeholder{\n'
         cssTextArea += `  color: ${color_placeholder.value};\n`
         cssTextArea += '}\n'
@@ -689,8 +776,51 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
-/// FOCUS COLOR ///
+/// TEXTAREA ///
+link_textarea_parameters.addEventListener("click", ()=>{
+    params_textarea.style.display = params_textarea.style.display == "none" ? "block" : "none";
+})
 
+textarea_cstm.addEventListener("click", ()=>{
+    currentWidget.widgetCode.baseCode["width"] = `${textarea_cstm.offsetWidth-22}px;`;
+    currentWidget.widgetCode.baseCode["height"] = `${textarea_cstm.offsetHeight-22}px;`;
+    refreshWidget();
+})
+
+checkbox_textarea_allow_resize.addEventListener("click", ()=>{
+    if (checkbox_textarea_allow_resize.checked){
+        currentWidget.widgetCode.baseCode["resize"] = "";
+    } else {
+        currentWidget.widgetCode.baseCode["resize"] = "none;";
+    }
+    refreshWidget();
+})
+
+checkbox_textarea_allow_spellcheck.addEventListener("click", ()=>{
+    if (checkbox_textarea_allow_spellcheck.checked){
+        currentWidget.widgetCode.spellcheck = true;
+        textarea_cstm.removeAttribute("spellcheck");
+    } else {
+        currentWidget.widgetCode.spellcheck = false;
+        textarea_cstm.setAttribute("spellcheck", "false");
+    }
+    widgets.updateHtml("textarea");
+    refreshWidget();
+})
+
+checkbox_textarea_allow_writing.addEventListener("click", ()=>{
+    if (checkbox_textarea_allow_writing.checked){
+        currentWidget.widgetCode.disabled = false;
+        textarea_cstm.removeAttribute("disabled");
+    } else {
+        currentWidget.widgetCode.disabled = true;
+        textarea_cstm.setAttribute("disabled", "disabled");
+    }
+    widgets.updateHtml("textarea");
+    refreshWidget();
+})
+
+/// FOCUS COLOR ///
 color_focus.addEventListener("input", ()=>{
     if (changeColorWhenClicked){
         refreshWidget();
@@ -704,7 +834,6 @@ checkbox_focus_color.addEventListener("click", ()=>{
 
 /// BACKGROUND COLOR DRAWING ///
 checkbox_background_color.addEventListener("click" ,()=>{
-    console.log("test);")
     if (checkbox_background_color.checked){
         currentWidget.widgetCode.baseCode["background-color"] = `${color_background.value};`;
         currentWidget.widgetCode.baseCode["background"] = '';
@@ -986,7 +1115,7 @@ range_letters_spacing_hover.addEventListener("input", ()=>{
 })
 
 text_widget.addEventListener("input", ()=>{
-    if (currentWidget.name == "input"){
+    if (currentWidget.name == "input" || currentWidget.name == "textarea"){
         widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
     } else {
         widgetsList[currentWidget.name].textContent = text_widget.value;

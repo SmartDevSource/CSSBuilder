@@ -22,6 +22,7 @@ input::selection{ background-color: rgb(110, 110, 110); }
     background-color: white;
     color: black;
     text-align: center;
+    resize: none;
 }
 
 /*MARGIN TOP*/

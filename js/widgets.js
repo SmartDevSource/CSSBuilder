@@ -35,7 +35,8 @@ export class Widgets {
                 "transition":"",
                 "content": "",
                 "outline":"",
-                "accent-color":""
+                "accent-color":"",
+                "resize": ""
             },
             hoverCode : {
                 "width":"",
@@ -66,7 +67,8 @@ export class Widgets {
                 "transition":"",
                 "content": "",
                 "outline":"",
-                "accent-color":""
+                "accent-color":"",
+                "resize": ""
             },
             textContent : "Bouton",
             placeHolder : "Saisissez votre texte ici...",
@@ -74,7 +76,9 @@ export class Widgets {
             step : 1,
             min : 0,
             max : 10,
-            value : 5
+            value : 5,
+            disabled : false,
+            spellcheck : true
         };
 
         this.updateHtml();
@@ -89,7 +93,12 @@ export class Widgets {
             case "button":{
                 this.widget.textContent = textContent;
             }
+            break;
             case "input":{
+                this.widget.placeHolder = textContent;
+            }
+            break;
+            case "textarea":{
                 this.widget.placeHolder = textContent;
             }
             break;
@@ -107,6 +116,9 @@ export class Widgets {
             break;
             case "input":
                 this.widget.html = `<input type = "${this.widget.inputType}" class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"></input>`;
+            break;
+            case "textarea":
+                this.widget.html = `<textarea class = "${simplifiedClassname}" placeholder = "${this.widget.placeHolder}"${!this.widget.spellcheck ? ` spellcheck = "false"` : ""}${this.widget.disabled ? " disabled": ""}></textarea>`;
             break;
             case "range":
                 this.widget.html = `<input type = "range" class = "${simplifiedClassname}" value = "${this.widget.value}" min = "${this.widget.min}" max = "${this.widget.max}" step = "${this.widget.step}"></input>`;

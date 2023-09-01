@@ -30,7 +30,8 @@ export const DefaultCodes = () =>{
             "transition":"",
             "content": "",
             "outline":"",
-            "accent-color":""
+            "accent-color":"",
+            "resize": ""
         },
         hover : {
             "width":"",
@@ -61,7 +62,8 @@ export const DefaultCodes = () =>{
             "transition":"",
             "content": "",
             "outline":"",
-            "accent-color":""
+            "accent-color":"",
+            "resize": ""
         }
     }
 }

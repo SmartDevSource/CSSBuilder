@@ -62,6 +62,18 @@
                 </label>
             </div>
 
+            <!--PARAMETRES DU TEXTAREA-->
+            <label class = "linkbox" id = "link_textarea_parameters" style="display: none;">Paramètres du textarea</label>
+            <div class = "flexcol params-container" style = "display: none;" id = "params_textarea">
+                <span class = "header">Redimensionnez le TEXTAREA à la souris afin de définir ses dimensions</span>
+                <label class = "m5 block">Autoriser le redimensionnement</label>
+                <input type = "checkbox" id = "checkbox_textarea_allow_resize" checked/>
+                <label class = "m5 block">Activer le surligneur de fautes</label>
+                <input type = "checkbox" id = "checkbox_textarea_allow_spellcheck" checked/>
+                <label class = "m5 block">Autoriser l'écriture</label>
+                <input type = "checkbox" id = "checkbox_textarea_allow_writing" checked/>
+            </div>
+
             <!--TEXT-->
             <label class = "linkbox" id = "link_text">Texte</label>
             <div class = "flexcol params-container" style = "display: none;" id = "params_text">
@@ -327,6 +339,7 @@
             <span class = "panel-header mb10">Composants</span>
             <button class = "select-component bradius hovertranslate component" name = "button">Bouton</button>
             <input type = "text" class = "select-component hovertranslate component" placeholder="Input" name = "input" maxlength = "0"/>
+            <textarea type = "textarea" class = "select-component hovertranslate component" placeholder="Textarea" name = "textarea" maxlength = "0"></textarea>
             <input type = "range" class = "select-component hovertranslate component" name = "range" min = "1" max = "1" value = "1"/>
             <input type = "checkbox" class = "select-component hovertranslate component" name = "checkbox" checked/>
             <input type = "radio" class = "select-component hovertranslate component" name = "radio" checked/>
@@ -339,6 +352,7 @@
     <div class = "widget-container centerscreen">
         <button class = "button" id = "button_cstm">Bouton</button>
         <input class = "input" type = "text" id = "input_cstm" placeholder = "" style = "display: none;"></input>
+        <textarea class = "textarea" type = "textarea" id = "textarea_cstm" width = "300" height = "120" spellcheck="true" style = "display: none;"></textarea>
         <input class = "range" type = "range" min = "0" max = "10" value = "5" step = "1" id = "range_cstm" style = "display: none;"></input>
         <input class = "checkbox" type = "checkbox" id = "checkbox_cstm" style = "display: none;"></input>
         <input class = "radio" type = "radio" id = "radio_cstm" style = "display: none;"></input>
