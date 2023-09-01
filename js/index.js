@@ -341,7 +341,7 @@ const prepareParameters = (type)=>{
             span_arrow_linear_gradient_hover.style.display = "block";
             color_gradient_first_hover.style.display = "inline-block";
             color_gradient_second_hover.style.display = "inline-block";
-            ///////////
+            /////////// 
             widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
             borders_corners.style.display = "flex";
             borders_corners_hover.style.display = "flex";
