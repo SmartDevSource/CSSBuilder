@@ -124,6 +124,12 @@ const panel_animations = document.getElementById("panel_animations");
 const input_type_text = document.getElementById("input_type_text");
 const input_type_password = document.getElementById("input_type_password");
 
+/// SCROLLBAR ///
+const scrollbar_width = document.getElementById("scrollbar_width");
+const scrollbar_background_color = document.getElementById("scrollbar_background_color");
+const scrollbar_cursor_color = document.getElementById("scrollbar_cursor_color");
+const scrollbar_cursorhover_color = document.getElementById("scrollbar_cursorhover_color");
+
 /// CHECKBOXS ///
 const checkbox_inset = document.getElementById("checkbox_inset");
 const checkbox_inset_hover = document.getElementById("checkbox_inset_hover");
@@ -693,7 +699,14 @@ const refreshWidget = () =>{
     if (currentWidget.name == "input" || currentWidget.name == "textarea" ){
         cssTextArea += '.input::placeholder{\n'
         cssTextArea += `  color: ${color_placeholder.value};\n`
-        cssTextArea += '}\n'
+        cssTextArea += '}\n\n'
+    }
+
+    if (currentWidget.name == "textarea"){
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar { width: ${scrollbar_width.value}px; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-track { background: ${scrollbar_background_color.value}; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb { background: ${scrollbar_cursor_color.value}; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb:hover { background: ${scrollbar_cursorhover_color.value}; }\n\n`
     }
 
     if (checkbox_activate_hover.checked){
@@ -775,6 +788,12 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
+
+/// SCROLLBAR ///
+scrollbar_width.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_background_color.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_cursor_color.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_cursorhover_color.addEventListener("input", ()=>{ refreshWidget(); })
 
 /// TEXTAREA ///
 link_textarea_parameters.addEventListener("click", ()=>{
