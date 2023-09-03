@@ -80,7 +80,8 @@ export class Widgets {
             max : 10,
             value : 5,
             disabled : false,
-            spellcheck : true
+            spellcheck : true,
+            selectSize : 2
         };
 
         this.updateHtml();
@@ -141,7 +142,7 @@ export class Widgets {
             break;
             case "select":
                 this.widget.html = 
-                `<select class = "select" size = "3" multiple> \r  <optgroup label = "${this.widget.textContent}"> \r    <option value="1">Choix 1</option> \r    <option value="2">Choix 2</option> \r    <option value="3">Choix 3</option> \r    <option value="4">Choix 4</option> \r    <option value="5">Choix 5</option> \r  </optgroup> \r</select>`
+                `<select class = "select" size = "${this.widget.selectSize}" multiple> \r  <optgroup label = "${this.widget.textContent}"> \r    <option value="1">Choix 1</option> \r    <option value="2">Choix 2</option> \r    <option value="3">Choix 3</option> \r    <option value="4">Choix 4</option> \r    <option value="5">Choix 5</option> \r  </optgroup> \r</select>`
             break;
         }
     }

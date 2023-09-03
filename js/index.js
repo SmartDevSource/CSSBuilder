@@ -210,6 +210,9 @@ const color_focus = document.getElementById("color_focus");
 const color_select_hover = document.getElementById("color_select_hover");
 const color_select_checked = document.getElementById("color_select_checked");
 
+/// SELECT NUMBER SIZE ///
+const input_select_size = document.getElementById("input_select_size");
+
 /// BORDERS DIVS ///
 const borders_corners = document.getElementById("borders_corners");
 const borders_corners_hover = document.getElementById("borders_corners_hover");
@@ -284,6 +287,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "block";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -339,6 +344,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -402,6 +409,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -455,6 +464,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -508,6 +519,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -561,6 +574,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -615,6 +630,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "block";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -674,6 +691,8 @@ const prepareParameters = (type)=>{
             document.getElementById("label_color_focus").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "none";
             document.getElementById("label_color_select_checked").style.display = "none";
+            document.getElementById("label_select_size").style.display = "none";
+            input_select_size.style.display = "none";
             color_select_hover.style.display = "none";
             color_select_checked.style.display = "none";
             link_select_scrollbar_parameters.style.display = "none";
@@ -731,6 +750,9 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_color_select_hover").style.display = "block";
             document.getElementById("label_color_select_checked").style.display = "block";
+            document.getElementById("label_select_size").style.display = "block";
+            input_select_size.style.display = "block";
+            input_select_size.value = 2;
             color_select_hover.style.display = "block";
             color_select_checked.style.display = "block";
             color_range_cursor.style.display = "none";
@@ -902,6 +924,18 @@ color_select_hover.addEventListener("input", ()=>{
 })
 
 color_select_checked.addEventListener("input", ()=>{
+    refreshWidget();
+})
+
+input_select_size.addEventListener("input", ()=>{
+    if (input_select_size.value > 6){
+        input_select_size.value = 6;
+    } else if (input_select_size.value < 0){
+        input_select_size.value = 0;
+    }
+    currentWidget.widgetCode.selectSize = (parseInt(input_select_size.value) + 1);
+    select_cstm.setAttribute("size", (parseInt(input_select_size.value) + 1));
+    widgets.updateHtml("select");
     refreshWidget();
 })
 
