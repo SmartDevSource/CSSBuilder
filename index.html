@@ -73,13 +73,26 @@
                 <label class = "m5 block">Autoriser l'écriture</label>
                 <input type = "checkbox" id = "checkbox_textarea_allow_writing" checked/>
                 <label class = "m5 block">Largeur de la scrollbar</label>
-                <input type = "range" min = "0" max = "50" value = "10" id = "scrollbar_width"/>
+                <input type = "range" min = "0" max = "50" value = "10" id = "scrollbar_width_textarea"/>
                 <label class = "m5 block">Couleur de fond de la scrollbar</label>
-                <input type = "color" value = "#D3D3D3" id = "scrollbar_background_color"/>
+                <input type = "color" value = "#D3D3D3" id = "scrollbar_background_color_textarea"/>
                 <label class = "m5 block">Couleur du curseur de la scrollbar</label>
-                <input type = "color" value = "#949494" id = "scrollbar_cursor_color"/>
+                <input type = "color" value = "#949494" id = "scrollbar_cursor_color_textarea"/>
                 <label class = "m5 block">Couleur du curseur survolé [:hover] </label>
-                <input class = "mb10" type = "color" value = "#5A5A5A" id = "scrollbar_cursorhover_color"/>
+                <input class = "mb10" type = "color" value = "#5A5A5A" id = "scrollbar_cursorhover_color_textarea"/>
+            </div>
+
+            <!--PARAMETRES DU SELECT-->
+            <label class = "linkbox" id = "link_select_scrollbar_parameters" style="display: none;">Scrollbar</label>
+            <div class = "flexcol params-container" style = "display: none;" id = "params_scrollbar_select">
+                <label class = "m5 block">Largeur de la scrollbar</label>
+                <input type = "range" min = "0" max = "50" value = "10" id = "scrollbar_width_select"/>
+                <label class = "m5 block">Couleur de fond de la scrollbar</label>
+                <input type = "color" value = "#D3D3D3" id = "scrollbar_background_color_select"/>
+                <label class = "m5 block">Couleur du curseur de la scrollbar</label>
+                <input type = "color" value = "#949494" id = "scrollbar_cursor_color_select"/>
+                <label class = "m5 block">Couleur du curseur survolé [:hover] </label>
+                <input class = "mb10" type = "color" value = "#5A5A5A" id = "scrollbar_cursorhover_color_select"/>
             </div>
 
             <!--TEXT-->
@@ -117,6 +130,10 @@
             <!--COLORS-->
             <label class = "linkbox" id = "link_colors">Couleurs</label>
             <div class = "flexcol params-container mb10" style = "display: none;" id = "params_colors">
+                <label class = "mr5 ml5 mt10" id = "label_color_select_hover" style = "display: none;">Couleur du survol souris</label>
+                <input type = "color"  value = "#595959" id = "color_select_hover" style = "display: none;">
+                <label class = "mr5 ml5 mt10" id = "label_color_select_checked" style = "display: none;">Couleur de sélection</label>
+                <input type = "color"  value = "#595959" id = "color_select_checked" style = "display: none;">
                 <label class = "mr5 ml5 mt10" id = "label_color_focus">Couleur après un clique <input type = "checkbox" id = "checkbox_focus_color"/></label>
                 <input type = "color"  value = "#595959" id = "color_focus">
                 <label class = "mr5 ml5 mt10" id = "label_color_placeholder" style = "display: none;">Couleur du placeholder</label>
@@ -351,8 +368,16 @@
             <input type = "range" class = "select-component hovertranslate component" name = "range" min = "1" max = "1" value = "1"/>
             <input type = "checkbox" class = "select-component hovertranslate component" name = "checkbox" checked/>
             <input type = "radio" class = "select-component hovertranslate component" name = "radio" checked/>
-            <a href = "javascript:void(0)" class = "cursorpointer hovertranslate mb10 component" name = "link">Lien hypertexte</a>
+            <a href = "javascript:void(0)" class = "cursorpointer hovertranslate mb10 component white" name = "link">Lien hypertexte</a>
             <label class = "select-component hovertranslate component" name = "label" style = "font-weight: bold;">Texte Label</label>
+
+            <select size = "4" class = "select-component hovertranslate component darkbluebg white" name = "select" multiple>
+                <optgroup label = "Liste">
+                <option value="1">Choix N1</option>
+                <option value="2">Choix N2</option>
+                <option value="3">Choix N3</option>
+                </optgroup>
+              </select>
         </div>
     </div>
 
@@ -366,6 +391,15 @@
         <input class = "radio" type = "radio" id = "radio_cstm" style = "display: none;"></input>
         <a class = "link" href = "javascript:void(0)" id = "link_cstm" style = "display: none;">Ceci est un lien.</a>
         <label class = "label" id = "label_cstm" style = "display: none;">Ceci est un label.</label>
+        <select class = "select" size = "3" id = "select_cstm" style = "display: none;" multiple>
+            <optgroup label = "Liste" id = "optgroup_select">
+            <option value="1">Choix 1</option>
+            <option value="2">Choix 2</option>
+            <option value="3">Choix 3</option>
+            <option value="4">Choix 4</option>
+            <option value="5">Choix 5</option>
+            </optgroup>
+          </select>
     </div>
 
     <div class = "flexrow codespace" id = "codespace">

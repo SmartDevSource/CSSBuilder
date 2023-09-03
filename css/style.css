@@ -1,8 +1,11 @@
-*{
+body{
     color:white;
     background-color: #1D2A35;
     margin: 0;
 }
+
+.white{ color: white !important;}
+.darkbluebg { background-color: #1D2A35 !important; }
 
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
@@ -286,6 +289,7 @@ input:hover{
 }
 
 .code-area{
+    color:white;
     margin: 10px;
     width: 500px;
     height: 250px;

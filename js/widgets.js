@@ -14,6 +14,7 @@ export class Widgets {
                 "font-size": "16px;",
                 "margin": "10px;",
                 "padding": "10px;",
+                "padding-right": "",
                 "border": "1px solid black;",
                 "border-radius": "",
                 "border-bottom-left-radius": "",
@@ -46,6 +47,7 @@ export class Widgets {
                 "font-size": "",
                 "margin": "",
                 "padding": "",
+                "padding-right": "",
                 "border": "",
                 "border-radius": "",
                 "border-bottom-left-radius": "",
@@ -136,6 +138,10 @@ export class Widgets {
             case "label":
                 (!textHover) ? this.widget.html = `<label class = "${simplifiedClassname}">${this.widget.textContent}</a>` :
                                this.widget.html = `<label class = "${simplifiedClassname}"><span>${this.widget.textContent}</span></label>`;
+            break;
+            case "select":
+                this.widget.html = 
+                `<select class = "select" size = "3" multiple> \r  <optgroup label = "${this.widget.textContent}"> \r    <option value="1">Choix 1</option> \r    <option value="2">Choix 2</option> \r    <option value="3">Choix 3</option> \r    <option value="4">Choix 4</option> \r    <option value="5">Choix 5</option> \r  </optgroup> \r</select>`
             break;
         }
     }

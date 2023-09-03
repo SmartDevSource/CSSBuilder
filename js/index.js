@@ -93,6 +93,7 @@ const link_cursor = document.getElementById("link_cursor");
 const link_input_text_parameters = document.getElementById("link_input_text_parameters");
 const link_rangebar_parameters = document.getElementById("link_rangebar_parameters");
 const link_textarea_parameters = document.getElementById("link_textarea_parameters");
+const link_select_scrollbar_parameters = document.getElementById("link_select_scrollbar_parameters");
 
 /// NAVLINKS ///
 const navlink_parameters = document.getElementById("navlink_parameters");
@@ -115,6 +116,7 @@ const params_dimensions_hover = document.getElementById("params_dimensions_hover
 const params_input_text = document.getElementById("params_input_text");
 const params_rangebar = document.getElementById("params_rangebar");
 const params_textarea = document.getElementById("params_textarea");
+const params_scrollbar_select = document.getElementById("params_scrollbar_select");
 
 /// PANELS ///
 const panel_parameters = document.getElementById("panel_parameters");
@@ -124,11 +126,20 @@ const panel_animations = document.getElementById("panel_animations");
 const input_type_text = document.getElementById("input_type_text");
 const input_type_password = document.getElementById("input_type_password");
 
-/// SCROLLBAR ///
-const scrollbar_width = document.getElementById("scrollbar_width");
-const scrollbar_background_color = document.getElementById("scrollbar_background_color");
-const scrollbar_cursor_color = document.getElementById("scrollbar_cursor_color");
-const scrollbar_cursorhover_color = document.getElementById("scrollbar_cursorhover_color");
+/// SCROLLBAR TEXTAREA ///
+const scrollbar_width_textarea = document.getElementById("scrollbar_width_textarea");
+const scrollbar_background_color_textarea = document.getElementById("scrollbar_background_color_textarea");
+const scrollbar_cursor_color_textarea = document.getElementById("scrollbar_cursor_color_textarea");
+const scrollbar_cursorhover_color_textarea = document.getElementById("scrollbar_cursorhover_color_textarea");
+
+/// SCROLLBAR SELECT ///
+const scrollbar_width_select = document.getElementById("scrollbar_width_select");
+const scrollbar_background_color_select = document.getElementById("scrollbar_background_color_select");
+const scrollbar_cursor_color_select = document.getElementById("scrollbar_cursor_color_select");
+const scrollbar_cursorhover_color_select = document.getElementById("scrollbar_cursorhover_color_select");
+
+/// SELECT ///
+const optgroup_select = document.getElementById("optgroup_select");
 
 /// CHECKBOXS ///
 const checkbox_inset = document.getElementById("checkbox_inset");
@@ -195,6 +206,10 @@ const span_arrow_linear_gradient = document.getElementById("span_arrow_linear_gr
 const span_arrow_linear_gradient_hover = document.getElementById("span_arrow_linear_gradient_hover");
 const color_focus = document.getElementById("color_focus");
 
+/// COLOR SELECT ///
+const color_select_hover = document.getElementById("color_select_hover");
+const color_select_checked = document.getElementById("color_select_checked");
+
 /// BORDERS DIVS ///
 const borders_corners = document.getElementById("borders_corners");
 const borders_corners_hover = document.getElementById("borders_corners_hover");
@@ -220,6 +235,7 @@ const checkbox_cstm = document.getElementById("checkbox_cstm");
 const radio_cstm = document.getElementById("radio_cstm");
 const link_cstm = document.getElementById("link_cstm");
 const label_cstm = document.getElementById("label_cstm");
+const select_cstm = document.getElementById("select_cstm");
 
 const widgetsList = {"button": button_cstm,
                      "input": input_cstm,
@@ -228,7 +244,8 @@ const widgetsList = {"button": button_cstm,
                      "checkbox": checkbox_cstm,
                      "radio": radio_cstm,
                      "link": link_cstm,
-                     "label": label_cstm};
+                     "label": label_cstm,
+                     "select": select_cstm};
 
 const currentWidget = {name: "button", widgetCode: widgets.widget};
 
@@ -265,6 +282,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "block";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -314,6 +337,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -371,6 +400,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "block";
             params_dimensions.style.display = "none";
             link_dimensions.style.display = "none";
@@ -418,6 +453,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "block";
             document.getElementById("label_range_cursorcolor_hover").style.display = "block";
             document.getElementById("label_color_focus").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -465,6 +506,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -512,6 +559,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -560,6 +613,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "block";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -613,6 +672,12 @@ const prepareParameters = (type)=>{
             document.getElementById("label_range_cursorcolor").style.display = "none";
             document.getElementById("label_range_cursorcolor_hover").style.display = "none";
             document.getElementById("label_color_focus").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "none";
+            document.getElementById("label_color_select_checked").style.display = "none";
+            color_select_hover.style.display = "none";
+            color_select_checked.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "none";
+            params_scrollbar_select.style.display = "none";
             link_textarea_parameters.style.display = "none";
             params_textarea.style.display = "none";
             link_dimensions.style.display = "block";
@@ -656,6 +721,29 @@ const prepareParameters = (type)=>{
             ///////////
             borders_corners.style.display = "flex";
             borders_corners_hover.style.display = "flex";
+        break;
+        case "select":
+            currentWidget.widgetCode.baseCode["padding"] = '';
+            currentWidget.widgetCode.baseCode["margin"] = '';
+            currentWidget.widgetCode.baseCode["background-color"] = "#1D2A35;";
+            currentWidget.widgetCode.baseCode["color"] = "white;";
+            document.getElementById("label_text_component").textContent = "Titre de la liste";
+            document.getElementById("label_range_cursorcolor").style.display = "none";
+            document.getElementById("label_color_select_hover").style.display = "block";
+            document.getElementById("label_color_select_checked").style.display = "block";
+            color_select_hover.style.display = "block";
+            color_select_checked.style.display = "block";
+            color_range_cursor.style.display = "none";
+            color_range_cursor_hover.style.display = "none";
+            text_widget.value = "Faites votre choix";
+            currentWidget.widgetCode.textContent = "Faites votre choix";
+            optgroup_select.label = text_widget.value;
+            params_textarea.style.display = "none";
+            link_textarea_parameters.style.display = "none";
+            link_select_scrollbar_parameters.style.display = "block";
+            checkbox_background_color.checked = false;
+            checkbox_background_color_hover.checked = false;
+            text_widget_hover.style.display = "none";
         break;
     }
 }
@@ -703,10 +791,17 @@ const refreshWidget = () =>{
     }
 
     if (currentWidget.name == "textarea"){
-        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar { width: ${scrollbar_width.value}px; }\n`
-        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-track { background: ${scrollbar_background_color.value}; }\n`
-        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb { background: ${scrollbar_cursor_color.value}; }\n`
-        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb:hover { background: ${scrollbar_cursorhover_color.value}; }\n\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar { width: ${scrollbar_width_textarea.value}px; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-track { background: ${scrollbar_background_color_textarea.value}; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb { background: ${scrollbar_cursor_color_textarea.value}; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb:hover { background: ${scrollbar_cursorhover_color_textarea.value}; }\n\n`
+    }
+
+    if (currentWidget.name == "select"){
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar { width: ${scrollbar_width_select.value}px; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-track { background: ${scrollbar_background_color_select.value}; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb { background: ${scrollbar_cursor_color_select.value}; }\n`
+        cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb:hover { background: ${scrollbar_cursorhover_color_select.value}; }\n\n`
     }
 
     if (checkbox_activate_hover.checked){
@@ -789,11 +884,36 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
-/// SCROLLBAR ///
-scrollbar_width.addEventListener("input", ()=>{ refreshWidget(); })
-scrollbar_background_color.addEventListener("input", ()=>{ refreshWidget(); })
-scrollbar_cursor_color.addEventListener("input", ()=>{ refreshWidget(); })
-scrollbar_cursorhover_color.addEventListener("input", ()=>{ refreshWidget(); })
+/// SELECT LISTBOX ///
+link_select_scrollbar_parameters.addEventListener("click", ()=>{
+    params_scrollbar_select.style.display = params_scrollbar_select.style.display == "none" ? "block" : "none";
+})
+
+color_select_hover.addEventListener("input", ()=>{
+
+})
+
+color_select_checked.addEventListener("input", ()=>{
+
+})
+
+/// SCROLLBAR TEXTAREA ///
+scrollbar_width_textarea.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_background_color_textarea.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_cursor_color_textarea.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_cursorhover_color_textarea.addEventListener("input", ()=>{ refreshWidget(); })
+
+/// SCROLLBAR SELECT ///
+scrollbar_width_select.addEventListener("input", ()=>{ 
+    currentWidget.widgetCode.baseCode["padding-right"] = `${scrollbar_width_select.value/4}px;`; 
+    if (scrollbar_width_select.value/4 === 0 ){
+        currentWidget.widgetCode.baseCode["padding-right"] = '';
+    }
+    refreshWidget(); 
+})
+scrollbar_background_color_select.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_cursor_color_select.addEventListener("input", ()=>{ refreshWidget(); })
+scrollbar_cursorhover_color_select.addEventListener("input", ()=>{ refreshWidget(); })
 
 /// TEXTAREA ///
 link_textarea_parameters.addEventListener("click", ()=>{
@@ -1136,6 +1256,8 @@ range_letters_spacing_hover.addEventListener("input", ()=>{
 text_widget.addEventListener("input", ()=>{
     if (currentWidget.name == "input" || currentWidget.name == "textarea"){
         widgetsList[currentWidget.name].setAttribute("placeholder", text_widget.value);
+    } else if (currentWidget.name == "select"){
+        optgroup_select.label = text_widget.value;
     } else {
         widgetsList[currentWidget.name].textContent = text_widget.value;
     }
@@ -1203,6 +1325,22 @@ range_outline_text.addEventListener("input", ()=>{
 })
 
 range_outline_text_hover.addEventListener("input", ()=>{
+    currentWidget.widgetCode.hoverCode["-webkit-text-stroke"] = `${range_outline_text_hover.value}px ${color_outline_text_hover.value};`
+    if (range_outline_text_hover.value == 0){
+        currentWidget.widgetCode.hoverCode["-webkit-text-stroke"] = '';
+    }
+    refreshWidget();
+})
+
+color_outline_text.addEventListener("input", ()=>{
+    currentWidget.widgetCode.baseCode["-webkit-text-stroke"] = `${range_outline_text.value}px ${color_outline_text.value};`
+    if (range_outline_text.value == 0){
+        currentWidget.widgetCode.baseCode["-webkit-text-stroke"] = '';
+    }
+    refreshWidget();
+})
+
+color_outline_text_hover.addEventListener("input", ()=>{
     currentWidget.widgetCode.hoverCode["-webkit-text-stroke"] = `${range_outline_text_hover.value}px ${color_outline_text_hover.value};`
     if (range_outline_text_hover.value == 0){
         currentWidget.widgetCode.hoverCode["-webkit-text-stroke"] = '';
