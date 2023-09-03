@@ -802,6 +802,14 @@ const refreshWidget = () =>{
         cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-track { background: ${scrollbar_background_color_select.value}; }\n`
         cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb { background: ${scrollbar_cursor_color_select.value}; }\n`
         cssTextArea += `.${currentWidget.widgetCode.classname}::-webkit-scrollbar-thumb:hover { background: ${scrollbar_cursorhover_color_select.value}; }\n\n`
+
+        cssTextArea += `.${currentWidget.widgetCode.classname}[multiple]:hover option:hover{\n`;
+        cssTextArea += `  background-color: ${color_select_hover.value};\n`
+        cssTextArea += `}\n\n`
+
+        cssTextArea += `.${currentWidget.widgetCode.classname}[multiple]:focus option:checked{\n`
+        cssTextArea += `  background: linear-gradient(${color_select_checked.value} 0%, ${color_select_checked.value} 100%);\n`
+        cssTextArea += `}\n\n`
     }
 
     if (checkbox_activate_hover.checked){
@@ -890,11 +898,11 @@ link_select_scrollbar_parameters.addEventListener("click", ()=>{
 })
 
 color_select_hover.addEventListener("input", ()=>{
-
+    refreshWidget();
 })
 
 color_select_checked.addEventListener("input", ()=>{
-
+    refreshWidget();
 })
 
 /// SCROLLBAR TEXTAREA ///
