@@ -223,6 +223,20 @@ const rangebar_step = document.getElementById("rangebar_step");
 const rangebar_minvalue = document.getElementById("rangebar_minvalue");
 const rangebar_maxvalue = document.getElementById("rangebar_maxvalue");
 
+/// ANIMATION ///
+const checkbox_anim_loop = document.getElementById("checkbox_anim_loop");
+const range_anim_speed = document.getElementById("range_anim_speed");
+const link_remove_anim = document.getElementById("link_remove_anim");
+const link_vertical_anim = document.getElementById("link_vertical_anim");
+const link_horizontal_anim = document.getElementById("link_horizontal_anim");
+const link_rotatex_anim = document.getElementById("link_rotatex_anim");
+const link_rotatey_anim = document.getElementById("link_rotatey_anim");
+const link_rotatez_anim = document.getElementById("link_rotatez_anim");
+const link_scaley_anim = document.getElementById("link_scaley_anim");
+const link_scalex_anim = document.getElementById("link_scalex_anim");
+const link_scale_anim = document.getElementById("link_scale_anim");
+const link_opacity_anim = document.getElementById("link_opacity_anim");
+
 ////////////////////////////////// CODE //////////////////////////////////
 const code_css = document.getElementById("code_css");
 const code_html = document.getElementById("code_html");
@@ -775,6 +789,7 @@ widgets.updateHtml(currentWidget.name);
 ////////////////////////////////// STRUCTS AND VARS ///////////////////////////
 let changeTextOnHover = false;
 let changeColorWhenClicked = false;
+let isAnimated = false;
 let currentArrowLinearGradient = 0;
 const arrowsLinearGradient = {0: 180, 1: 270, 2: 0, 3: 90};
 const tmpStyle = document.createElement("style");
@@ -913,6 +928,23 @@ const rotateLinearGradient = () =>{
 }
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
+
+/// ANIMATION ///
+
+//NE PAS OUBLIER DE MODIFIER isAnimated à true à chaque fois qu'une animation est cliqué et de remettre à false quand link_remove_anim est cliqué 
+
+// const checkbox_anim_loop = document.getElementById("checkbox_anim_loop");
+// const range_anim_speed = document.getElementById("range_anim_speed");
+// const link_remove_anim = document.getElementById("link_remove_anim");
+// const link_vertical_anim = document.getElementById("link_vertical_anim");
+// const link_horizontal_anim = document.getElementById("link_horizontal_anim");
+// const link_rotatex_anim = document.getElementById("link_rotatex_anim");
+// const link_rotatey_anim = document.getElementById("link_rotatey_anim");
+// const link_rotatez_anim = document.getElementById("link_rotatez_anim");
+// const link_scaley_anim = document.getElementById("link_scaley_anim");
+// const link_scalex_anim = document.getElementById("link_scalex_anim");
+// const link_scale_anim = document.getElementById("link_scale_anim");
+// const link_opacity_anim = document.getElementById("link_opacity_anim");
 
 /// SELECT LISTBOX ///
 link_select_scrollbar_parameters.addEventListener("click", ()=>{

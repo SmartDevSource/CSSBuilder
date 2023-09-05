@@ -356,7 +356,23 @@
     <!--RIGHT ANIMATIONS PANEL-->
     <div class = "rightpanel" id = "panel_animations" style = "display: none;">
         <div class = "panel-container flexcol">
-            <span class = "panel-header mb10">Animations du composant</span>
+            <span class = "panel-header mb10">Propriétés de l'animation</span>
+            <label class = "m5">Répeter l'animation <input type = "checkbox" id = "checkbox_anim_loop" checked></label>
+            <label class = "m5">Vitesse de l'animation</label>
+            <input type = "range" min = "0" step = "0.1" max = "5" value = "0.5" id = "range_anim_speed"></input>
+            <span class = "panel-header m5">Animations</span>
+            <label class = "linkbox mb20" id = "link_remove_anim">Supprimer l'animation</label>
+
+            <label class = "linkbox" id = "link_vertical_anim">Mouvement vertical</label>
+            <label class = "linkbox mb10" id = "link_horizontal_anim">Mouvement horizontal</label>
+            <label class = "linkbox" id = "link_rotatex_anim">Rotation X</label>
+            <label class = "linkbox" id = "link_rotatey_anim">Rotation Y</label>
+            <label class = "linkbox mb10" id = "link_rotatez_anim">Rotation Z</label>
+            <label class = "linkbox" id = "link_scaley_anim">Déformation verticale</label>
+            <label class = "linkbox" id = "link_scalex_anim">Déformation horizontale</label>
+            <label class = "linkbox mb10" id = "link_scale_anim">Déformation globale</label>
+            <label class = "linkbox mb10" id = "link_opacity_anim">Variation d'opacité</label>
+
         </div>
     </div>
 
