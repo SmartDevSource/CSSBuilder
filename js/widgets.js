@@ -81,7 +81,13 @@ export class Widgets {
             value : 5,
             disabled : false,
             spellcheck : true,
-            selectSize : 2
+            selectSize : 2,
+            animTime: 0.5,
+            animRepeat: "infinite",
+            animTranslateRange: 5,
+            animType: "",
+            animMaxScale: 1.2,
+            animReverseRotation: false
         };
 
         this.updateHtml();

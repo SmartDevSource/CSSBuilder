@@ -225,9 +225,12 @@ const rangebar_maxvalue = document.getElementById("rangebar_maxvalue");
 
 /// ANIMATION ///
 const checkbox_anim_loop = document.getElementById("checkbox_anim_loop");
+const checkbox_anim_reverserotation = document.getElementById("checkbox_anim_reverserotation");
+const range_anim_maxscale = document.getElementById("range_anim_maxscale");
 const range_anim_speed = document.getElementById("range_anim_speed");
 const link_remove_anim = document.getElementById("link_remove_anim");
 const link_vertical_anim = document.getElementById("link_vertical_anim");
+const range_anim_translate = document.getElementById("range_anim_translate");
 const link_horizontal_anim = document.getElementById("link_horizontal_anim");
 const link_rotatex_anim = document.getElementById("link_rotatex_anim");
 const link_rotatey_anim = document.getElementById("link_rotatey_anim");
@@ -813,6 +816,10 @@ const refreshWidget = () =>{
         cssTextArea+= `  ${property} : ${currentWidget.widgetCode.baseCode[property]}\n`;
     }
 
+    if (isAnimated){
+        cssTextArea+= `  animation: ${currentWidget.widgetCode.animType} ${currentWidget.widgetCode.animTime}s linear ${currentWidget.widgetCode.animRepeat};\n`;
+    }
+
     cssTextArea += '}\n\n';
 
     if (changeColorWhenClicked){
@@ -870,6 +877,92 @@ const refreshWidget = () =>{
             cssTextArea += '\n\n.'+currentWidget.widgetCode.classname+':hover::after{\n';
             cssTextArea += `  content: "${text_widget_hover.value}";`;
             cssTextArea += '\n}';
+        }
+    }
+
+    if (isAnimated){
+    
+        cssTextArea += '\n\n';
+        switch(currentWidget.widgetCode.animType){
+            case "horizontal":
+                cssTextArea += `@keyframes horizontal {\n`;
+                cssTextArea += `  0% { transform: translateX(0px); }\n`;
+                cssTextArea += `  25% { transform: translateX(-${currentWidget.widgetCode.animTranslateRange}px); }\n`;
+                cssTextArea += `  50% { transform: translateX(0px); }\n`;
+                cssTextArea += `  75% { transform: translateX(${currentWidget.widgetCode.animTranslateRange}px); }\n`;
+                cssTextArea += `  100% { transform: translateX(0px); }\n`;
+                cssTextArea += `}\n\n`;
+            break;
+            case "vertical":
+                cssTextArea += `@keyframes vertical {\n`;
+                cssTextArea += `  0% { transform: translateY(0px); }\n`;
+                cssTextArea += `  25% { transform: translateY(-${currentWidget.widgetCode.animTranslateRange}px); }\n`;
+                cssTextArea += `  50% { transform: translateY(0px); }\n`;
+                cssTextArea += `  75% { transform: translateY(${currentWidget.widgetCode.animTranslateRange}px); }\n`;
+                cssTextArea += `  100% { transform: translateY(0px); }\n`;
+                cssTextArea += `}\n\n`;
+            break;
+            case "rotatex":
+                cssTextArea += `@keyframes rotatex {\n`;
+                if (currentWidget.widgetCode.animReverseRotation){
+                    cssTextArea += `  0% { transform: rotateX(360deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateX(0deg) }\n`;
+                } else {
+                    cssTextArea += `  0% { transform: rotateX(0deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateX(360deg) }\n`;
+                }
+                cssTextArea += `}\n\n`;
+            break;
+            case "rotatey":
+                cssTextArea += `@keyframes rotatey {\n`;
+                if (currentWidget.widgetCode.animReverseRotation){
+                    cssTextArea += `  0% { transform: rotateY(360deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateY(0deg) }\n`;
+                } else {
+                    cssTextArea += `  0% { transform: rotateY(0deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateY(360deg) }\n`;
+                }
+                cssTextArea += `}\n\n`;
+            break;
+            case "rotatez":
+                cssTextArea += `@keyframes rotatez {\n`;
+                if (currentWidget.widgetCode.animReverseRotation){
+                    cssTextArea += `  0% { transform: rotateZ(360deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateZ(0deg) }\n`;
+                } else {
+                    cssTextArea += `  0% { transform: rotateZ(0deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateZ(360deg) }\n`;
+                }
+                cssTextArea += `}\n\n`;
+            break;
+            case "scalex":
+                cssTextArea += `@keyframes scalex {\n`;
+                cssTextArea += `  0% { transform: scalex(1) }\n`;
+                cssTextArea += `  50% { transform: scalex(${currentWidget.widgetCode.animMaxScale}) }\n`;
+                cssTextArea += `  100% { transform: scalex(1) }\n`;
+                cssTextArea += `}\n\n`;
+            break;
+            case "scaley":
+                cssTextArea += `@keyframes scaley {\n`;
+                cssTextArea += `  0% { transform: scaley(1) }\n`;
+                cssTextArea += `  50% { transform: scaley(${currentWidget.widgetCode.animMaxScale}) }\n`;
+                cssTextArea += `  100% { transform: scaley(1) }\n`;
+                cssTextArea += `}\n\n`;
+            break;
+            case "scale":
+                cssTextArea += `@keyframes scale {\n`;
+                cssTextArea += `  0% { transform: scale(1) }\n`;
+                cssTextArea += `  50% { transform: scale(${currentWidget.widgetCode.animMaxScale}) }\n`;
+                cssTextArea += `  100% { transform: scale(1) }\n`;
+                cssTextArea += `}\n\n`;
+            break;
+            case "opacity":
+                cssTextArea += `@keyframes opacity {\n`;
+                cssTextArea += `  0% { opacity: 1 }\n`;
+                cssTextArea += `  50% { opacity: 0.1 }\n`;
+                cssTextArea += `  100% { opacity: 1 }\n`;
+                cssTextArea += `}\n\n`;
+            break;
         }
     }
 
@@ -932,19 +1025,99 @@ const rotateLinearGradient = () =>{
 /// ANIMATION ///
 
 //NE PAS OUBLIER DE MODIFIER isAnimated à true à chaque fois qu'une animation est cliqué et de remettre à false quand link_remove_anim est cliqué 
+link_remove_anim.addEventListener("click", ()=>{
+    isAnimated = false;
+    refreshWidget();
+})
 
-// const checkbox_anim_loop = document.getElementById("checkbox_anim_loop");
-// const range_anim_speed = document.getElementById("range_anim_speed");
-// const link_remove_anim = document.getElementById("link_remove_anim");
-// const link_vertical_anim = document.getElementById("link_vertical_anim");
-// const link_horizontal_anim = document.getElementById("link_horizontal_anim");
-// const link_rotatex_anim = document.getElementById("link_rotatex_anim");
-// const link_rotatey_anim = document.getElementById("link_rotatey_anim");
-// const link_rotatez_anim = document.getElementById("link_rotatez_anim");
-// const link_scaley_anim = document.getElementById("link_scaley_anim");
-// const link_scalex_anim = document.getElementById("link_scalex_anim");
-// const link_scale_anim = document.getElementById("link_scale_anim");
-// const link_opacity_anim = document.getElementById("link_opacity_anim");
+checkbox_anim_loop.addEventListener("click", ()=>{
+    if (checkbox_anim_loop.checked){
+        currentWidget.widgetCode.animRepeat = "infinite";
+    } else {
+        currentWidget.widgetCode.animRepeat = "forwards";
+    }
+    refreshWidget();
+})
+
+checkbox_anim_reverserotation.addEventListener("click", ()=>{
+    currentWidget.widgetCode.animReverseRotation = checkbox_anim_reverserotation.checked;
+    refreshWidget();
+})
+
+range_anim_speed.addEventListener("input", ()=>{
+    currentWidget.widgetCode.animTime =  (3 - parseFloat(range_anim_speed.value));
+    refreshWidget();
+})
+
+range_anim_maxscale.addEventListener("input", ()=>{
+    let scaleValue = parseFloat(range_anim_maxscale.value);
+    if (scaleValue<1.01){
+        scaleValue = 1.01;
+    } else if (scaleValue>3){
+        scaleValue = 3;
+    }
+    currentWidget.widgetCode.animMaxScale = scaleValue;
+    refreshWidget();
+})
+
+link_horizontal_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "horizontal";
+    refreshWidget();
+})
+
+link_vertical_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "vertical";
+    refreshWidget();
+})
+
+range_anim_translate.addEventListener("input", ()=>{
+    currentWidget.widgetCode.animTranslateRange = parseInt(range_anim_translate.value);
+    refreshWidget();
+})
+
+link_rotatex_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "rotatex";
+    refreshWidget();
+})
+
+link_rotatey_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "rotatey";
+    refreshWidget();
+})
+
+link_rotatez_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "rotatez";
+    refreshWidget();
+})
+
+link_scalex_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "scalex";
+    refreshWidget();
+})
+
+link_scaley_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "scaley";
+    refreshWidget();
+})
+
+link_scale_anim.addEventListener("click" , ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "scale";
+    refreshWidget();
+})
+
+link_opacity_anim.addEventListener("click", ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "opacity";
+    refreshWidget();
+})
 
 /// SELECT LISTBOX ///
 link_select_scrollbar_parameters.addEventListener("click", ()=>{
