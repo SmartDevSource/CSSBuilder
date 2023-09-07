@@ -235,6 +235,7 @@ const link_horizontal_anim = document.getElementById("link_horizontal_anim");
 const link_rotatex_anim = document.getElementById("link_rotatex_anim");
 const link_rotatey_anim = document.getElementById("link_rotatey_anim");
 const link_rotatez_anim = document.getElementById("link_rotatez_anim");
+const link_balance_anim = document.getElementById("link_balance_anim");
 const link_scaley_anim = document.getElementById("link_scaley_anim");
 const link_scalex_anim = document.getElementById("link_scalex_anim");
 const link_scale_anim = document.getElementById("link_scale_anim");
@@ -904,24 +905,14 @@ const refreshWidget = () =>{
             break;
             case "rotatex":
                 cssTextArea += `@keyframes rotatex {\n`;
-                if (currentWidget.widgetCode.animReverseRotation){
-                    cssTextArea += `  0% { transform: rotateX(360deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateX(0deg) }\n`;
-                } else {
                     cssTextArea += `  0% { transform: rotateX(0deg) }\n`;
                     cssTextArea += `  100% { transform: rotateX(360deg) }\n`;
-                }
                 cssTextArea += `}\n\n`;
             break;
             case "rotatey":
                 cssTextArea += `@keyframes rotatey {\n`;
-                if (currentWidget.widgetCode.animReverseRotation){
-                    cssTextArea += `  0% { transform: rotateY(360deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateY(0deg) }\n`;
-                } else {
                     cssTextArea += `  0% { transform: rotateY(0deg) }\n`;
                     cssTextArea += `  100% { transform: rotateY(360deg) }\n`;
-                }
                 cssTextArea += `}\n\n`;
             break;
             case "rotatez":
@@ -933,6 +924,15 @@ const refreshWidget = () =>{
                     cssTextArea += `  0% { transform: rotateZ(0deg) }\n`;
                     cssTextArea += `  100% { transform: rotateZ(360deg) }\n`;
                 }
+                cssTextArea += `}\n\n`;
+            break;
+            case "balance":
+                cssTextArea += `@keyframes balance {\n`;
+                    cssTextArea += `  0% { transform: rotateZ(0deg) }\n`;
+                    cssTextArea += `  25% { transform: rotateZ(-15deg) }\n`;
+                    cssTextArea += `  50% { transform: rotateZ(0deg) }\n`;
+                    cssTextArea += `  75% { transform: rotateZ(15deg) }\n`;
+                    cssTextArea += `  100% { transform: rotateZ(0deg) }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "scalex":
@@ -1022,7 +1022,7 @@ const rotateLinearGradient = () =>{
 
 ////////////////////////////////// EVENTS LISTENERS //////////////////////////////////
 
-/// ANIMATION ///
+/// ANIMATIONS ///
 
 //NE PAS OUBLIER DE MODIFIER isAnimated à true à chaque fois qu'une animation est cliqué et de remettre à false quand link_remove_anim est cliqué 
 link_remove_anim.addEventListener("click", ()=>{
@@ -1092,6 +1092,12 @@ link_rotatey_anim.addEventListener("click" , ()=>{
 link_rotatez_anim.addEventListener("click" , ()=>{
     isAnimated = true;
     currentWidget.widgetCode.animType = "rotatez";
+    refreshWidget();
+})
+
+link_balance_anim.addEventListener("click", ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "balance";
     refreshWidget();
 })
 
