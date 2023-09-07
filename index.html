@@ -388,7 +388,12 @@
                     <input id = "range_anim_maxscale" value = "1.2" style = "width: 30px" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="0" maxlength="4"/>
                 </label>
             </div>
-            <label class = "linkbox mb10" id = "link_opacity_anim">Variation d'opacité</label>
+            <div class = "flexcol params-container m10">
+                <span class = "panel-header mb10">Couleurs</span>
+                <label class = "linkbox mb10" id = "link_opacity_anim">Variation d'opacité</label>
+                <label class = "linkbox mb10" id = "link_color_anim">Variation de couleur</label>
+                <input class = "mb10" type = "color" id = "range_anim_color"></input>
+            </div>
         </div>
     </div>
 

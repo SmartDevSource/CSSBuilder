@@ -223,7 +223,7 @@ const rangebar_step = document.getElementById("rangebar_step");
 const rangebar_minvalue = document.getElementById("rangebar_minvalue");
 const rangebar_maxvalue = document.getElementById("rangebar_maxvalue");
 
-/// ANIMATION ///
+/// ANIMATIONS ///
 const checkbox_anim_loop = document.getElementById("checkbox_anim_loop");
 const checkbox_anim_reverserotation = document.getElementById("checkbox_anim_reverserotation");
 const range_anim_maxscale = document.getElementById("range_anim_maxscale");
@@ -240,6 +240,8 @@ const link_scaley_anim = document.getElementById("link_scaley_anim");
 const link_scalex_anim = document.getElementById("link_scalex_anim");
 const link_scale_anim = document.getElementById("link_scale_anim");
 const link_opacity_anim = document.getElementById("link_opacity_anim");
+const link_color_anim = document.getElementById("link_color_anim");
+const range_anim_color = document.getElementById("range_anim_color");
 
 ////////////////////////////////// CODE //////////////////////////////////
 const code_css = document.getElementById("code_css");
@@ -963,6 +965,13 @@ const refreshWidget = () =>{
                 cssTextArea += `  100% { opacity: 1 }\n`;
                 cssTextArea += `}\n\n`;
             break;
+            case "color":
+                cssTextArea += `@keyframes color {\n`;
+                cssTextArea += `  0% { background-color: ${color_background.value}; }\n`;
+                cssTextArea += `  50% { background-color: ${range_anim_color.value}; }\n`;
+                cssTextArea += `  100% { background-color: ${color_background.value}; }\n`;
+                cssTextArea += `}\n\n`;
+            break;
         }
     }
 
@@ -1122,6 +1131,16 @@ link_scale_anim.addEventListener("click" , ()=>{
 link_opacity_anim.addEventListener("click", ()=>{
     isAnimated = true;
     currentWidget.widgetCode.animType = "opacity";
+    refreshWidget();
+})
+
+link_color_anim.addEventListener("click", ()=>{
+    isAnimated = true;
+    currentWidget.widgetCode.animType = "color";
+    refreshWidget();
+})
+
+range_anim_color.addEventListener("input", ()=>{
     refreshWidget();
 })
 
