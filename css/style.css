@@ -352,13 +352,15 @@ iframe{
     display: block;
     margin: 0 auto;
     justify-content: center;
-    width: 1000px;
-    height: 500px;
+    width: 1300px;
+    height: 750px;
+    margin-top: 10px;
 }
 
 deviceselector{
-    margin: 10px;
+    margin: 2px;
     padding: 10px;
+    font-size: 14px;
     color: black;
     background-color: white;
     user-select: none;

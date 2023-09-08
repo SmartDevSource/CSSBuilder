@@ -11,9 +11,21 @@ const iframe = document.getElementById("iframe");
 
 /// STRUCTS & VARS ///
 const devices = {
+    "ordinateur":{"w": 1300, "h":750},
     "iphonese":{"w": 375, "h": 667},
     "iphonexr":{"w": 414, "h": 896},
-    "iphone12pro":{"w": 390, "h":844}
+    "iphone12pro":{"w": 390, "h": 844},
+    "pixel5":{"w":393, "h": 851},
+    "samsunggalaxy8splus": {"w": 360, "h": 740},
+    "samsunggalaxys20ultra": {"w": 412, "h": 915},
+    "ipadair": {"w": 820, "h": 1180},
+    "ipadmini": {"w": 768, "h": 1024},
+    "surfacepro7": {"w": 912, "h": 1368},
+    "surfaceduo": {"w": 540, "h": 720},
+    "galaxyfold": {"w": 280, "h": 653},
+    "samsunggalaxya5171": {"w": 412, "h": 914},
+    "nesthub": {"w": 1024, "h": 768},
+    "nesthubmax": {"w": 1280, "h": 800}
 }
 
 /// PREPARE DEVICES SIZES ///
