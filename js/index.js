@@ -98,6 +98,7 @@ const link_select_scrollbar_parameters = document.getElementById("link_select_sc
 /// NAVLINKS ///
 const navlink_parameters = document.getElementById("navlink_parameters");
 const navlink_animations = document.getElementById("navlink_animations");
+const navlink_diveditor = document.getElementById("navlink_diveditor");
 
 /// PARAMS ///
 const params_radius = document.getElementById("params_radius");
@@ -1489,6 +1490,10 @@ navlink_parameters.addEventListener("click", ()=>{
 navlink_animations.addEventListener("click", ()=>{
     panel_parameters.style.display = "none";
     panel_animations.style.display = "block";
+})
+
+navlink_diveditor.addEventListener("click", ()=>{
+    window.location.href = "../diveditor.html";
 })
 
 //// COPY EVENTS /////

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "css/style.css">
+    <title>CSSBuilder</title>
+</head>
+<body>
+    <!--NAVBAR-->
+    <div class = "flexrow navbar">
+        <span class = "logobefore">CSS</span><span class = "logoafter">Builder</span>
+        <div class = "parameters-navlinks-container">
+
+        </div>
+        <div class = "editor-navlinks-container">
+            <a class = "navlink" id = "navlink_componentseditor">Editeur de composants</a>
+        </div>
+    </div>
+
+    <!--IFRAME-->
+    <h2 class = "bigtext">Aperçu du rendu sur une page</h2>
+    <div class = "flexrow justifycenter">
+        <deviceselector name = "iphonese">iPhone SE [375 x 667]</deviceselector>
+        <deviceselector name = "iphonexr">iPhone XR [414 x 896]</deviceselector>
+        <deviceselector name = "iphone12pro">iPhone 12 PRO [390 x 844]</deviceselector>
+    </div>
+    <iframe src = "https://www.wordcup.io" id = "iframe"></iframe>
+    
+    <!--FOOTER-->
+    <div class = "flexrow justifycenter footer">
+        <label>CSSBuilder 2023 &copy</label>
+    </div>
+    
+    <script type = "module" src = "js/diveditor.js"></script>
+</body>
+</html>

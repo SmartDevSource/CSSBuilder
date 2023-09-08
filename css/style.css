@@ -138,7 +138,7 @@ input:hover{
     align-items: center;
 }
 
-.navlinks-container {
+.parameters-navlinks-container {
     flex-grow: 1;
     display: flex;
     justify-content: center;
@@ -155,7 +155,6 @@ input:hover{
 .navlink:hover{
     cursor: pointer;
     box-shadow: 0 0 0 2px rgb(54, 54, 54);
-    /* border: 1px solid rgb(43, 43, 43); */
     border-radius: 5px;
 }
 
@@ -342,4 +341,31 @@ input:hover{
     transition: .3s;
     color: white;
     background-color: rgb(112, 112, 112);
+}
+
+h2{
+    text-align: center;
+    user-select: none;
+}
+
+iframe{
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    width: 1000px;
+    height: 500px;
+}
+
+deviceselector{
+    margin: 10px;
+    padding: 10px;
+    color: black;
+    background-color: white;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+deviceselector:hover{
+    background-color: rgb(211, 210, 210);
 }
