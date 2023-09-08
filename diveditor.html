@@ -22,7 +22,7 @@
     <!--IFRAME-->
     <h2 class = "bigtext">Aperçu du rendu sur page</h2>
     <div class = "flexrow justifycenter">
-        <deviceselector name = "ordinateur">Ordinateur</deviceselector>
+        <deviceselector name = "computer">Ordinateur</deviceselector>
         <deviceselector name = "iphonese">iPhone SE</deviceselector>
         <deviceselector name = "iphonexr">iPhone XR</deviceselector>
         <deviceselector name = "iphone12pro">iPhone 12 PRO</deviceselector>
@@ -38,8 +38,27 @@
         <deviceselector name = "nesthub">Nest Hub</deviceselector>
         <deviceselector name = "nesthubmax">Nest Hub Max</deviceselector>
     </div>
-    <iframe src = "https://www.wordcup.io" id = "iframe"></iframe>
+
+    <div class = "flexrow justifycenter">
+        <div class = "flexcol justifycenter">
+            <label class = "mt10">Largeur d'écran</label>
+            <input class = "reactivity" type = "range" min = "0" value = "1300" max = "1400" id = "range_reactivity"/>
+        </div>
+    </div>
+
+    <!-- <iframe src = "https://www.wordcup.io" id = "iframe"></iframe> -->
+    <iframe src = "divpage.html" id = "iframe"></iframe>
+
+    <!--LEFT PANEL COMPONENTS-->
+    <div class = "leftpanel darkbluebg ty150" id = "leftpanel_edition">
+        <div class = "panel-container flexcol">
+            <span class = "panel-header">Panneau d'édition</span>
+            <label class = "linkbox" id = "link_add_div">Ajouter une div</label>
+
+        </div>
+    </div>
     
+
     <!--FOOTER-->
     <div class = "flexrow justifycenter footer">
         <label>CSSBuilder 2023 &copy</label>

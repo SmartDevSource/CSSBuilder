@@ -58,6 +58,8 @@ body{ overflow: hidden; }
 
 ::selection{ background-color: rgb(161, 161, 161); }
 
+.ty150 { transform: translateY(150px);}
+
 .cursors-container{
     height: 150px;
     overflow-y: auto;
@@ -350,10 +352,11 @@ h2{
 
 iframe{
     display: block;
+    overflow: scroll;
     margin: 0 auto;
     justify-content: center;
     width: 1300px;
-    height: 750px;
+    height: 650px;
     margin-top: 10px;
 }
 
@@ -370,4 +373,22 @@ deviceselector{
 
 deviceselector:hover{
     background-color: rgb(211, 210, 210);
+}
+
+.reactivity{
+    width: 400px;
+}
+
+.box{
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
 }

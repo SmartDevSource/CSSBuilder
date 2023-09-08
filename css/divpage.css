@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(48, 48, 48);
+}
+
+.flexcol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flexrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
