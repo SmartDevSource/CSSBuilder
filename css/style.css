@@ -54,9 +54,7 @@ input::selection{ background-color: rgb(110, 110, 110); }
 .bradius{ border-radius: 7px !important; }
 .cursorpointer{ cursor:pointer; }
 
-body{
-    overflow: hidden;
-}
+body{ overflow: hidden; }
 
 ::selection{ background-color: rgb(161, 161, 161); }
 

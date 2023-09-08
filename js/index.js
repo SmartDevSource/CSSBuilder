@@ -384,6 +384,8 @@ const prepareParameters = (type)=>{
             show_checkbox_checked.style.display = "none";
             link_input_text_parameters.style.display = "block";
             color_placeholder.style.display = "block";
+            link_text.style.display = "block";
+            link_text_hover.style.display = "block";
             text_widget_hover.style.display = "none";
             currentWidget.widgetCode.textContent = "";
             widgetsList[currentWidget.name].textContent = "";
@@ -445,6 +447,8 @@ const prepareParameters = (type)=>{
             color_range_cursor_hover.style.display = "none";
             range_padding.style.display = "block";
             link_rangebar_parameters.style.display = "none";
+            link_text.style.display = "block";
+            link_text_hover.style.display = "block";
             text_widget.style.display = "block";
             show_checkbox_checked.style.display = "none";
             link_input_text_parameters.style.display = "none";
@@ -907,62 +911,62 @@ const refreshWidget = () =>{
             break;
             case "rotatex":
                 cssTextArea += `@keyframes rotatex {\n`;
-                    cssTextArea += `  0% { transform: rotateX(0deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateX(360deg) }\n`;
+                    cssTextArea += `  0% { transform: rotateX(0deg); }\n`;
+                    cssTextArea += `  100% { transform: rotateX(360deg); }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "rotatey":
                 cssTextArea += `@keyframes rotatey {\n`;
-                    cssTextArea += `  0% { transform: rotateY(0deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateY(360deg) }\n`;
+                    cssTextArea += `  0% { transform: rotateY(0deg); }\n`;
+                    cssTextArea += `  100% { transform: rotateY(360deg); }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "rotatez":
                 cssTextArea += `@keyframes rotatez {\n`;
                 if (currentWidget.widgetCode.animReverseRotation){
-                    cssTextArea += `  0% { transform: rotateZ(360deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateZ(0deg) }\n`;
+                    cssTextArea += `  0% { transform: rotateZ(360deg); }\n`;
+                    cssTextArea += `  100% { transform: rotateZ(0deg); }\n`;
                 } else {
-                    cssTextArea += `  0% { transform: rotateZ(0deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateZ(360deg) }\n`;
+                    cssTextArea += `  0% { transform: rotateZ(0deg); }\n`;
+                    cssTextArea += `  100% { transform: rotateZ(360deg); }\n`;
                 }
                 cssTextArea += `}\n\n`;
             break;
             case "balance":
                 cssTextArea += `@keyframes balance {\n`;
-                    cssTextArea += `  0% { transform: rotateZ(0deg) }\n`;
-                    cssTextArea += `  25% { transform: rotateZ(-15deg) }\n`;
-                    cssTextArea += `  50% { transform: rotateZ(0deg) }\n`;
-                    cssTextArea += `  75% { transform: rotateZ(15deg) }\n`;
-                    cssTextArea += `  100% { transform: rotateZ(0deg) }\n`;
+                    cssTextArea += `  0% { transform: rotateZ(0deg); }\n`;
+                    cssTextArea += `  25% { transform: rotateZ(-15deg); }\n`;
+                    cssTextArea += `  50% { transform: rotateZ(0deg); }\n`;
+                    cssTextArea += `  75% { transform: rotateZ(15deg); }\n`;
+                    cssTextArea += `  100% { transform: rotateZ(0deg); }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "scalex":
                 cssTextArea += `@keyframes scalex {\n`;
-                cssTextArea += `  0% { transform: scalex(1) }\n`;
-                cssTextArea += `  50% { transform: scalex(${currentWidget.widgetCode.animMaxScale}) }\n`;
-                cssTextArea += `  100% { transform: scalex(1) }\n`;
+                cssTextArea += `  0% { transform: scalex(1); }\n`;
+                cssTextArea += `  50% { transform: scalex(${currentWidget.widgetCode.animMaxScale}); }\n`;
+                cssTextArea += `  100% { transform: scalex(1); }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "scaley":
                 cssTextArea += `@keyframes scaley {\n`;
-                cssTextArea += `  0% { transform: scaley(1) }\n`;
-                cssTextArea += `  50% { transform: scaley(${currentWidget.widgetCode.animMaxScale}) }\n`;
-                cssTextArea += `  100% { transform: scaley(1) }\n`;
+                cssTextArea += `  0% { transform: scaley(1); }\n`;
+                cssTextArea += `  50% { transform: scaley(${currentWidget.widgetCode.animMaxScale}); }\n`;
+                cssTextArea += `  100% { transform: scaley(1); }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "scale":
                 cssTextArea += `@keyframes scale {\n`;
-                cssTextArea += `  0% { transform: scale(1) }\n`;
-                cssTextArea += `  50% { transform: scale(${currentWidget.widgetCode.animMaxScale}) }\n`;
-                cssTextArea += `  100% { transform: scale(1) }\n`;
+                cssTextArea += `  0% { transform: scale(1); }\n`;
+                cssTextArea += `  50% { transform: scale(${currentWidget.widgetCode.animMaxScale}); }\n`;
+                cssTextArea += `  100% { transform: scale(1); }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "opacity":
                 cssTextArea += `@keyframes opacity {\n`;
-                cssTextArea += `  0% { opacity: 1 }\n`;
-                cssTextArea += `  50% { opacity: 0.1 }\n`;
-                cssTextArea += `  100% { opacity: 1 }\n`;
+                cssTextArea += `  0% { opacity: 1; }\n`;
+                cssTextArea += `  50% { opacity: 0.1; }\n`;
+                cssTextArea += `  100% { opacity: 1; }\n`;
                 cssTextArea += `}\n\n`;
             break;
             case "color":

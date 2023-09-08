@@ -15,7 +15,7 @@
     </div>
 
     <!--RIGHT PARAMETERS PANEL-->
-    <div class = "rightpanel" id = "panel_parameters">
+    <div class = "rightpanel darkbluebg" id = "panel_parameters">
         <div class = "panel-container flexcol">
             
             <span class = "panel-header mb10">Paramètres du composant</span>
@@ -354,7 +354,7 @@
     </div>
 
     <!--RIGHT ANIMATIONS PANEL-->
-    <div class = "rightpanel" id = "panel_animations" style = "display: none;">
+    <div class = "rightpanel darkbluebg" id = "panel_animations" style = "display: none;">
         <div class = "panel-container flexcol">
             <span class = "panel-header mb10">Propriétés de l'animation</span>
             <label class = "m5">Répeter l'animation <input type = "checkbox" id = "checkbox_anim_loop" checked></label>
@@ -384,7 +384,7 @@
                 <label class = "linkbox" id = "link_scalex_anim">Déformation horizontale</label>
                 <label class = "linkbox" id = "link_scaley_anim">Déformation verticale</label>
                 <label class = "linkbox mb10" id = "link_scale_anim">Déformation globale</label>
-                <label class = "m10 block">Echelle max [ Entre 1 et 3 ] 
+                <label class = "m10 block">Echelle max [1.0 à 3.0]
                     <input id = "range_anim_maxscale" value = "1.2" style = "width: 30px" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="0" maxlength="4"/>
                 </label>
             </div>
@@ -398,7 +398,7 @@
     </div>
 
     <!--LEFT PANEL COMPONENTS-->
-    <div class = "leftpanel">
+    <div class = "leftpanel darkbluebg">
         <div class = "panel-container flexcol">
             <span class = "panel-header mb10">Composants</span>
             <button class = "select-component bradius hovertranslate component" name = "button">Bouton</button>
