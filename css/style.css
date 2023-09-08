@@ -111,10 +111,35 @@ input:hover{
     background-color: rgb(192, 192, 192); 
 }
 
+.logobefore{
+    margin-left: 30px;
+    color: rgb(0, 195, 255);
+    font-weight: bold;
+    font-size: 24px;
+    user-select: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logoafter{
+    color: rgb(226, 226, 226);
+    font-weight: bold;
+    font-size: 24px;
+    user-select: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .navbar{
     background-color: #3b4d5e;
     padding: 5px;
     height: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navlinks-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .navlink{
