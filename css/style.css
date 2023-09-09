@@ -54,8 +54,6 @@ input::selection{ background-color: rgb(110, 110, 110); }
 .bradius{ border-radius: 7px !important; }
 .cursorpointer{ cursor:pointer; }
 
-body{ overflow: hidden; }
-
 ::selection{ background-color: rgb(161, 161, 161); }
 
 .ty150 { transform: translateY(150px);}
@@ -369,6 +367,9 @@ deviceselector{
     user-select: none;
     cursor: pointer;
     border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 deviceselector:hover{
@@ -391,4 +392,25 @@ deviceselector:hover{
     text-align: center;
     user-select: none;
     cursor: pointer;
+}
+
+.fadeout{ animation: fade-out 0.4s forwards; }
+.fadein{ animation: fade-in 0.4s forwards; }
+
+@keyframes fade-out { from {opacity: 1;} to { opacity: 0;} }
+@keyframes fade-in { from {opacity: 0;} to { opacity: 1;} }
+
+.mydivs-container{
+    max-width: 170px;
+    margin-left: 30px;
+    transform: translateY(-650px);
+}
+
+.labeltip{
+    background-color: rgb(255, 115, 0);
+    border: 2px solid black;
+    border-radius: 0px;
+    padding: 5px;
+    color:rgb(36, 35, 35);
+    font-weight: bold;
 }
